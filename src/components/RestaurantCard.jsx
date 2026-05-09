@@ -57,7 +57,16 @@ export default function RestaurantCard({ restaurant, onClick, onSave, isSaved })
       exit={{ opacity: 0, y: -8 }}
       transition={{ type: 'spring', duration: 0.3, bounce: 0 }}
       onClick={() => onClick(r)}
-      className="group bg-surface rounded-xl border border-border overflow-hidden cursor-pointer hover:shadow-md hover:border-border/80 transition-shadow"
+      onKeyDown={(e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          onClick(r);
+        }
+      }}
+      role="button"
+      tabIndex={0}
+      aria-label={`View details for ${r.name}`}
+      className="group bg-surface rounded-xl border border-border overflow-hidden cursor-pointer hover:shadow-md hover:border-border/80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent transition-shadow"
     >
       {/* Image area */}
       <div className="relative aspect-[16/10] overflow-hidden">

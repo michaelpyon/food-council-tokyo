@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#1a1410"/>
+      <stop offset="1" stop-color="#0f0f0f"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <text x="80" y="180" font-family="Georgia, 'Playfair Display', serif" font-size="56" fill="#c9a961" font-style="italic">Food Council</text>
+  <text x="80" y="290" font-family="Georgia, 'Playfair Display', serif" font-size="120" font-weight="700" fill="#f5f1e8">Tokyo</text>
+  <line x1="80" y1="340" x2="280" y2="340" stroke="#c9a961" stroke-width="3"/>
+  <text x="80" y="410" font-family="Inter, sans-serif" font-size="28" fill="#a8a29e">165 restaurants. Scored on Tabelog,</text>
+  <text x="80" y="450" font-family="Inter, sans-serif" font-size="28" fill="#a8a29e">Michelin, Google, and editorial sources.</text>
+  <text x="80" y="560" font-family="Inter, sans-serif" font-size="20" fill="#737373" letter-spacing="3">A CURATED TOKYO DINING GUIDE</text>
+</svg>

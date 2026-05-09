@@ -28,10 +28,11 @@ export default function Header({ totalCount, filteredCount, savedCount, onOpenSa
             {/* Search */}
             <div className="relative">
               <input
-                type="text"
+                type="search"
                 value={query}
                 onChange={handleSearch}
                 placeholder="Search restaurants..."
+                aria-label="Search restaurants"
                 className="w-40 sm:w-56 lg:w-72 h-9 pl-9 pr-3 rounded-lg border border-border bg-surface text-sm font-body text-text placeholder:text-muted focus:outline-none focus:ring-2 focus:ring-accent/20 focus:border-accent transition-colors"
               />
               <svg
@@ -48,6 +49,7 @@ export default function Header({ totalCount, filteredCount, savedCount, onOpenSa
             {/* Saved button */}
             <button
               onClick={onOpenSaved}
+              aria-label={`Open My Trip (${savedCount} saved)`}
               className="relative flex items-center gap-1.5 h-9 px-3 rounded-lg border border-border bg-surface text-sm font-body font-medium text-text hover:bg-border/30 transition-colors cursor-pointer"
             >
               <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>

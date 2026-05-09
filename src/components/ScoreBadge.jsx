@@ -13,7 +13,7 @@ export default function ScoreBadge({ score, size = 'md' }) {
   return (
     <div
       className={`${sizes[size]} rounded-lg bg-text flex items-center justify-center font-body font-bold text-surface shrink-0`}
-      title={`${display} — ${tier.label}`}
+      title={`${display}, ${tier.label}`}
     >
       {display}
     </div>

@@ -28,7 +28,7 @@ function ConfidenceBar({ restaurant }) {
       </div>
       <div className="h-1.5 bg-border/50 rounded-full overflow-hidden">
         <div
-          className="h-full bg-accent rounded-full transition-all"
+          className="h-full bg-accent rounded-full transition-[width]"
           style={{ width: `${pct}%` }}
         />
       </div>

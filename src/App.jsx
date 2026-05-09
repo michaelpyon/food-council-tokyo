@@ -142,7 +142,7 @@ export default function App() {
       {/* Footer */}
       <footer className="border-t border-border py-8 text-center">
         <p className="text-xs font-body text-muted">
-          Food Council: Tokyo — {restaurants.length} restaurants from Tabelog, Michelin, Google, and editorial sources.
+          Food Council: Tokyo. {restaurants.length} restaurants from Tabelog, Michelin, Google, and editorial sources.
         </p>
         <p className="text-xs font-body text-muted mt-1">
           Scores are composite ratings weighted: Tabelog 40%, Michelin 30%, Google 15%, Media 15%.

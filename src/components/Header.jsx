@@ -68,8 +68,6 @@ export default function Header({ totalCount, filteredCount, savedCount, initialQ
         {/* Stats bar */}
         <div className="flex items-center gap-4 pb-2 text-xs font-body text-muted">
           <span>{filteredCount} of {totalCount} restaurants</span>
-          <span className="text-border">|</span>
-          <span>Scores from Tabelog, Michelin, Google, and media sources</span>
         </div>
       </div>
     </header>

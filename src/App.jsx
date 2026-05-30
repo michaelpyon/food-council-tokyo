@@ -7,6 +7,7 @@ import { filterRestaurants, sortRestaurants } from './utils/filters';
 import { getSavedIds, saveRestaurant, unsaveRestaurant, setSavedIds } from './utils/storage';
 import { readTripFromUrl, readFiltersFromUrl, syncUrl } from './utils/tripUrl';
 import Header from './components/Header';
+import Hero from './components/Hero';
 import FilterBar from './components/FilterBar';
 import CuratedLists from './components/CuratedLists';
 import RestaurantCard from './components/RestaurantCard';
@@ -120,6 +121,8 @@ export default function App() {
         onSearch={handleSearch}
       />
 
+      <Hero totalCount={restaurants.length} />
+
       <CuratedLists
         lists={curatedLists}
         onSelectList={handleSelectList}
@@ -162,9 +165,6 @@ export default function App() {
       <footer className="border-t border-border py-8 text-center">
         <p className="text-xs font-body text-muted">
           Food Council: Tokyo. {restaurants.length} restaurants from Tabelog, Michelin, Google, and editorial sources.
-        </p>
-        <p className="text-xs font-body text-muted mt-1">
-          Scores are composite ratings weighted: Tabelog 40%, Michelin 30%, Google 15%, Media 15%.
         </p>
       </footer>
 

@@ -178,7 +178,7 @@ export default function DetailPanel({ restaurant, onClose, onSave, isSaved }) {
                         key={award}
                         className="inline-flex items-center px-2.5 py-1 rounded-full bg-gold-light text-gold text-xs font-body font-medium"
                       >
-                        🏆 {award}
+                        {award}
                       </span>
                     ))}
                   </div>

@@ -100,7 +100,7 @@ export default function RestaurantCard({ restaurant, onClick, onSave, isSaved })
       </div>
 
       {/* Content */}
-      <div className="p-3">
+      <div className="p-4">
         {/* Top row: score + name */}
         <div className="flex items-start gap-2.5">
           <ScoreBadge score={r._compositeScore || 0} size="sm" />

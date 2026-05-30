@@ -82,13 +82,16 @@ export default function FilterBar({ filters, onFilterChange, sortKey, onSortChan
           {/* Michelin toggle */}
           <button
             onClick={() => handleChange('michelinOnly', !filters.michelinOnly)}
-            className={`h-8 px-3 rounded-md border text-xs font-body font-medium transition-colors cursor-pointer ${
+            className={`h-8 px-3 rounded-md border text-xs font-body font-medium transition-colors cursor-pointer inline-flex items-center gap-1.5 ${
               filters.michelinOnly
                 ? 'border-gold bg-gold-light text-gold'
                 : 'border-border bg-surface text-muted hover:text-text hover:border-text/20'
             }`}
           >
-            ⭐ Michelin
+            <svg className="w-3 h-3" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+              <path d="M8 1.5l1.763 3.572 3.937.572-2.85 2.777.673 3.921L8 10.395l-3.523 1.947.673-3.921-2.85-2.777 3.937-.572L8 1.5z" />
+            </svg>
+            Michelin
           </button>
 
           {/* Source filter */}

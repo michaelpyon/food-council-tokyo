@@ -22,7 +22,7 @@ export default function Hero({ totalCount }) {
                 Tabelog + Michelin + Google + editorial sources
               </span>
             </div>
-            <span className="text-border">|</span>
+            <span className="w-px h-3 bg-border inline-block" aria-hidden="true" />
             <button
               onClick={() => setShowScoring(v => !v)}
               className="text-xs font-body text-muted underline underline-offset-2 hover:text-text transition-colors cursor-pointer"

@@ -10,9 +10,26 @@ export default function ScoreBadge({ score, size = 'md' }) {
     lg: 'w-16 h-16 text-xl',
   };
 
+  // Vermilion accent ring for top-tier scores (8.5+), gold for strong (7.5+),
+  // paper-toned background for all so it reads as an editorial mark.
+  const isTop = score >= 8.5;
+  const isStrong = score >= 7.5 && score < 8.5;
+
+  const ringClass = isTop
+    ? 'border-accent/70'
+    : isStrong
+    ? 'border-gold/60'
+    : 'border-border';
+
+  const numClass = isTop
+    ? 'text-accent'
+    : isStrong
+    ? 'text-gold'
+    : 'text-text';
+
   return (
     <div
-      className={`${sizes[size]} rounded-lg bg-text flex items-center justify-center font-body font-bold text-surface shrink-0`}
+      className={`${sizes[size]} rounded-lg bg-surface border-2 ${ringClass} flex items-center justify-center font-body font-bold ${numClass} shrink-0`}
       title={`${display}, ${tier.label}`}
     >
       {display}

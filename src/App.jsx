@@ -140,7 +140,7 @@ export default function App() {
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
         {filtered.length === 0 ? (
           <div className="text-center py-20">
-            <div className="text-5xl mb-4">🍙</div>
+            <div className="text-5xl mb-4 text-border select-none" aria-hidden="true">&#x2665;</div>
             <p className="text-lg font-display text-text">No restaurants match your filters</p>
             <p className="text-sm font-body text-muted mt-1">Try adjusting your search or filters.</p>
           </div>

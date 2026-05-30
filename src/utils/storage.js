@@ -22,6 +22,12 @@ export function saveRestaurant(id) {
   return ids;
 }
 
+export function setSavedIds(ids) {
+  const clean = Array.isArray(ids) ? ids.filter(Boolean) : [];
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(clean));
+  return clean;
+}
+
 export function unsaveRestaurant(id) {
   const ids = getSavedIds().filter(i => i !== id);
   localStorage.setItem(STORAGE_KEY, JSON.stringify(ids));

@@ -4,7 +4,8 @@ import { restaurants as rawRestaurants } from './data/restaurants';
 import { curatedLists } from './data/curatedLists';
 import { computeCompositeScore } from './utils/scoring';
 import { filterRestaurants, sortRestaurants } from './utils/filters';
-import { getSavedIds, saveRestaurant, unsaveRestaurant } from './utils/storage';
+import { getSavedIds, saveRestaurant, unsaveRestaurant, setSavedIds } from './utils/storage';
+import { readTripFromUrl, readFiltersFromUrl, syncUrl } from './utils/tripUrl';
 import Header from './components/Header';
 import FilterBar from './components/FilterBar';
 import CuratedLists from './components/CuratedLists';
@@ -18,6 +19,18 @@ const restaurants = rawRestaurants.map(r => ({
   _compositeScore: computeCompositeScore(r),
 }));
 
+const VALID_IDS = new Set(restaurants.map(r => r.id));
+
+// Hydrate the saved list once: a shared ?trip= link wins over localStorage so
+// the exact trip reopens on any device. Unknown ids are dropped, never crash.
+function getInitialSavedIds() {
+  const fromUrl = readTripFromUrl();
+  const base = fromUrl !== null ? fromUrl : getSavedIds();
+  const clean = base.filter(id => VALID_IDS.has(id));
+  if (fromUrl !== null) setSavedIds(clean);
+  return clean;
+}
+
 const DEFAULT_FILTERS = {
   cuisine: 'all',
   neighborhood: 'all',
@@ -29,10 +42,10 @@ const DEFAULT_FILTERS = {
 };
 
 export default function App() {
-  const [filters, setFilters] = useState(DEFAULT_FILTERS);
+  const [filters, setFilters] = useState(() => readFiltersFromUrl(DEFAULT_FILTERS));
   const [sortKey, setSortKey] = useState('composite-desc');
   const [selectedRestaurant, setSelectedRestaurant] = useState(null);
-  const [savedIds, setSavedIds] = useState(() => getSavedIds());
+  const [savedIds, setSavedIdsState] = useState(getInitialSavedIds);
   const [showSaved, setShowSaved] = useState(false);
   const [activeListId, setActiveListId] = useState(null);
 
@@ -65,7 +78,7 @@ export default function App() {
   }, []);
 
   const handleSave = useCallback((id) => {
-    setSavedIds(prev => {
+    setSavedIdsState(prev => {
       if (prev.includes(id)) {
         return unsaveRestaurant(id);
       }
@@ -91,12 +104,18 @@ export default function App() {
     return () => window.removeEventListener('keydown', handleKey);
   }, [selectedRestaurant, showSaved]);
 
+  // Keep the address bar in sync so the trip and filtered view are deep-linkable.
+  useEffect(() => {
+    syncUrl(savedIds, filters);
+  }, [savedIds, filters]);
+
   return (
     <div className="min-h-screen bg-bg">
       <Header
         totalCount={restaurants.length}
         filteredCount={filtered.length}
         savedCount={savedIds.length}
+        initialQuery={filters.query}
         onOpenSaved={() => setShowSaved(true)}
         onSearch={handleSearch}
       />
@@ -162,6 +181,8 @@ export default function App() {
         isOpen={showSaved}
         onClose={() => setShowSaved(false)}
         savedRestaurants={savedRestaurants}
+        savedIds={savedIds}
+        filters={filters}
         onRemove={handleSave}
         onSelect={setSelectedRestaurant}
       />

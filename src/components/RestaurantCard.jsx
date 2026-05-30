@@ -2,6 +2,7 @@ import { motion } from 'motion/react';
 import ScoreBadge from './ScoreBadge';
 import MichelinBadge from './MichelinBadge';
 import { PRICE_LABELS } from '../data/restaurants';
+import { mapsUrl, tabelogUrl } from '../utils/links';
 
 // Deterministic color from cuisine for placeholder images
 const CUISINE_COLORS = {
@@ -150,6 +151,37 @@ export default function RestaurantCard({ restaurant, onClick, onSave, isSaved })
           <div className="ml-auto flex items-center gap-1">
             <span className="text-[10px] font-body text-muted">{r.sources?.length || 0} sources</span>
           </div>
+        </div>
+
+        {/* Outbound actions */}
+        <div className="flex items-center gap-2 mt-2">
+          <a
+            href={mapsUrl(r)}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={(e) => e.stopPropagation()}
+            className="flex-1 inline-flex items-center justify-center gap-1 h-7 rounded-md border border-border text-xs font-body font-medium text-text hover:bg-bg/60 transition-colors"
+            aria-label={`Find ${r.name} on Google Maps`}
+          >
+            <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M17.657 16.657L13.414 20.9a2 2 0 01-2.828 0l-4.243-4.243a8 8 0 1111.314 0z" />
+              <path strokeLinecap="round" strokeLinejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+            </svg>
+            Map
+          </a>
+          <a
+            href={tabelogUrl(r)}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={(e) => e.stopPropagation()}
+            className="flex-1 inline-flex items-center justify-center gap-1 h-7 rounded-md border border-border text-xs font-body font-medium text-text hover:bg-bg/60 transition-colors"
+            aria-label={`Search ${r.name} on Tabelog`}
+          >
+            <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+            </svg>
+            Tabelog
+          </a>
         </div>
       </div>
     </motion.article>

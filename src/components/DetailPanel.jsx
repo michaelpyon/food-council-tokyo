@@ -4,6 +4,7 @@ import MichelinBadge from './MichelinBadge';
 import SourceChips from './SourceChips';
 import { getScoreTier, getConfidence, getConfidenceLabel } from '../utils/scoring';
 import { PRICE_LABELS } from '../data/restaurants';
+import { mapsUrl, tabelogUrl } from '../utils/links';
 
 function ScoreRow({ label, value }) {
   if (!value) return null;
@@ -201,17 +202,45 @@ export default function DetailPanel({ restaurant, onClose, onSave, isSaved }) {
                 </div>
               )}
 
-              {/* Reservation link */}
-              {restaurant.reservationUrl && (
-                <a
-                  href={restaurant.reservationUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="block w-full text-center py-3 rounded-lg bg-accent text-white text-sm font-body font-semibold hover:bg-accent-hover transition-colors"
-                >
-                  Reserve on Tabelog →
-                </a>
-              )}
+              {/* Actionable links. Reservation when we have one, otherwise
+                  honest by-name searches that resolve to the real place. */}
+              <div className="space-y-2">
+                {restaurant.reservationUrl && (
+                  <a
+                    href={restaurant.reservationUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block w-full text-center py-3 rounded-lg bg-accent text-white text-sm font-body font-semibold hover:bg-accent-hover transition-colors"
+                  >
+                    Reserve on Tabelog
+                  </a>
+                )}
+                <div className="grid grid-cols-2 gap-2">
+                  <a
+                    href={mapsUrl(restaurant)}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center gap-1.5 py-2.5 rounded-lg border border-border text-sm font-body font-medium text-text hover:bg-bg transition-colors"
+                  >
+                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M17.657 16.657L13.414 20.9a2 2 0 01-2.828 0l-4.243-4.243a8 8 0 1111.314 0z" />
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                    </svg>
+                    Find on Map
+                  </a>
+                  <a
+                    href={tabelogUrl(restaurant)}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center gap-1.5 py-2.5 rounded-lg border border-border text-sm font-body font-medium text-text hover:bg-bg transition-colors"
+                  >
+                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
+                    Tabelog
+                  </a>
+                </div>
+              </div>
             </div>
           </motion.aside>
         </>

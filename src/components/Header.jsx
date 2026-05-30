@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
-export default function Header({ totalCount, filteredCount, savedCount, onOpenSaved, onSearch }) {
-  const [query, setQuery] = useState('');
+export default function Header({ totalCount, filteredCount, savedCount, initialQuery = '', onOpenSaved, onSearch }) {
+  const [query, setQuery] = useState(initialQuery);
 
   const handleSearch = (e) => {
     const val = e.target.value;

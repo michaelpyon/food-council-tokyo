@@ -1,6 +1,6 @@
 import { motion, AnimatePresence } from 'motion/react';
 
-export default function CuratedLists({ lists, onSelectList, activeListId }) {
+export default function CuratedLists({ lists, onSelectList, onStarterTrip, activeListId }) {
   const activeList = activeListId ? lists.find(l => l.id === activeListId) : null;
 
   return (
@@ -57,7 +57,7 @@ export default function CuratedLists({ lists, onSelectList, activeListId }) {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -4 }}
               transition={{ duration: 0.18 }}
-              className="mt-4 flex items-center gap-2"
+              className="mt-4 flex flex-wrap items-center gap-2"
             >
               <span className="inline-flex items-center gap-1.5 text-xs font-body font-medium text-accent bg-accent/8 border border-accent/20 rounded-full px-3 py-1">
                 <span>{activeList.emoji}</span>
@@ -71,6 +71,15 @@ export default function CuratedLists({ lists, onSelectList, activeListId }) {
                 </button>
               </span>
               <span className="text-xs font-body text-muted">{activeList.subtitle}</span>
+              {onStarterTrip && (
+                <button
+                  onClick={() => onStarterTrip(activeList.id)}
+                  className="inline-flex items-center gap-1.5 rounded-full bg-text text-surface text-xs font-body font-semibold px-3 py-1 hover:opacity-90 transition-opacity cursor-pointer focus:outline-none focus:ring-2 focus:ring-accent/40"
+                >
+                  <span aria-hidden="true">&#x2665;</span>
+                  Save these to my trip
+                </button>
+              )}
             </motion.div>
           )}
         </AnimatePresence>

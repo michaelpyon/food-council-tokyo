@@ -150,6 +150,7 @@ export default function App() {
       <CuratedLists
         lists={curatedLists}
         onSelectList={handleSelectList}
+        onStarterTrip={handleStarterTrip}
         activeListId={activeListId}
       />
 

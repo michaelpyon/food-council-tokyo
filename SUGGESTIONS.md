@@ -18,6 +18,11 @@ iter3: emoji Michelin badges replaced with inline SVG stars + BIB/PLATE pills, S
 
 "Build me a first-timer trip" CTA. The Hero now shows a one-tap button (visible only when the trip is empty) that pre-saves the First Time in Tokyo curated list and opens the trip panel. This is the single move that turns a first-time browse session into a share-ready artifact, exactly the thing the evangelist hands her group chat. Additive: merges into any existing saved picks, never drops them; reuses the existing curated-list filter/sort/limit logic in src/data/curatedLists.js. Files: src/App.jsx (handleStarterTrip), src/components/Hero.jsx (button + props). Build passes (440KB). Deploy needed to see it live.
 
+## Shipped wave 2 (2026-05-30)
+
+1. Per-list one-tap trip build. The "Build me a first-timer trip" move was previously only on the Hero and only for the first-timers list. Now every curated list gets the same one tap: when a list is active, its banner shows a "Save these to my trip" button that pre-saves that whole list and opens the trip panel. So a browser who opens Hidden Gems, The Ramen Circuit, or Date Night can turn it into a shareable artifact in 1 tap, not just the first-timers list. Additive: reuses the existing handleStarterTrip merge logic (never drops existing picks). Files: src/App.jsx (pass onStarterTrip through), src/components/CuratedLists.jsx (button in active-list banner).
+2. Save-icon unified to a heart everywhere. The cards used a heart, but the Header "My Trip" button and the DetailPanel save button used a bookmark/ribbon glyph, and the saved-state copy says "tap the heart." Switched both bookmark glyphs to the same heart path so the save affordance reads consistently across card, detail panel, and header. Files: src/components/Header.jsx, src/components/DetailPanel.jsx. Build passes (441KB). Deploy needed to see it live.
+
 ## Quick wins (shipped a prior pass)
 
 1. Meta count truthful. index.html meta description + og:description both said "165 Tokyo restaurants" while the data ships 163. Anyone who lands from a shared link sees the right number; integrity matters more than launch-copy roundness.
@@ -29,8 +34,8 @@ iter3: emoji Michelin badges replaced with inline SVG stars + BIB/PLATE pills, S
 - Dynamic per-trip OG image. Today, a shared ?trip= link uses the static og-image.png so the unfurl on iMessage/Twitter/Discord says nothing about the actual trip. The 10-star version renders the trip title ("Hana's Tokyo trip — 12 spots, 4 Michelin, 5 neighborhoods") into an OG card. This is the single highest-leverage growth move, but it requires a Vercel serverless function (the rest of the app is static Vite). Files to add: api/og.js (Satori or @vercel/og), index.html dynamic og tag injection or per-trip route. Effort M, deploy needed.
 - Real per-restaurant food photography. PlaceholderImage is a 2-color CSS gradient; cards ship an unused photoSeed. The honesty landmine is real (generic stock can't imply a specific restaurant's dish). The right shape is a curated photo per restaurant (commissioned or licensed). Effort L, content op not a code op.
 - Restaurant data refresh sweep. Red-team flagged minor location/star quibbles: Den at Jimbocho in data vs current Gaienmae location, Ryugin at Roppongi in data vs current Hibiya, Jiro 3-star in data vs Michelin dropping it 2020. None are fabrication; all are stale-since-launch. A single audit pass against current Michelin Guide + Tabelog pages would refresh confidence. Effort S per record, M overall, deploy needed.
-- Save-icon unification. Cards use a heart, header uses a bookmark/ribbon, saved-state copy now says "heart." Cleaner to pick one (heart everywhere) so the affordance reads consistently. Effort S, deploy needed.
-- "Pack me a starter trip" CTA. SHIPPED this pass (see above). Possible follow-on: offer the same one-tap build on each curated-list banner, not just the first-timers list. Effort S, deploy needed.
+- Save-icon unification. SHIPPED wave 2 (see above): heart everywhere across card, detail panel, and header.
+- "Pack me a starter trip" CTA. SHIPPED prior pass (Hero) and the per-curated-list follow-on SHIPPED wave 2 (see above).
 
 ## Items deliberately not done
 

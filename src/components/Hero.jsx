@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 
-export default function Hero({ totalCount }) {
+export default function Hero({ totalCount, savedCount = 0, onStarterTrip }) {
   const [showScoring, setShowScoring] = useState(false);
 
   return (
@@ -14,6 +14,21 @@ export default function Hero({ totalCount }) {
           <p className="mt-3 text-base sm:text-lg font-body text-muted leading-relaxed">
             {totalCount} Tokyo restaurants, actually curated. Not a listicle.
           </p>
+
+          {onStarterTrip && savedCount === 0 && (
+            <div className="mt-5">
+              <button
+                onClick={onStarterTrip}
+                className="inline-flex items-center gap-2 rounded-full bg-text text-surface text-sm font-body font-semibold px-5 py-2.5 hover:opacity-90 transition-opacity cursor-pointer focus:outline-none focus:ring-2 focus:ring-accent/40"
+              >
+                <span aria-hidden="true">&#x2605;</span>
+                Build me a first-timer trip
+              </button>
+              <p className="mt-2 text-xs font-body text-muted">
+                Saves the essential first-visit spots to a shareable trip in 1 tap.
+              </p>
+            </div>
+          )}
 
           <div className="mt-4 flex items-center gap-3">
             <div className="flex items-center gap-2 text-xs font-body text-muted">

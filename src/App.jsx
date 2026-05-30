@@ -93,6 +93,26 @@ export default function App() {
     setFilters(DEFAULT_FILTERS);
   }, []);
 
+  // One tap: pre-save a starter trip from a curated list, then open the trip
+  // panel so a browse session becomes a share-ready artifact immediately.
+  // Additive: merges into whatever is already saved, never drops existing picks.
+  const handleStarterTrip = useCallback((listId) => {
+    const list = curatedLists.find(l => l.id === listId);
+    if (!list) return;
+    let picks = restaurants.filter(list.filter);
+    if (list.sort) picks = [...picks].sort(list.sort);
+    if (list.limit) picks = picks.slice(0, list.limit);
+    const ids = picks.map(r => r.id);
+    setSavedIdsState(prev => {
+      const merged = [...prev];
+      ids.forEach(id => {
+        if (!merged.includes(id)) merged.push(id);
+      });
+      return setSavedIds(merged);
+    });
+    setShowSaved(true);
+  }, []);
+
   // Close detail panel on escape
   useEffect(() => {
     const handleKey = (e) => {
@@ -121,7 +141,11 @@ export default function App() {
         onSearch={handleSearch}
       />
 
-      <Hero totalCount={restaurants.length} />
+      <Hero
+        totalCount={restaurants.length}
+        savedCount={savedIds.length}
+        onStarterTrip={() => handleStarterTrip('first-timers')}
+      />
 
       <CuratedLists
         lists={curatedLists}

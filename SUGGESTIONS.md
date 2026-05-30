@@ -6,7 +6,7 @@ Hana, 31, software designer in Brooklyn, lapsed Japanese minor, flying into Hane
 
 ## Ground-truth verdict
 
-Live URL: https://food-council-tokyo.vercel.app/ (per index.html canonical + og tags). Could not WebFetch live in this run (tool denied). Repo state is the converged iter3: 163 real restaurants (verified spot-check: Jiro Ginza/3-star, Saito Roppongi/3-star, Nakiryu Sugamo/1-star ramen, Tsuta former-star, Tabelog scores 3.15-4.78 all <4.8). Trip is URL-shareable (?trip=ids), copy-as-text exports grouped-by-neighborhood with per-pick Maps + Tabelog links, filters are deep-linkable, no fabrication, no exposed keys. Build is clean. Data integrity is the strongest in the portfolio sweep.
+Live URL: https://food-council-tokyo.vercel.app/ (per index.html canonical + og tags). DEPLOY NEEDED: repo HEAD carries 5 commits of fixes (integrity, share polish, iter2/iter3 UI) plus this pass that have never been deployed; the live build is likely stale (WebFetch returns only the title for the client-rendered Vite app, so the gap cannot be diffed from markdown, but the prior-pass note confirms no deploy happened). A single Vercel deploy publishes all of it. Repo state is the converged iter3: 163 real restaurants (verified spot-check: Jiro Ginza/3-star, Saito Roppongi/3-star, Nakiryu Sugamo/1-star ramen, Tsuta former-star, Tabelog scores 3.15-4.78 all <4.8). Trip is URL-shareable (?trip=ids), copy-as-text exports grouped-by-neighborhood with per-pick Maps + Tabelog links, filters are deep-linkable, no fabrication, no exposed keys. Build is clean. Data integrity is the strongest in the portfolio sweep.
 
 ## Prior pass — already done (do not repeat)
 
@@ -14,7 +14,11 @@ iter1: URL-encoded ?trip share, navigator.share + clipboard fallback, copy-as-te
 iter2: POV hero ("High Tabelog scores, under the tourist radar"), CuratedLists card grid above 163 grid, "How we score" demoted to expandable.
 iter3: emoji Michelin badges replaced with inline SVG stars + BIB/PLATE pills, ScoreBadge restyled (paper + tiered color), pipe-divider cleaned, card padding p-4.
 
-## Quick wins (shipped this pass)
+## Shipped 2026-05-30 (this pass)
+
+"Build me a first-timer trip" CTA. The Hero now shows a one-tap button (visible only when the trip is empty) that pre-saves the First Time in Tokyo curated list and opens the trip panel. This is the single move that turns a first-time browse session into a share-ready artifact, exactly the thing the evangelist hands her group chat. Additive: merges into any existing saved picks, never drops them; reuses the existing curated-list filter/sort/limit logic in src/data/curatedLists.js. Files: src/App.jsx (handleStarterTrip), src/components/Hero.jsx (button + props). Build passes (440KB). Deploy needed to see it live.
+
+## Quick wins (shipped a prior pass)
 
 1. Meta count truthful. index.html meta description + og:description both said "165 Tokyo restaurants" while the data ships 163. Anyone who lands from a shared link sees the right number; integrity matters more than launch-copy roundness.
 2. Empty saved-state icon copy matches reality. SavedListPanel told users to "tap the bookmark icon on any card" but RestaurantCard's save icon is a heart. Switched copy to "tap the heart on any card" so the instruction points at the right glyph.
@@ -26,7 +30,7 @@ iter3: emoji Michelin badges replaced with inline SVG stars + BIB/PLATE pills, S
 - Real per-restaurant food photography. PlaceholderImage is a 2-color CSS gradient; cards ship an unused photoSeed. The honesty landmine is real (generic stock can't imply a specific restaurant's dish). The right shape is a curated photo per restaurant (commissioned or licensed). Effort L, content op not a code op.
 - Restaurant data refresh sweep. Red-team flagged minor location/star quibbles: Den at Jimbocho in data vs current Gaienmae location, Ryugin at Roppongi in data vs current Hibiya, Jiro 3-star in data vs Michelin dropping it 2020. None are fabrication; all are stale-since-launch. A single audit pass against current Michelin Guide + Tabelog pages would refresh confidence. Effort S per record, M overall, deploy needed.
 - Save-icon unification. Cards use a heart, header uses a bookmark/ribbon, saved-state copy now says "heart." Cleaner to pick one (heart everywhere) so the affordance reads consistently. Effort S, deploy needed.
-- "Pack me a starter trip" CTA. New users see 10 curated-list cards but no obvious way to one-tap-build a trip. A "Build me a first-timer trip" button that pre-saves the 7 spots from the "First Time in Tokyo" list, then opens the trip panel, would turn a browse session into a share-ready artifact in 1 click. Effort S, deploy needed.
+- "Pack me a starter trip" CTA. SHIPPED this pass (see above). Possible follow-on: offer the same one-tap build on each curated-list banner, not just the first-timers list. Effort S, deploy needed.
 
 ## Items deliberately not done
 

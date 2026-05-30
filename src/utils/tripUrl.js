@@ -104,16 +104,29 @@ export function syncUrl(savedIds, filters) {
 
 /**
  * Plain-text itinerary, grouped by neighborhood, ready to paste into Notes,
- * a group chat, or an r/JapanTravel post.
+ * a group chat, or an r/JapanTravel post. The exported text leads with the
+ * shareable trip URL so a pasted itinerary is also a round-trip back into the
+ * exact saved + filtered view.
  */
-export function buildTripText(savedRestaurants) {
+export function buildTripText(savedRestaurants, savedIds, filters) {
   if (!savedRestaurants || savedRestaurants.length === 0) {
     return 'My Tokyo trip (Food Council: Tokyo)\n\nNo restaurants saved yet.';
   }
 
-  const groups = groupByNeighborhood(savedRestaurants);
-  const lines = ['My Tokyo trip (Food Council: Tokyo)', ''];
+  const lines = ['My Tokyo trip (Food Council: Tokyo)'];
 
+  // Lead with the shareable URL when we have enough context to build it. Falls
+  // back gracefully when called without ids/filters (older callers).
+  if (savedIds && savedIds.length > 0) {
+    try {
+      lines.push(buildTripUrl(savedIds, filters));
+    } catch {
+      // ignore: URL is a nice-to-have, the itinerary is the load-bearing part
+    }
+  }
+  lines.push('');
+
+  const groups = groupByNeighborhood(savedRestaurants);
   for (const { neighborhood, items } of groups) {
     lines.push(`${neighborhood}`);
     for (const r of items) {

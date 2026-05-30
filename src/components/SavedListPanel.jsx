@@ -36,14 +36,14 @@ export default function SavedListPanel({ isOpen, onClose, savedRestaurants, save
   }, [savedIds, filters, savedRestaurants.length, flash]);
 
   const handleCopyText = useCallback(async () => {
-    const text = buildTripText(savedRestaurants);
+    const text = buildTripText(savedRestaurants, savedIds, filters);
     try {
       await navigator.clipboard.writeText(text);
       flash(setCopyMsg, 'Copied');
     } catch {
       flash(setCopyMsg, 'Copy failed');
     }
-  }, [savedRestaurants, flash]);
+  }, [savedRestaurants, savedIds, filters, flash]);
 
   const groups = groupByNeighborhood(savedRestaurants);
 
@@ -120,7 +120,7 @@ export default function SavedListPanel({ isOpen, onClose, savedRestaurants, save
                 <div className="text-center py-16">
                   <div className="text-4xl mb-3">🗾</div>
                   <p className="text-sm font-body text-muted">No restaurants saved yet.</p>
-                  <p className="text-xs font-body text-muted mt-1">Tap the bookmark icon on any card to start building your trip.</p>
+                  <p className="text-xs font-body text-muted mt-1">Tap the heart on any card to start building your trip.</p>
                 </div>
               ) : (
                 groups.map((group, gi) => (

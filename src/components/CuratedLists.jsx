@@ -1,4 +1,4 @@
-import { motion, AnimatePresence } from 'motion/react';
+import { motion as Motion, AnimatePresence } from 'motion/react';
 
 export default function CuratedLists({ lists, onSelectList, onStarterTrip, activeListId }) {
   const activeList = activeListId ? lists.find(l => l.id === activeListId) : null;
@@ -51,7 +51,7 @@ export default function CuratedLists({ lists, onSelectList, onStarterTrip, activ
         {/* Active list banner */}
         <AnimatePresence>
           {activeList && (
-            <motion.div
+            <Motion.div
               key={activeListId}
               initial={{ opacity: 0, y: -4 }}
               animate={{ opacity: 1, y: 0 }}
@@ -80,7 +80,7 @@ export default function CuratedLists({ lists, onSelectList, onStarterTrip, activ
                   Save these to my trip
                 </button>
               )}
-            </motion.div>
+            </Motion.div>
           )}
         </AnimatePresence>
       </div>

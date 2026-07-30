@@ -1,5 +1,5 @@
 import { useState, useCallback } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
+import { motion as Motion, AnimatePresence } from 'motion/react';
 import ScoreBadge from './ScoreBadge';
 import MichelinBadge from './MichelinBadge';
 import { PRICE_LABELS } from '../data/restaurants';
@@ -52,7 +52,7 @@ export default function SavedListPanel({ isOpen, onClose, savedRestaurants, save
       {isOpen && (
         <>
           {/* Backdrop */}
-          <motion.div
+          <Motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -62,7 +62,7 @@ export default function SavedListPanel({ isOpen, onClose, savedRestaurants, save
           />
 
           {/* Panel */}
-          <motion.aside
+          <Motion.aside
             initial={{ x: '100%' }}
             animate={{ x: 0 }}
             exit={{ x: '100%' }}
@@ -135,7 +135,7 @@ export default function SavedListPanel({ isOpen, onClose, savedRestaurants, save
                     </div>
                     <div className="space-y-2">
                       {group.items.map((r, i) => (
-                        <motion.div
+                        <Motion.div
                           key={r.id}
                           initial={{ opacity: 0, x: 20 }}
                           animate={{ opacity: 1, x: 0 }}
@@ -200,14 +200,14 @@ export default function SavedListPanel({ isOpen, onClose, savedRestaurants, save
                               Tabelog
                             </a>
                           </div>
-                        </motion.div>
+                        </Motion.div>
                       ))}
                     </div>
                   </div>
                 ))
               )}
             </div>
-          </motion.aside>
+          </Motion.aside>
         </>
       )}
     </AnimatePresence>

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
+import { motion as Motion, AnimatePresence } from 'motion/react';
 
 export default function Hero({ totalCount, savedCount = 0, onStarterTrip }) {
   const [showScoring, setShowScoring] = useState(false);
@@ -49,7 +49,7 @@ export default function Hero({ totalCount, savedCount = 0, onStarterTrip }) {
 
           <AnimatePresence>
             {showScoring && (
-              <motion.div
+              <Motion.div
                 initial={{ opacity: 0, height: 0 }}
                 animate={{ opacity: 1, height: 'auto' }}
                 exit={{ opacity: 0, height: 0 }}
@@ -59,7 +59,7 @@ export default function Hero({ totalCount, savedCount = 0, onStarterTrip }) {
                 <p className="mt-3 text-xs font-body text-muted leading-relaxed bg-surface border border-border rounded-lg px-4 py-3 max-w-sm">
                   Composite score weighted: Tabelog 40%, Michelin 30%, Google 15%, Media 15%. Higher weight on Tabelog because it reflects regular Japanese diners, not tourists.
                 </p>
-              </motion.div>
+              </Motion.div>
             )}
           </AnimatePresence>
         </div>

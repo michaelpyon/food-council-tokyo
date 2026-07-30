@@ -1,4 +1,4 @@
-import { motion, AnimatePresence } from 'motion/react';
+import { motion as Motion, AnimatePresence } from 'motion/react';
 import ScoreBadge from './ScoreBadge';
 import MichelinBadge from './MichelinBadge';
 import SourceChips from './SourceChips';
@@ -46,7 +46,7 @@ export default function DetailPanel({ restaurant, onClose, onSave, isSaved }) {
       {restaurant && (
         <>
           {/* Backdrop */}
-          <motion.div
+          <Motion.div
             key="detail-backdrop"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -57,7 +57,7 @@ export default function DetailPanel({ restaurant, onClose, onSave, isSaved }) {
           />
 
           {/* Panel */}
-          <motion.aside
+          <Motion.aside
             key="detail-panel"
             initial={{ x: '100%' }}
             animate={{ x: 0 }}
@@ -242,7 +242,7 @@ export default function DetailPanel({ restaurant, onClose, onSave, isSaved }) {
                 </div>
               </div>
             </div>
-          </motion.aside>
+          </Motion.aside>
         </>
       )}
     </AnimatePresence>

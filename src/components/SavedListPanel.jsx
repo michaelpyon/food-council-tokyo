@@ -3,6 +3,7 @@ import { motion as Motion, AnimatePresence } from 'motion/react';
 import MichelinBadge from './MichelinBadge';
 import SourceChips from './SourceChips';
 import { buildTripUrl, buildTripText, groupByNeighborhood } from '../utils/tripUrl';
+import { copyText } from '../utils/copyText';
 import { useModalPanel } from '../hooks/useModalPanel';
 
 export default function SavedListPanel({
@@ -36,7 +37,7 @@ export default function SavedListPanel({
       }
     }
     try {
-      await navigator.clipboard.writeText(url);
+      await copyText(url);
       flash(setShareMsg, 'Link copied');
     } catch {
       flash(setShareMsg, 'Copy failed');
@@ -45,7 +46,7 @@ export default function SavedListPanel({
 
   const handleCopyText = useCallback(async () => {
     try {
-      await navigator.clipboard.writeText(buildTripText(savedRestaurants, savedIds));
+      await copyText(buildTripText(savedRestaurants, savedIds));
       flash(setCopyMsg, 'Copied');
     } catch {
       flash(setCopyMsg, 'Copy failed');

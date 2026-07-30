@@ -1,7 +1,7 @@
 import { useState, useMemo, useCallback, useEffect } from 'react';
 import { AnimatePresence } from 'motion/react';
 import { restaurants as rawRestaurants } from './data/restaurants';
-import { curatedLists } from './data/curatedLists';
+import { curatedLists, getCuratedListRestaurants } from './data/curatedLists';
 import { computeCompositeScore } from './utils/scoring';
 import { filterRestaurants, sortRestaurants } from './utils/filters';
 import { getSavedIds, saveRestaurant, unsaveRestaurant, setSavedIds } from './utils/storage';
@@ -54,11 +54,7 @@ export default function App() {
   const curatedFiltered = useMemo(() => {
     if (!activeListId) return restaurants;
     const list = curatedLists.find(l => l.id === activeListId);
-    if (!list) return restaurants;
-    let result = restaurants.filter(list.filter);
-    if (list.sort) result = result.sort(list.sort);
-    if (list.limit) result = result.slice(0, list.limit);
-    return result;
+    return getCuratedListRestaurants(restaurants, list);
   }, [activeListId]);
 
   // Apply user filters on top
@@ -75,7 +71,18 @@ export default function App() {
   }, [savedIds]);
 
   const handleSearch = useCallback((query) => {
+    setActiveListId(null);
     setFilters(prev => ({ ...prev, query }));
+  }, []);
+
+  const handleFilterChange = useCallback((nextFilters) => {
+    setActiveListId(null);
+    setFilters(nextFilters);
+  }, []);
+
+  const handleClearAllFilters = useCallback(() => {
+    setActiveListId(null);
+    setFilters({ ...DEFAULT_FILTERS });
   }, []);
 
   const handleSave = useCallback((id) => {
@@ -99,9 +106,7 @@ export default function App() {
   const handleStarterTrip = useCallback((listId) => {
     const list = curatedLists.find(l => l.id === listId);
     if (!list) return;
-    let picks = restaurants.filter(list.filter);
-    if (list.sort) picks = [...picks].sort(list.sort);
-    if (list.limit) picks = picks.slice(0, list.limit);
+    const picks = getCuratedListRestaurants(restaurants, list);
     const ids = picks.map(r => r.id);
     setSavedIdsState(prev => {
       const merged = [...prev];
@@ -136,7 +141,7 @@ export default function App() {
         totalCount={restaurants.length}
         filteredCount={filtered.length}
         savedCount={savedIds.length}
-        initialQuery={filters.query}
+        query={filters.query}
         onOpenSaved={() => setShowSaved(true)}
         onSearch={handleSearch}
       />
@@ -156,7 +161,7 @@ export default function App() {
 
       <FilterBar
         filters={filters}
-        onFilterChange={setFilters}
+        onFilterChange={handleFilterChange}
         sortKey={sortKey}
         onSortChange={setSortKey}
       />
@@ -167,7 +172,14 @@ export default function App() {
           <div className="text-center py-20">
             <div className="text-5xl mb-4 text-border select-none" aria-hidden="true">&#x2665;</div>
             <p className="text-lg font-display text-text">No restaurants match your filters</p>
-            <p className="text-sm font-body text-muted mt-1">Try adjusting your search or filters.</p>
+            <p className="text-sm font-body text-muted mt-1">This combination has no matches.</p>
+            <button
+              type="button"
+              onClick={handleClearAllFilters}
+              className="mt-4 h-9 px-4 rounded-lg border border-border bg-surface text-sm font-body font-semibold text-text hover:border-text/30 transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/30"
+            >
+              Clear all filters
+            </button>
           </div>
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">

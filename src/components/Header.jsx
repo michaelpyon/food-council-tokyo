@@ -1,12 +1,6 @@
-import { useState } from 'react';
-
-export default function Header({ totalCount, filteredCount, savedCount, initialQuery = '', onOpenSaved, onSearch }) {
-  const [query, setQuery] = useState(initialQuery);
-
+export default function Header({ totalCount, filteredCount, savedCount, query = '', onOpenSaved, onSearch }) {
   const handleSearch = (e) => {
-    const val = e.target.value;
-    setQuery(val);
-    onSearch(val);
+    onSearch(e.target.value);
   };
 
   return (

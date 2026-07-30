@@ -9,6 +9,8 @@ const FORBIDDEN_FIELDS = [
   'description',
   'tags',
   'awards',
+  'cuisine',
+  'subCuisine',
   'photoSeed',
   'reservationUrl',
   '_compositeScore',

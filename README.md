@@ -1,76 +1,59 @@
 # Food Council: Tokyo
 
-A curated guide to 163 Tokyo restaurants, scored across Tabelog, Michelin, Google, and editorial sources. Filter by neighborhood, cuisine, price, or Michelin status. Save picks to your trip list.
+A verification-first Tokyo food and drink directory. The public app contains 28 branch-level records cleared from a 163-record audit dated 2026-07-30.
+
+The app publishes only:
+
+- Canonical and Japanese names
+- Resolved neighborhoods
+- Operating status
+- Direct evidence links
+- Current Michelin distinctions when directly verified
+- Saveable, shareable trip lists
+
+Ratings, review counts, prices, descriptions, cuisine labels, reservation claims, and restaurant photos remain unpublished until they receive field-level evidence.
 
 ## Stack
 
-- Vite 8 + React 19
+- Vite 8 and React 19
 - Tailwind CSS 4
-- Motion (animations)
-- LocalStorage for saved restaurants
+- Motion
+- Vitest and Testing Library
+- LocalStorage plus URL-encoded shared trips
 
-## Run locally
+## Local commands
 
 ```bash
 npm install
-npm run dev      # dev server
-npm run build    # production build
-npm run preview  # preview production build
-npm run lint     # eslint
+npm run data:check
+npm test
+npm run lint
+npm run build
+npm run dev
 ```
 
-## Project structure
+`npm test` and `npm run build` fail if the generated public dataset drifts from the audit inputs.
 
-```
-src/
-  App.jsx              top-level state, routing of filters and panels
-  components/          UI components (Header, FilterBar, RestaurantCard, DetailPanel, ...)
-  data/
-    restaurants.js     163 restaurants with scores, neighborhood, cuisine, sources
-    curatedLists.js    pre-built lists (Michelin only, by neighborhood, etc.)
-  utils/
-    scoring.js         composite score: Tabelog 40%, Michelin 30%, Google 15%, Media 15%
-    filters.js         filter and sort helpers
-    storage.js         localStorage wrappers for saved restaurants
-public/
-  favicon.svg
-  og-image.svg         social share image
-```
+## Data flow
 
-## Restaurant data shape
-
-```js
-{
-  id: 'sukiyabashi-jiro',
-  name: 'Sukiyabashi Jiro',
-  nameJa: 'すきやばし次郎',
-  cuisine: 'Sushi',
-  subCuisine: 'Edomae',
-  neighborhood: 'Ginza',
-  priceRange: 4,                       // 1 to 4 ($ to $$$$)
-  michelin: { stars: 3, bib: false },
-  tabelog: { score: 4.55, reviews: 1200 },
-  google: { rating: 4.6, reviews: 850 },
-  sources: ['tabelog', 'michelin', 'nyt', 'eater'],
-  tags: ['omakase', 'reservation-only'],
-}
+```text
+data-audit/audit-000-081.json
+data-audit/audit-082-162.json
+                 |
+                 v
+scripts/normalize-restaurant-audits.mjs
+                 |
+                 +--> data-audit/normalized/restaurants.json
+                 |    Full 163-record administrative audit
+                 |
+                 +--> data-audit/normalized/publishable-restaurants.json
+                      Strict 28-record public dataset
 ```
 
-## Scoring
+The publication gate requires an operating status, high confidence, zero unresolved audit flags, and at least 1 direct evidence URL.
 
-Composite scores combine four signals:
+The legacy hand-written dataset remains in `src/data/restaurants.js` for audit traceability. The app doesn’t import it.
 
-- Tabelog (40%): Japan's largest food review site
-- Michelin (30%): stars and Bib Gourmand
-- Google (15%): tourist-weighted rating
-- Media (15%): editorial coverage in Eater, NYT, CN Traveler, Time Out
+## Deployment
 
-See `src/utils/scoring.js` for the formula.
-
-## Deploy
-
-Vercel:
-
-```bash
-npx vercel --prod
-```
+Production is hosted on Vercel. Building locally doesn’t publish changes. Deployment requires Michael’s explicit approval.

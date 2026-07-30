@@ -7,10 +7,11 @@
     "dev": "vite",
     "data:generate": "node scripts/normalize-restaurant-audits.mjs",
     "data:check": "node scripts/normalize-restaurant-audits.mjs --check && node scripts/validate-normalized-restaurants.mjs",
-    "prebuild": "npm run data:check",
+    "product:check": "node scripts/validate-product-claims.mjs",
+    "prebuild": "npm run data:check && npm run product:check",
     "build": "vite build",
     "lint": "eslint .",
-    "pretest": "npm run data:check",
+    "pretest": "npm run data:check && npm run product:check",
     "test": "vitest run",
     "preview": "vite preview"
   },

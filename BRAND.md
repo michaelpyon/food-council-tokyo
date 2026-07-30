@@ -1,52 +1,41 @@
-# BRAND.md - Food Council: Tokyo
+# Food Council: Tokyo brand
 
-## Positioning line (in Hana's language)
+## Positioning
 
-**"163 Tokyo restaurants, scored like locals score them. Not a listicle."**
+**28 Tokyo places, verified branch by branch.**
 
-Support line: "Tabelog-weighted composite scores, real Michelin data, and a trip list you can actually send to the group chat."
+Support line: “Cleared from a 163-record audit. Direct sources on every public record.”
 
-The brand is a council, not an influencer: multiple named sources deliberating in public, methodology on the table. Trust is the product; the UI is just how trust gets delivered.
+Trust is the product. Food Council names its evidence, dates its checks, and withholds uncertain records.
 
-## Palette direction
+## Palette
 
-Keep and deepen the existing warm-paper editorial system. It is already correct for the persona; do not chase dark-mode neon food-app cliches.
+- Paper: `#faf9f7`
+- Surface: `#fffefd`
+- Hairline border: `#e8e4df`
+- Ink: `#1a1814`
+- Muted ink: `#6f6965`
+- Vermilion: `#c8391a`
+- Michelin gold: `#806500` on `#f5ecd0`
 
-- **Paper**: #faf9f7 background, #ffffff surface, #e8e4df hairline borders. Washi-paper warmth, never sterile gray.
-- **Ink**: #1a1814 near-black text, #8a8480 muted. High-contrast serif headlines on paper.
-- **Vermilion accent**: #c8391a (hanko-seal red). Used sparingly: save hearts, active filters, the 1 CTA. It is a stamp of approval, not a decoration color.
-- **Michelin gold**: #c9a227 on #f5ecd0. Reserved exclusively for star and Bib badges so gold always means Michelin, nothing else.
-- Score tiers may add a restrained ramp (muted green for elite Tabelog, neutral for good) but never traffic-light rainbow chips.
+Gold means a directly verified Michelin distinction. It has no other use.
 
-## Type system
+## Type
 
-- **Display**: Playfair Display, tight tracking, used for the hero and restaurant names. This is the editorial signature; protect it.
-- **Body/UI**: Inter 400 to 700. Numbers (scores, counts) get tabular treatment and confident weight, because digits are the trust surface.
-- Japanese names (nameJa) render in system Japanese fallback at muted weight beside romaji, always visible, never behind a toggle. It signals authenticity to Hana instantly.
-- Scale: 1 big statement (hero), clear card hierarchy (name, score, neighborhood), dense but never cramped data rows.
+- Display: Playfair Display
+- Body and controls: Inter
+- Japanese names: system Japanese fallback, always visible when the audit name is unflagged
 
-## Spacing and motion personality
+## Voice
 
-- Spacing: calm editorial grid, max-w-7xl shell, generous py on sections, cards at p-4 with hairline borders. Whitespace does the premium work; no drop-shadow soup.
-- Motion: **restrained and physical.** 150 to 250ms ease-out on panel slides and accordion reveals (the existing Motion usage is on-tone). The heart save gets 1 small spring pop, the trip counter ticks up, and that is the entire animation vocabulary. Nothing autoplays, nothing parallaxes, nothing floats.
-- The share action deserves the 1 moment of ceremony: a brief confirmation state that feels like a stamp landing.
+1. State what was verified and when.
+2. Link to evidence within 1 tap.
+3. Treat unknown as a valid state.
+4. Use exact counts.
+5. No exclamation points, tourism clichés, ratings theater, or vague authority claims.
 
-## Voice and tone rules
+## Visual constraints
 
-1. Declarative, opinionated, numerate. "Tabelog 4.02. 1 Michelin star. Sugamo." Never "an unforgettable culinary journey."
-2. Methodology always within 1 tap. We say WHY Tabelog gets 40% weight (regular Japanese diners, not tourists).
-3. Honest about staleness: data carries a "verified as of" date. If a fact is disputed or outdated, we say so on the record rather than quietly shipping it.
-4. No exclamation points. No "hidden gems." No emoji in product copy (emoji live in Hana's group chat, not in our UI).
-5. Counts are exact: 163 means 163. Round numbers are for marketers; exact numbers are for councils.
+The interface uses a calm editorial-paper system with hairline borders and restrained motion. It doesn’t use restaurant photography, gradients, glass surfaces, generic food imagery, decorative data, or delivery-app urgency.
 
-## 3 reference products (taste bar)
-
-1. **Letterboxd** - list-as-identity, opinionated microcopy, restrained color on neutral ground
-2. **The Infatuation** - editorial rating discipline, a visible point of view, scannable review cards
-3. **Wanderlog** - the shareable trip artifact done properly: my saved work becomes a page worth sending
-
-## 3 anti-references (never look like this)
-
-1. **Generic AI-template travel slop**: purple-to-blue gradient hero, "Discover the Flavors of Tokyo ✨," Undraw illustrations, 3-column icon feature grid, stock ramen photos. Any 1 of these and Hana is gone in 5 seconds.
-2. **TripAdvisor**: cluttered ad-choked list pages, popularity-contest rankings with no methodology, beige credibility.
-3. **Late-2010s food-delivery app aesthetic** (Uber Eats / DoorDash energy): giant appetite photography, pill-button carnival, urgency badges. We are a reference document, not a craving machine.
+The image policy is strict. A future restaurant photo needs exact branch identity, an original source URL, usage rights, attribution, capture date, and reviewer confirmation.

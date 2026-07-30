@@ -14,7 +14,9 @@ describe('verified trip flows', () => {
     const tripPanel = screen.getByRole('dialog', { name: 'My Trip' });
     expect(within(tripPanel).getByText('1 verified place saved')).toBeTruthy();
     expect(within(tripPanel).getByText('Ben Fiddich')).toBeTruthy();
-    expect(within(tripPanel).getByRole('link', { name: 'Tabelog record' })).toBeTruthy();
+    expect(
+      within(tripPanel).getByRole('link', { name: 'Tabelog record for Ben Fiddich' }),
+    ).toBeTruthy();
     expect(within(tripPanel).queryByText(/score/i)).toBeNull();
   });
 

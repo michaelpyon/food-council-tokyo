@@ -1,0 +1,5584 @@
+{
+  "schemaVersion": "1.0.0",
+  "verifiedThrough": "2026-07-30",
+  "policy": {
+    "publishableRule": "status=active AND confidence=high AND auditFlags=0",
+    "statusVocabulary": [
+      "active",
+      "temporarily_closed",
+      "closed",
+      "ambiguous",
+      "unverified",
+      "duplicate",
+      "non_restaurant"
+    ],
+    "michelinVocabulary": [
+      "three_stars",
+      "two_stars",
+      "one_star",
+      "bib_gourmand",
+      "selected"
+    ],
+    "excludedLegacyFields": [
+      "tabelog",
+      "google",
+      "priceRange",
+      "description",
+      "tags",
+      "awards",
+      "photoSeed",
+      "image",
+      "reservationUrl"
+    ]
+  },
+  "sourceInputs": [
+    {
+      "path": "src/data/restaurants.js",
+      "sha256": "21004ffa6c79f5e0d0dbe97882eff3d077c016fedafb7093a8f2db67380ede7f"
+    },
+    {
+      "path": "data-audit/audit-000-081.json",
+      "sha256": "93b75079223ec306026002bb84db9ec813c70299dcca45ee7f5b4b6b59fd672e"
+    },
+    {
+      "path": "data-audit/audit-082-162.json",
+      "sha256": "6a7e047c51e5c3d5bd415362eb1305627fb36b58cbc991c5fd0a088ac4c2a136"
+    }
+  ],
+  "counts": {
+    "total": 163,
+    "publishable": 28,
+    "held": 135,
+    "byStatus": {
+      "active": 121,
+      "temporarily_closed": 1,
+      "closed": 12,
+      "ambiguous": 7,
+      "unverified": 19,
+      "duplicate": 1,
+      "non_restaurant": 2
+    }
+  },
+  "records": [
+    {
+      "index": 0,
+      "id": "sukiyabashi-jiro",
+      "canonical": {
+        "name": "Sukiyabashi Jiro Honten",
+        "nameJa": "すきやばし次郎",
+        "branch": "Ginza honten",
+        "cuisine": "Sushi",
+        "neighborhood": "Ginza"
+      },
+      "status": "active",
+      "publishable": false,
+      "holdReasons": [
+        "audit_flag:stale_michelin"
+      ],
+      "michelin": {
+        "distinction": null,
+        "edition": null,
+        "verified": false,
+        "sourceUrl": null
+      },
+      "lastVerified": "2026-07-30",
+      "confidence": "high",
+      "sources": [
+        {
+          "type": "official",
+          "url": "https://www.sushi-jiro.jp/"
+        },
+        {
+          "type": "michelin",
+          "url": "https://guide.michelin.com/en/jp/tokyo-region/tokyo/restaurants/3-stars-michelin"
+        },
+        {
+          "type": "tabelog",
+          "url": "https://tabelog.com/tokyo/A1301/A130101/13002260/"
+        },
+        {
+          "type": "other",
+          "url": "https://apnews.com/article/32dd0d4232d9818e38f8b8a984bab636"
+        }
+      ]
+    },
+    {
+      "index": 1,
+      "id": "sushi-saito",
+      "canonical": {
+        "name": "Sushi Saito",
+        "nameJa": "鮨さいとう",
+        "branch": "Ark Hills South Tower",
+        "cuisine": "Sushi",
+        "neighborhood": "Roppongi 1-chome"
+      },
+      "status": "active",
+      "publishable": false,
+      "holdReasons": [
+        "audit_flag:members_or_introduction_only",
+        "audit_flag:stale_michelin"
+      ],
+      "michelin": {
+        "distinction": null,
+        "edition": null,
+        "verified": false,
+        "sourceUrl": null
+      },
+      "lastVerified": "2026-07-30",
+      "confidence": "high",
+      "sources": [
+        {
+          "type": "michelin",
+          "url": "https://guide.michelin.com/en/jp/tokyo-region/tokyo/restaurants/3-stars-michelin"
+        },
+        {
+          "type": "tabelog",
+          "url": "https://tabelog.com/tokyo/A1308/A130802/13015251/"
+        }
+      ]
+    },
+    {
+      "index": 2,
+      "id": "sushi-yoshitake",
+      "canonical": {
+        "name": "Sushi Yoshitake",
+        "nameJa": "鮨よしたけ",
+        "branch": "Ginza",
+        "cuisine": "Sushi",
+        "neighborhood": "Ginza"
+      },
+      "status": "active",
+      "publishable": false,
+      "holdReasons": [
+        "audit_flag:stale_michelin"
+      ],
+      "michelin": {
+        "distinction": null,
+        "edition": null,
+        "verified": false,
+        "sourceUrl": null
+      },
+      "lastVerified": "2026-07-30",
+      "confidence": "high",
+      "sources": [
+        {
+          "type": "official",
+          "url": "https://www.sushi-yoshitake.com/"
+        },
+        {
+          "type": "michelin",
+          "url": "https://guide.michelin.com/en/jp/tokyo-region/tokyo/restaurants/3-stars-michelin"
+        },
+        {
+          "type": "tabelog",
+          "url": "https://tabelog.com/tokyo/A1301/A130101/13024076/"
+        }
+      ]
+    },
+    {
+      "index": 3,
+      "id": "sushi-sawada",
+      "canonical": {
+        "name": "Sawada",
+        "nameJa": "鮨さわ田",
+        "branch": "Ginza",
+        "cuisine": "Sushi",
+        "neighborhood": "Ginza"
+      },
+      "status": "active",
+      "publishable": false,
+      "holdReasons": [
+        "audit_flag:stale_michelin",
+        "confidence_not_high"
+      ],
+      "michelin": {
+        "distinction": null,
+        "edition": null,
+        "verified": false,
+        "sourceUrl": null
+      },
+      "lastVerified": "2026-07-30",
+      "confidence": "moderate",
+      "sources": [
+        {
+          "type": "tabelog",
+          "url": "https://tabelog.com/tokyo/A1301/A130101/13001043/"
+        }
+      ]
+    },
+    {
+      "index": 4,
+      "id": "sushi-arai",
+      "canonical": {
+        "name": "Sushi Arai",
+        "nameJa": "鮨あらい",
+        "branch": "Ginza",
+        "cuisine": "Sushi",
+        "neighborhood": "Ginza"
+      },
+      "status": "active",
+      "publishable": false,
+      "holdReasons": [
+        "audit_flag:stale_michelin",
+        "confidence_not_high"
+      ],
+      "michelin": {
+        "distinction": null,
+        "edition": null,
+        "verified": false,
+        "sourceUrl": null
+      },
+      "lastVerified": "2026-07-30",
+      "confidence": "moderate",
+      "sources": [
+        {
+          "type": "tabelog",
+          "url": "https://tabelog.com/tokyo/A1301/A130101/13188186/"
+        }
+      ]
+    },
+    {
+      "index": 5,
+      "id": "harutaka",
+      "canonical": {
+        "name": "GINZA HARUTAKA",
+        "nameJa": "銀座 はるたか",
+        "branch": "Ginza",
+        "cuisine": "Sushi",
+        "neighborhood": "Ginza"
+      },
+      "status": "active",
+      "publishable": false,
+      "holdReasons": [
+        "audit_flag:michelin_changed"
+      ],
+      "michelin": {
+        "distinction": "three_stars",
+        "edition": 2026,
+        "verified": true,
+        "sourceUrl": "https://guide.michelin.com/en/tokyo-region/tokyo/restaurant/harutaka"
+      },
+      "lastVerified": "2026-07-30",
+      "confidence": "high",
+      "sources": [
+        {
+          "type": "michelin",
+          "url": "https://guide.michelin.com/en/tokyo-region/tokyo/restaurant/harutaka"
+        },
+        {
+          "type": "tabelog",
+          "url": "https://tabelog.com/tokyo/A1301/A130103/13032283/"
+        }
+      ]
+    },
+    {
+      "index": 6,
+      "id": "daiwa-sushi",
+      "canonical": {
+        "name": "Daiwa Sushi",
+        "nameJa": "大和寿司",
+        "branch": "Toyosu Market",
+        "cuisine": "Sushi",
+        "neighborhood": "Toyosu"
+      },
+      "status": "active",
+      "publishable": false,
+      "holdReasons": [
+        "audit_flag:stale_neighborhood"
+      ],
+      "michelin": {
+        "distinction": null,
+        "edition": null,
+        "verified": false,
+        "sourceUrl": null
+      },
+      "lastVerified": "2026-07-30",
+      "confidence": "high",
+      "sources": [
+        {
+          "type": "tabelog",
+          "url": "https://tabelog.com/tokyo/A1313/A131307/13227265/"
+        }
+      ]
+    },
+    {
+      "index": 7,
+      "id": "sushi-dai",
+      "canonical": {
+        "name": "Sushi Dai",
+        "nameJa": "寿司大",
+        "branch": "Toyosu Market",
+        "cuisine": "Sushi",
+        "neighborhood": "Toyosu"
+      },
+      "status": "active",
+      "publishable": false,
+      "holdReasons": [
+        "audit_flag:stale_neighborhood"
+      ],
+      "michelin": {
+        "distinction": null,
+        "edition": null,
+        "verified": false,
+        "sourceUrl": null
+      },
+      "lastVerified": "2026-07-30",
+      "confidence": "high",
+      "sources": [
+        {
+          "type": "tabelog",
+          "url": "https://tabelog.com/tokyo/A1313/A131307/13227096/"
+        }
+      ]
+    },
+    {
+      "index": 8,
+      "id": "midori-sushi",
+      "canonical": {
+        "name": "Umegaoka Sushi no Midori Sohonten Shibuya",
+        "nameJa": "梅丘寿司の美登利総本店 渋谷店",
+        "branch": "Shibuya Mark City",
+        "cuisine": "Sushi",
+        "neighborhood": "Shibuya"
+      },
+      "status": "active",
+      "publishable": false,
+      "holdReasons": [
+        "audit_flag:cuisine_description_mismatch"
+      ],
+      "michelin": {
+        "distinction": null,
+        "edition": null,
+        "verified": false,
+        "sourceUrl": null
+      },
+      "lastVerified": "2026-07-30",
+      "confidence": "high",
+      "sources": [
+        {
+          "type": "tabelog",
+          "url": "https://tabelog.com/tokyo/A1303/A130301/13004624/"
+        }
+      ]
+    },
+    {
+      "index": 9,
+      "id": "sushi-zanmai",
+      "canonical": {
+        "name": "Sushizanmai Honten",
+        "nameJa": "すしざんまい 本店",
+        "branch": "Tsukiji honten",
+        "cuisine": "Sushi",
+        "neighborhood": "Tsukiji"
+      },
+      "status": "active",
+      "publishable": true,
+      "holdReasons": [],
+      "michelin": {
+        "distinction": null,
+        "edition": null,
+        "verified": false,
+        "sourceUrl": null
+      },
+      "lastVerified": "2026-07-30",
+      "confidence": "high",
+      "sources": [
+        {
+          "type": "official",
+          "url": "https://www.kiyomura.co.jp/"
+        },
+        {
+          "type": "tabelog",
+          "url": "https://tabelog.com/tokyo/A1313/A131301/13002302/"
+        }
+      ]
+    },
+    {
+      "index": 10,
+      "id": "sushi-shin",
+      "canonical": {
+        "name": "Nishiazabu Sushi Shin",
+        "nameJa": "西麻布 鮨 真",
+        "branch": "Nishi-Azabu",
+        "cuisine": "Sushi",
+        "neighborhood": "Nishi-Azabu"
+      },
+      "status": "active",
+      "publishable": false,
+      "holdReasons": [
+        "audit_flag:michelin_changed",
+        "audit_flag:stale_neighborhood"
+      ],
+      "michelin": {
+        "distinction": "two_stars",
+        "edition": 2026,
+        "verified": true,
+        "sourceUrl": "https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/nishiazabu-sushi-shin"
+      },
+      "lastVerified": "2026-07-30",
+      "confidence": "high",
+      "sources": [
+        {
+          "type": "michelin",
+          "url": "https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/nishiazabu-sushi-shin"
+        },
+        {
+          "type": "tabelog",
+          "url": "https://tabelog.com/tokyo/A1307/A130701/13004789/"
+        },
+        {
+          "type": "other",
+          "url": "https://guide.michelin.com/mo/en/article/michelin-guide-ceremony/michelin-guide-tokyo-2026-stars-reveal"
+        }
+      ]
+    },
+    {
+      "index": 11,
+      "id": "fuunji",
+      "canonical": {
+        "name": "Fuunji Shinjuku Honten",
+        "nameJa": "風雲児 新宿本店",
+        "branch": "Shinjuku honten",
+        "cuisine": "Ramen",
+        "neighborhood": "Shinjuku"
+      },
+      "status": "active",
+      "publishable": false,
+      "holdReasons": [
+        "audit_flag:stale_michelin"
+      ],
+      "michelin": {
+        "distinction": null,
+        "edition": null,
+        "verified": false,
+        "sourceUrl": null
+      },
+      "lastVerified": "2026-07-30",
+      "confidence": "high",
+      "sources": [
+        {
+          "type": "official",
+          "url": "http://www.fu-unji.com/"
+        },
+        {
+          "type": "tabelog",
+          "url": "https://tabelog.com/tokyo/A1304/A130401/13044091/"
+        }
+      ]
+    },
+    {
+      "index": 12,
+      "id": "ichiran-shibuya",
+      "canonical": {
+        "name": "ICHIRAN Shibuya",
+        "nameJa": "一蘭",
+        "branch": null,
+        "cuisine": "Ramen",
+        "neighborhood": "Shibuya"
+      },
+      "status": "ambiguous",
+      "publishable": false,
+      "holdReasons": [
+        "audit_flag:branch_ambiguous",
+        "identity_or_branch_ambiguous"
+      ],
+      "michelin": {
+        "distinction": null,
+        "edition": null,
+        "verified": false,
+        "sourceUrl": null
+      },
+      "lastVerified": "2026-07-30",
+      "confidence": "high",
+      "sources": [
+        {
+          "type": "official",
+          "url": "https://en.ichiran.com/shop/tokyo/shibuya/"
+        },
+        {
+          "type": "tabelog",
+          "url": "https://tabelog.com/tokyo/A1303/A130301/13001762/"
+        },
+        {
+          "type": "tabelog",
+          "url": "https://tabelog.com/tokyo/A1303/A130301/13166058/"
+        }
+      ]
+    },
+    {
+      "index": 13,
+      "id": "afuri-ebisu",
+      "canonical": {
+        "name": "AFURI Ebisu",
+        "nameJa": "AFURI 恵比寿",
+        "branch": "Ebisu",
+        "cuisine": "Ramen",
+        "neighborhood": "Ebisu"
+      },
+      "status": "active",
+      "publishable": false,
+      "holdReasons": [
+        "audit_flag:obsolete_michelin_plate"
+      ],
+      "michelin": {
+        "distinction": null,
+        "edition": null,
+        "verified": false,
+        "sourceUrl": null
+      },
+      "lastVerified": "2026-07-30",
+      "confidence": "high",
+      "sources": [
+        {
+          "type": "official",
+          "url": "https://afuri.com/"
+        },
+        {
+          "type": "tabelog",
+          "url": "https://tabelog.com/tokyo/A1303/A130302/13005500/"
+        }
+      ]
+    },
+    {
+      "index": 14,
+      "id": "nakiryu",
+      "canonical": {
+        "name": "Sosakumenkobo Nakiryu",
+        "nameJa": "創作麺工房 鳴龍",
+        "branch": "Minami-Otsuka",
+        "cuisine": "Ramen",
+        "neighborhood": "Otsuka"
+      },
+      "status": "active",
+      "publishable": false,
+      "holdReasons": [
+        "audit_flag:stale_michelin",
+        "audit_flag:stale_neighborhood"
+      ],
+      "michelin": {
+        "distinction": null,
+        "edition": null,
+        "verified": false,
+        "sourceUrl": null
+      },
+      "lastVerified": "2026-07-30",
+      "confidence": "high",
+      "sources": [
+        {
+          "type": "tabelog",
+          "url": "https://tabelog.com/tokyo/A1323/A132302/13141302/"
+        }
+      ]
+    },
+    {
+      "index": 15,
+      "id": "tsuta",
+      "canonical": {
+        "name": "Japanese Soba Noodles Tsuta",
+        "nameJa": "Japanese Soba Noodles 蔦",
+        "branch": "Yoyogi-Uehara",
+        "cuisine": "Ramen",
+        "neighborhood": "Yoyogi-Uehara"
+      },
+      "status": "active",
+      "publishable": false,
+      "holdReasons": [
+        "audit_flag:obsolete_michelin_plate",
+        "audit_flag:stale_neighborhood"
+      ],
+      "michelin": {
+        "distinction": null,
+        "edition": null,
+        "verified": false,
+        "sourceUrl": null
+      },
+      "lastVerified": "2026-07-30",
+      "confidence": "high",
+      "sources": [
+        {
+          "type": "official",
+          "url": "https://www.tsuta79.tokyo/"
+        },
+        {
+          "type": "tabelog",
+          "url": "https://tabelog.com/tokyo/A1318/A131811/13241560/"
+        }
+      ]
+    },
+    {
+      "index": 16,
+      "id": "rokurinsha",
+      "canonical": {
+        "name": "Rokurinsha Tokyo Station Tokyo Ramen Street",
+        "nameJa": "六厘舎 東京駅東京ラーメンストリート",
+        "branch": "Tokyo Station",
+        "cuisine": "Ramen",
+        "neighborhood": "Tokyo Station"
+      },
+      "status": "active",
+      "publishable": false,
+      "holdReasons": [
+        "audit_flag:obsolete_michelin_plate"
+      ],
+      "michelin": {
+        "distinction": null,
+        "edition": null,
+        "verified": false,
+        "sourceUrl": null
+      },
+      "lastVerified": "2026-07-30",
+      "confidence": "high",
+      "sources": [
+        {
+          "type": "official",
+          "url": "https://www.rokurinsha.com/"
+        },
+        {
+          "type": "tabelog",
+          "url": "https://tabelog.com/tokyo/A1302/A130201/13093047/"
+        }
+      ]
+    },
+    {
+      "index": 17,
+      "id": "mutekiya",
+      "canonical": {
+        "name": "Mutekiya",
+        "nameJa": "無敵家",
+        "branch": "Ikebukuro",
+        "cuisine": "Ramen",
+        "neighborhood": "Ikebukuro"
+      },
+      "status": "active",
+      "publishable": true,
+      "holdReasons": [],
+      "michelin": {
+        "distinction": null,
+        "edition": null,
+        "verified": false,
+        "sourceUrl": null
+      },
+      "lastVerified": "2026-07-30",
+      "confidence": "high",
+      "sources": [
+        {
+          "type": "official",
+          "url": "https://www.mutekiya.com/"
+        },
+        {
+          "type": "tabelog",
+          "url": "https://tabelog.com/tokyo/A1305/A130501/13003927/"
+        }
+      ]
+    },
+    {
+      "index": 18,
+      "id": "kagari-ginza",
+      "canonical": {
+        "name": "Ginza Kagari Honten",
+        "nameJa": "銀座 篝 本店",
+        "branch": "Ginza honten",
+        "cuisine": "Ramen",
+        "neighborhood": "Ginza"
+      },
+      "status": "active",
+      "publishable": false,
+      "holdReasons": [
+        "audit_flag:duplicate_elsewhere_in_dataset",
+        "audit_flag:stale_michelin"
+      ],
+      "michelin": {
+        "distinction": null,
+        "edition": null,
+        "verified": false,
+        "sourceUrl": null
+      },
+      "lastVerified": "2026-07-30",
+      "confidence": "high",
+      "sources": [
+        {
+          "type": "tabelog",
+          "url": "https://tabelog.com/tokyo/A1301/A130101/13230021/"
+        }
+      ]
+    },
+    {
+      "index": 19,
+      "id": "ippudo-ebisu",
+      "canonical": {
+        "name": "Ippudo Ebisu",
+        "nameJa": "一風堂 恵比寿店",
+        "branch": "Ebisu",
+        "cuisine": "Ramen",
+        "neighborhood": "Ebisu"
+      },
+      "status": "active",
+      "publishable": true,
+      "holdReasons": [],
+      "michelin": {
+        "distinction": null,
+        "edition": null,
+        "verified": false,
+        "sourceUrl": null
+      },
+      "lastVerified": "2026-07-30",
+      "confidence": "high",
+      "sources": [
+        {
+          "type": "official",
+          "url": "https://stores.ippudo.com/"
+        },
+        {
+          "type": "tabelog",
+          "url": "https://tabelog.com/tokyo/A1303/A130302/13004461/"
+        }
+      ]
+    },
+    {
+      "index": 20,
+      "id": "soranoiro",
+      "canonical": {
+        "name": "Soranoiro NIPPON",
+        "nameJa": "ソラノイロ NIPPON",
+        "branch": "Tokyo Station",
+        "cuisine": "Ramen",
+        "neighborhood": "Tokyo Station"
+      },
+      "status": "active",
+      "publishable": false,
+      "holdReasons": [
+        "audit_flag:obsolete_michelin_plate"
+      ],
+      "michelin": {
+        "distinction": null,
+        "edition": null,
+        "verified": false,
+        "sourceUrl": null
+      },
+      "lastVerified": "2026-07-30",
+      "confidence": "high",
+      "sources": [
+        {
+          "type": "official",
+          "url": "https://soranoiro-vege.com/"
+        },
+        {
+          "type": "tabelog",
+          "url": "https://tabelog.com/tokyo/A1302/A130201/13183558/"
+        }
+      ]
+    },
+    {
+      "index": 21,
+      "id": "menya-kissou",
+      "canonical": {
+        "name": "Menya Kissou",
+        "nameJa": "麺屋吉左右",
+        "branch": "Kiba",
+        "cuisine": "Ramen",
+        "neighborhood": "Kiba"
+      },
+      "status": "active",
+      "publishable": false,
+      "holdReasons": [
+        "audit_flag:obsolete_michelin_plate",
+        "audit_flag:stale_neighborhood"
+      ],
+      "michelin": {
+        "distinction": null,
+        "edition": null,
+        "verified": false,
+        "sourceUrl": null
+      },
+      "lastVerified": "2026-07-30",
+      "confidence": "high",
+      "sources": [
+        {
+          "type": "tabelog",
+          "url": "https://tabelog.com/tokyo/A1313/A131303/13021140/"
+        }
+      ]
+    },
+    {
+      "index": 22,
+      "id": "ryugin",
+      "canonical": {
+        "name": "Nihonryori RyuGin",
+        "nameJa": "日本料理 龍吟",
+        "branch": "Tokyo Midtown Hibiya",
+        "cuisine": "Kaiseki",
+        "neighborhood": "Hibiya"
+      },
+      "status": "active",
+      "publishable": false,
+      "holdReasons": [
+        "audit_flag:stale_neighborhood"
+      ],
+      "michelin": {
+        "distinction": "three_stars",
+        "edition": 2026,
+        "verified": true,
+        "sourceUrl": "https://guide.michelin.com/en/tokyo-region/tokyo/restaurant/ryugin-1194232"
+      },
+      "lastVerified": "2026-07-30",
+      "confidence": "high",
+      "sources": [
+        {
+          "type": "official",
+          "url": "https://www.nihonryori-ryugin.com/"
+        },
+        {
+          "type": "michelin",
+          "url": "https://guide.michelin.com/en/tokyo-region/tokyo/restaurant/ryugin-1194232"
+        },
+        {
+          "type": "michelin",
+          "url": "https://guide.michelin.com/sg/en/article/features/nihonryori-ryugin-is-moving-to-hibiya-sg"
+        },
+        {
+          "type": "tabelog",
+          "url": "https://tabelog.com/tokyo/A1301/A130102/13001457/"
+        }
+      ]
+    },
+    {
+      "index": 23,
+      "id": "kohaku",
+      "canonical": {
+        "name": "Kohaku",
+        "nameJa": "虎白",
+        "branch": "Kagurazaka",
+        "cuisine": "Kaiseki",
+        "neighborhood": "Kagurazaka"
+      },
+      "status": "active",
+      "publishable": false,
+      "holdReasons": [
+        "audit_flag:michelin_changed",
+        "audit_flag:moved_within_neighborhood"
+      ],
+      "michelin": {
+        "distinction": "two_stars",
+        "edition": 2026,
+        "verified": true,
+        "sourceUrl": "https://guide.michelin.com/en/tokyo-region/tokyo/restaurant/kohaku"
+      },
+      "lastVerified": "2026-07-30",
+      "confidence": "high",
+      "sources": [
+        {
+          "type": "michelin",
+          "url": "https://guide.michelin.com/en/tokyo-region/tokyo/restaurant/kohaku"
+        },
+        {
+          "type": "tabelog",
+          "url": "https://tabelog.com/tokyo/A1309/A130905/13296900/"
+        }
+      ]
+    },
+    {
+      "index": 24,
+      "id": "ishikawa",
+      "canonical": {
+        "name": "Kagurazaka Ishikawa",
+        "nameJa": "神楽坂 石かわ",
+        "branch": "Kagurazaka",
+        "cuisine": "Kaiseki",
+        "neighborhood": "Kagurazaka"
+      },
+      "status": "active",
+      "publishable": true,
+      "holdReasons": [],
+      "michelin": {
+        "distinction": "three_stars",
+        "edition": 2026,
+        "verified": true,
+        "sourceUrl": "https://guide.michelin.com/gb/en/tokyo-region/tokyo/restaurant/kagurazaka-ishikawa"
+      },
+      "lastVerified": "2026-07-30",
+      "confidence": "high",
+      "sources": [
+        {
+          "type": "michelin",
+          "url": "https://guide.michelin.com/gb/en/tokyo-region/tokyo/restaurant/kagurazaka-ishikawa"
+        },
+        {
+          "type": "tabelog",
+          "url": "https://tabelog.com/tokyo/A1309/A130905/13004079/"
+        }
+      ]
+    },
+    {
+      "index": 25,
+      "id": "jimbocho-den",
+      "canonical": {
+        "name": "Den",
+        "nameJa": "傳",
+        "branch": "Jingumae",
+        "cuisine": "Kaiseki",
+        "neighborhood": "Jingumae"
+      },
+      "status": "active",
+      "publishable": false,
+      "holdReasons": [
+        "audit_flag:stale_id",
+        "audit_flag:stale_neighborhood"
+      ],
+      "michelin": {
+        "distinction": "two_stars",
+        "edition": 2026,
+        "verified": true,
+        "sourceUrl": "https://guide.michelin.com/sg/en/tokyo-region/tokyo/restaurant/den"
+      },
+      "lastVerified": "2026-07-30",
+      "confidence": "high",
+      "sources": [
+        {
+          "type": "official",
+          "url": "http://www.jimbochoden.com/"
+        },
+        {
+          "type": "michelin",
+          "url": "https://guide.michelin.com/sg/en/tokyo-region/tokyo/restaurant/den"
+        },
+        {
+          "type": "tabelog",
+          "url": "https://tabelog.com/tokyo/A1306/A130603/13046855/"
+        }
+      ]
+    },
+    {
+      "index": 26,
+      "id": "kanda",
+      "canonical": {
+        "name": "Kanda",
+        "nameJa": "かんだ",
+        "branch": "Toranomon Hills Residential Tower",
+        "cuisine": "Kaiseki",
+        "neighborhood": "Toranomon"
+      },
+      "status": "active",
+      "publishable": false,
+      "holdReasons": [
+        "audit_flag:stale_neighborhood"
+      ],
+      "michelin": {
+        "distinction": "three_stars",
+        "edition": 2026,
+        "verified": true,
+        "sourceUrl": "https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/kanda"
+      },
+      "lastVerified": "2026-07-30",
+      "confidence": "high",
+      "sources": [
+        {
+          "type": "michelin",
+          "url": "https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/kanda"
+        },
+        {
+          "type": "tabelog",
+          "url": "https://tabelog.com/tokyo/A1308/A130802/13270674/"
+        }
+      ]
+    },
+    {
+      "index": 27,
+      "id": "makimura",
+      "canonical": {
+        "name": "Makimura",
+        "nameJa": "まき村",
+        "branch": "Minami-Oi",
+        "cuisine": "Kaiseki",
+        "neighborhood": "Omori-kaigan"
+      },
+      "status": "active",
+      "publishable": false,
+      "holdReasons": [
+        "audit_flag:stale_michelin",
+        "audit_flag:stale_neighborhood",
+        "confidence_not_high"
+      ],
+      "michelin": {
+        "distinction": null,
+        "edition": null,
+        "verified": false,
+        "sourceUrl": null
+      },
+      "lastVerified": "2026-07-30",
+      "confidence": "moderate",
+      "sources": [
+        {
+          "type": "tabelog",
+          "url": "https://tabelog.com/tokyo/A1315/A131502/13003338/"
+        }
+      ]
+    },
+    {
+      "index": 28,
+      "id": "koju",
+      "canonical": {
+        "name": null,
+        "nameJa": null,
+        "branch": null,
+        "cuisine": null,
+        "neighborhood": null
+      },
+      "status": "ambiguous",
+      "publishable": false,
+      "holdReasons": [
+        "audit_flag:branch_conflated",
+        "audit_flag:cuisine_conflated",
+        "audit_flag:name_conflated",
+        "identity_or_branch_ambiguous",
+        "missing_canonical_cuisine",
+        "missing_canonical_name",
+        "missing_canonical_name_ja",
+        "missing_canonical_neighborhood"
+      ],
+      "michelin": {
+        "distinction": null,
+        "edition": null,
+        "verified": false,
+        "sourceUrl": null
+      },
+      "lastVerified": "2026-07-30",
+      "confidence": "high",
+      "sources": [
+        {
+          "type": "michelin",
+          "url": "https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/ginza-koju"
+        },
+        {
+          "type": "tabelog",
+          "url": "https://tabelog.com/tokyo/A1301/A130101/13005683/"
+        },
+        {
+          "type": "tabelog",
+          "url": "https://tabelog.com/tokyo/A1307/A130701/13321646/"
+        }
+      ]
+    },
+    {
+      "index": 29,
+      "id": "tempura-kondo",
+      "canonical": {
+        "name": "Tempura Kondo",
+        "nameJa": "てんぷら 近藤",
+        "branch": "Ginza",
+        "cuisine": "Tempura",
+        "neighborhood": "Ginza"
+      },
+      "status": "active",
+      "publishable": true,
+      "holdReasons": [],
+      "michelin": {
+        "distinction": "two_stars",
+        "edition": 2026,
+        "verified": true,
+        "sourceUrl": "https://guide.michelin.com/en/tokyo-region/tokyo/restaurant/tempura-kondo"
+      },
+      "lastVerified": "2026-07-30",
+      "confidence": "high",
+      "sources": [
+        {
+          "type": "official",
+          "url": "https://tempura-kondo.com/"
+        },
+        {
+          "type": "michelin",
+          "url": "https://guide.michelin.com/en/tokyo-region/tokyo/restaurant/tempura-kondo"
+        },
+        {
+          "type": "tabelog",
+          "url": "https://tabelog.com/tokyo/A1301/A130101/13004993/"
+        }
+      ]
+    },
+    {
+      "index": 30,
+      "id": "mikawa-zezankyo",
+      "canonical": {
+        "name": "Mikawa Zezankyo",
+        "nameJa": "みかわ是山居",
+        "branch": "Fukuzumi",
+        "cuisine": "Tempura",
+        "neighborhood": "Monzen-nakacho"
+      },
+      "status": "active",
+      "publishable": false,
+      "holdReasons": [
+        "audit_flag:stale_michelin",
+        "audit_flag:stale_neighborhood"
+      ],
+      "michelin": {
+        "distinction": null,
+        "edition": null,
+        "verified": false,
+        "sourceUrl": null
+      },
+      "lastVerified": "2026-07-30",
+      "confidence": "high",
+      "sources": [
+        {
+          "type": "official",
+          "url": "https://mikawa-zezankyo.jimdofree.com/"
+        },
+        {
+          "type": "tabelog",
+          "url": "https://tabelog.com/tokyo/A1313/A131303/13090866/"
+        }
+      ]
+    },
+    {
+      "index": 31,
+      "id": "tsunahachi",
+      "canonical": {
+        "name": "Shinjuku Tsunahachi Sohonten",
+        "nameJa": "新宿つな八 総本店",
+        "branch": "Shinjuku honten",
+        "cuisine": "Tempura",
+        "neighborhood": "Shinjuku"
+      },
+      "status": "unverified",
+      "publishable": false,
+      "holdReasons": [
+        "audit_flag:obsolete_michelin_plate",
+        "audit_flag:operating_status_unconfirmed",
+        "confidence_not_high",
+        "status_unverified"
+      ],
+      "michelin": {
+        "distinction": null,
+        "edition": null,
+        "verified": false,
+        "sourceUrl": null
+      },
+      "lastVerified": "2026-07-30",
+      "confidence": "moderate",
+      "sources": [
+        {
+          "type": "official",
+          "url": "https://www.tunahachi.co.jp/"
+        },
+        {
+          "type": "tabelog",
+          "url": "https://tabelog.com/tokyo/A1304/A130401/13000859/"
+        }
+      ]
+    },
+    {
+      "index": 32,
+      "id": "tempura-yamanoue",
+      "canonical": {
+        "name": "Yamanoue Tempura",
+        "nameJa": "山の上天ぷら",
+        "branch": "Hilltop Hotel",
+        "cuisine": "Tempura",
+        "neighborhood": "Ochanomizu"
+      },
+      "status": "closed",
+      "publishable": false,
+      "holdReasons": [
+        "audit_flag:closed",
+        "audit_flag:obsolete_michelin_plate",
+        "not_currently_operating"
+      ],
+      "michelin": {
+        "distinction": null,
+        "edition": null,
+        "verified": false,
+        "sourceUrl": null
+      },
+      "lastVerified": "2026-07-30",
+      "confidence": "high",
+      "sources": [
+        {
+          "type": "official",
+          "url": "https://www.yamanoue-hotel.co.jp/"
+        },
+        {
+          "type": "tabelog",
+          "url": "https://tabelog.com/tokyo/A1310/A131002/13000621/"
+        }
+      ]
+    },
+    {
+      "index": 33,
+      "id": "tenichi",
+      "canonical": {
+        "name": "Ginza Ten-ichi Honten",
+        "nameJa": "銀座 天一 本店",
+        "branch": "Ginza honten",
+        "cuisine": "Tempura",
+        "neighborhood": "Ginza"
+      },
+      "status": "active",
+      "publishable": false,
+      "holdReasons": [
+        "audit_flag:obsolete_michelin_plate"
+      ],
+      "michelin": {
+        "distinction": null,
+        "edition": null,
+        "verified": false,
+        "sourceUrl": null
+      },
+      "lastVerified": "2026-07-30",
+      "confidence": "high",
+      "sources": [
+        {
+          "type": "official",
+          "url": "https://tenichi.co.jp/"
+        },
+        {
+          "type": "tabelog",
+          "url": "https://tabelog.com/tokyo/A1301/A130101/13002572/"
+        }
+      ]
+    },
+    {
+      "index": 34,
+      "id": "birdland",
+      "canonical": {
+        "name": "BIRD LAND",
+        "nameJa": "バードランド",
+        "branch": "Ginza",
+        "cuisine": "Yakitori",
+        "neighborhood": "Ginza"
+      },
+      "status": "active",
+      "publishable": false,
+      "holdReasons": [
+        "audit_flag:michelin_changed"
+      ],
+      "michelin": {
+        "distinction": "selected",
+        "edition": 2026,
+        "verified": true,
+        "sourceUrl": "https://guide.michelin.com/jp/en/tokyo-region/tokyo/restaurant/bird-land"
+      },
+      "lastVerified": "2026-07-30",
+      "confidence": "high",
+      "sources": [
+        {
+          "type": "official",
+          "url": "https://ginza-birdland.sakura.ne.jp/"
+        },
+        {
+          "type": "michelin",
+          "url": "https://guide.michelin.com/jp/en/tokyo-region/tokyo/restaurant/bird-land"
+        },
+        {
+          "type": "tabelog",
+          "url": "https://tabelog.com/tokyo/A1301/A130101/13004097/"
+        }
+      ]
+    },
+    {
+      "index": 35,
+      "id": "toriki",
+      "canonical": {
+        "name": "Toriki Hatanodai",
+        "nameJa": "鳥樹",
+        "branch": "Hatanodai main listing",
+        "cuisine": "Yakitori",
+        "neighborhood": "Hatanodai"
+      },
+      "status": "closed",
+      "publishable": false,
+      "holdReasons": [
+        "audit_flag:branch_ambiguous",
+        "audit_flag:closed",
+        "audit_flag:stale_michelin",
+        "audit_flag:stale_neighborhood",
+        "not_currently_operating"
+      ],
+      "michelin": {
+        "distinction": null,
+        "edition": null,
+        "verified": false,
+        "sourceUrl": null
+      },
+      "lastVerified": "2026-07-30",
+      "confidence": "high",
+      "sources": [
+        {
+          "type": "tabelog",
+          "url": "https://tabelog.com/tokyo/A1317/A131712/13018530/"
+        },
+        {
+          "type": "tabelog",
+          "url": "https://tabelog.com/tokyo/A1317/A131712/13061275/"
+        }
+      ]
+    },
+    {
+      "index": 36,
+      "id": "torishiki",
+      "canonical": {
+        "name": "Torishiki",
+        "nameJa": "鳥しき",
+        "branch": "Meguro",
+        "cuisine": "Yakitori",
+        "neighborhood": "Meguro"
+      },
+      "status": "active",
+      "publishable": false,
+      "holdReasons": [
+        "audit_flag:stale_michelin",
+        "confidence_not_high"
+      ],
+      "michelin": {
+        "distinction": null,
+        "edition": null,
+        "verified": false,
+        "sourceUrl": null
+      },
+      "lastVerified": "2026-07-30",
+      "confidence": "moderate",
+      "sources": [
+        {
+          "type": "official",
+          "url": "https://torishiki.jp/"
+        },
+        {
+          "type": "tabelog",
+          "url": "https://tabelog.com/tokyo/A1316/A131601/13041029/"
+        }
+      ]
+    },
+    {
+      "index": 37,
+      "id": "yakitori-imai",
+      "canonical": {
+        "name": "Yakitori Imai",
+        "nameJa": "やきとり今井",
+        "branch": "Jingumae",
+        "cuisine": "Yakitori",
+        "neighborhood": "Gaienmae"
+      },
+      "status": "active",
+      "publishable": false,
+      "holdReasons": [
+        "audit_flag:obsolete_michelin_plate",
+        "audit_flag:stale_neighborhood"
+      ],
+      "michelin": {
+        "distinction": null,
+        "edition": null,
+        "verified": false,
+        "sourceUrl": null
+      },
+      "lastVerified": "2026-07-30",
+      "confidence": "high",
+      "sources": [
+        {
+          "type": "official",
+          "url": "https://yakitori-imai.jp/"
+        },
+        {
+          "type": "tabelog",
+          "url": "https://tabelog.com/tokyo/A1306/A130603/13025995/"
+        }
+      ]
+    },
+    {
+      "index": 38,
+      "id": "fuku",
+      "canonical": {
+        "name": "Fuku",
+        "nameJa": "ふく",
+        "branch": "Nishihara",
+        "cuisine": "Yakitori",
+        "neighborhood": "Yoyogi-Uehara"
+      },
+      "status": "active",
+      "publishable": false,
+      "holdReasons": [
+        "audit_flag:stale_michelin",
+        "audit_flag:stale_neighborhood"
+      ],
+      "michelin": {
+        "distinction": null,
+        "edition": null,
+        "verified": false,
+        "sourceUrl": null
+      },
+      "lastVerified": "2026-07-30",
+      "confidence": "high",
+      "sources": [
+        {
+          "type": "tabelog",
+          "url": "https://tabelog.com/tokyo/A1318/A131811/13007433/"
+        }
+      ]
+    },
+    {
+      "index": 39,
+      "id": "maisen",
+      "canonical": {
+        "name": "Tonkatsu Maisen Aoyama Honten",
+        "nameJa": "とんかつ まい泉 青山本店",
+        "branch": "Aoyama honten",
+        "cuisine": "Tonkatsu",
+        "neighborhood": "Omotesando"
+      },
+      "status": "active",
+      "publishable": false,
+      "holdReasons": [
+        "audit_flag:obsolete_michelin_plate"
+      ],
+      "michelin": {
+        "distinction": null,
+        "edition": null,
+        "verified": false,
+        "sourceUrl": null
+      },
+      "lastVerified": "2026-07-30",
+      "confidence": "high",
+      "sources": [
+        {
+          "type": "official",
+          "url": "https://mai-sen.com/"
+        },
+        {
+          "type": "tabelog",
+          "url": "https://tabelog.com/tokyo/A1306/A130602/13001850/"
+        }
+      ]
+    },
+    {
+      "index": 40,
+      "id": "butagumi",
+      "canonical": {
+        "name": "Butagumi",
+        "nameJa": "豚組",
+        "branch": "Nishi-Azabu",
+        "cuisine": "Tonkatsu",
+        "neighborhood": "Nishi-Azabu"
+      },
+      "status": "active",
+      "publishable": false,
+      "holdReasons": [
+        "audit_flag:stale_michelin",
+        "audit_flag:stale_neighborhood"
+      ],
+      "michelin": {
+        "distinction": null,
+        "edition": null,
+        "verified": false,
+        "sourceUrl": null
+      },
+      "lastVerified": "2026-07-30",
+      "confidence": "high",
+      "sources": [
+        {
+          "type": "official",
+          "url": "https://www.butagumi.com/"
+        },
+        {
+          "type": "tabelog",
+          "url": "https://tabelog.com/tokyo/A1307/A130701/13004791/"
+        }
+      ]
+    },
+    {
+      "index": 41,
+      "id": "tonkatsu-suzuki",
+      "canonical": {
+        "name": "Tonkatsu Narikura",
+        "nameJa": "とんかつ成蔵",
+        "branch": "Minami-Asagaya",
+        "cuisine": "Tonkatsu",
+        "neighborhood": "Minami-Asagaya"
+      },
+      "status": "active",
+      "publishable": false,
+      "holdReasons": [
+        "audit_flag:stale_id",
+        "audit_flag:stale_michelin",
+        "audit_flag:stale_neighborhood"
+      ],
+      "michelin": {
+        "distinction": null,
+        "edition": null,
+        "verified": false,
+        "sourceUrl": null
+      },
+      "lastVerified": "2026-07-30",
+      "confidence": "high",
+      "sources": [
+        {
+          "type": "tabelog",
+          "url": "https://tabelog.com/tokyo/A1319/A131905/13236380/"
+        }
+      ]
+    },
+    {
+      "index": 42,
+      "id": "katsuzen",
+      "canonical": {
+        "name": "Tonkatsu Kappo Katsuzen",
+        "nameJa": "とんかつ割烹 かつぜん",
+        "branch": "Ginza",
+        "cuisine": "Tonkatsu",
+        "neighborhood": "Ginza"
+      },
+      "status": "unverified",
+      "publishable": false,
+      "holdReasons": [
+        "audit_flag:obsolete_michelin_plate",
+        "audit_flag:operating_status_unconfirmed",
+        "audit_flag:stale_neighborhood",
+        "status_unverified"
+      ],
+      "michelin": {
+        "distinction": null,
+        "edition": null,
+        "verified": false,
+        "sourceUrl": null
+      },
+      "lastVerified": "2026-07-30",
+      "confidence": "high",
+      "sources": [
+        {
+          "type": "tabelog",
+          "url": "https://tabelog.com/tokyo/A1301/A130101/13006519/"
+        }
+      ]
+    },
+    {
+      "index": 43,
+      "id": "tonki",
+      "canonical": {
+        "name": "Tonkatsu Tonki",
+        "nameJa": "とんかつ とんき 目黒本店",
+        "branch": "Meguro honten",
+        "cuisine": "Tonkatsu",
+        "neighborhood": "Meguro"
+      },
+      "status": "active",
+      "publishable": false,
+      "holdReasons": [
+        "audit_flag:obsolete_michelin_plate"
+      ],
+      "michelin": {
+        "distinction": null,
+        "edition": null,
+        "verified": false,
+        "sourceUrl": null
+      },
+      "lastVerified": "2026-07-30",
+      "confidence": "high",
+      "sources": [
+        {
+          "type": "tabelog",
+          "url": "https://tabelog.com/tokyo/A1316/A131601/13002040/"
+        }
+      ]
+    },
+    {
+      "index": 44,
+      "id": "shin-udon",
+      "canonical": {
+        "name": "Udon Shin",
+        "nameJa": "うどん 慎",
+        "branch": "Shinjuku",
+        "cuisine": "Udon",
+        "neighborhood": "Shinjuku"
+      },
+      "status": "active",
+      "publishable": false,
+      "holdReasons": [
+        "audit_flag:duplicate_record",
+        "audit_flag:stale_michelin"
+      ],
+      "michelin": {
+        "distinction": null,
+        "edition": null,
+        "verified": false,
+        "sourceUrl": null
+      },
+      "lastVerified": "2026-07-30",
+      "confidence": "high",
+      "sources": [
+        {
+          "type": "official",
+          "url": "https://www.udonshin.com/"
+        },
+        {
+          "type": "tabelog",
+          "url": "https://tabelog.com/tokyo/A1304/A130401/13125862/"
+        }
+      ]
+    },
+    {
+      "index": 45,
+      "id": "marugame-seimen",
+      "canonical": {
+        "name": "Marugame Seimen Shibuya Dogenzaka",
+        "nameJa": "丸亀製麺 渋谷道玄坂店",
+        "branch": "Shibuya Dogenzaka",
+        "cuisine": "Udon",
+        "neighborhood": "Shibuya"
+      },
+      "status": "active",
+      "publishable": false,
+      "holdReasons": [
+        "audit_flag:branch_inferred",
+        "confidence_not_high"
+      ],
+      "michelin": {
+        "distinction": null,
+        "edition": null,
+        "verified": false,
+        "sourceUrl": null
+      },
+      "lastVerified": "2026-07-30",
+      "confidence": "moderate",
+      "sources": [
+        {
+          "type": "official",
+          "url": "https://jp.marugame.com/"
+        },
+        {
+          "type": "tabelog",
+          "url": "https://tabelog.com/tokyo/A1303/A130301/13110627/"
+        }
+      ]
+    },
+    {
+      "index": 46,
+      "id": "udon-shin",
+      "canonical": {
+        "name": "Udon Shin",
+        "nameJa": "うどん 慎",
+        "branch": "Shinjuku",
+        "cuisine": "Udon",
+        "neighborhood": "Shinjuku"
+      },
+      "status": "duplicate",
+      "publishable": false,
+      "holdReasons": [
+        "audit_flag:duplicate_of_index_44",
+        "audit_flag:fabricated_neighborhood",
+        "audit_flag:obsolete_michelin_plate",
+        "duplicate_record"
+      ],
+      "michelin": {
+        "distinction": null,
+        "edition": null,
+        "verified": false,
+        "sourceUrl": null
+      },
+      "lastVerified": "2026-07-30",
+      "confidence": "high",
+      "sources": [
+        {
+          "type": "official",
+          "url": "https://www.udonshin.com/"
+        },
+        {
+          "type": "tabelog",
+          "url": "https://tabelog.com/tokyo/A1304/A130401/13125862/"
+        }
+      ]
+    },
+    {
+      "index": 47,
+      "id": "tsurutontan",
+      "canonical": {
+        "name": "Tsurutontan UDON NOODLE Brasserie Roppongi",
+        "nameJa": "つるとんたん UDON NOODLE Brasserie 六本木",
+        "branch": "Roppongi",
+        "cuisine": "Udon",
+        "neighborhood": "Roppongi"
+      },
+      "status": "active",
+      "publishable": false,
+      "holdReasons": [
+        "audit_flag:moved_within_neighborhood"
+      ],
+      "michelin": {
+        "distinction": null,
+        "edition": null,
+        "verified": false,
+        "sourceUrl": null
+      },
+      "lastVerified": "2026-07-30",
+      "confidence": "high",
+      "sources": [
+        {
+          "type": "official",
+          "url": "https://www.tsurutontan.co.jp/"
+        },
+        {
+          "type": "tabelog",
+          "url": "https://tabelog.com/tokyo/A1307/A130701/13001859/"
+        },
+        {
+          "type": "tabelog",
+          "url": "https://tabelog.com/tokyo/A1307/A130701/13299475/"
+        }
+      ]
+    },
+    {
+      "index": 48,
+      "id": "mensho-tokyo",
+      "canonical": {
+        "name": "MENSHO TOKYO",
+        "nameJa": "麺庄東京",
+        "branch": "Korakuen",
+        "cuisine": "Ramen",
+        "neighborhood": "Korakuen"
+      },
+      "status": "active",
+      "publishable": false,
+      "holdReasons": [
+        "audit_flag:stale_neighborhood",
+        "audit_flag:wrong_cuisine"
+      ],
+      "michelin": {
+        "distinction": null,
+        "edition": null,
+        "verified": false,
+        "sourceUrl": null
+      },
+      "lastVerified": "2026-07-30",
+      "confidence": "high",
+      "sources": [
+        {
+          "type": "official",
+          "url": "https://menya-shono.com/mensho-tokyo/"
+        },
+        {
+          "type": "tabelog",
+          "url": "https://tabelog.com/tokyo/A1310/A131003/13171239/"
+        }
+      ]
+    },
+    {
+      "index": 49,
+      "id": "kanda-matsuya",
+      "canonical": {
+        "name": "Kanda Matsuya Honten",
+        "nameJa": "神田まつや 本店",
+        "branch": "Kanda honten",
+        "cuisine": "Soba",
+        "neighborhood": "Kanda"
+      },
+      "status": "active",
+      "publishable": false,
+      "holdReasons": [
+        "audit_flag:obsolete_michelin_plate"
+      ],
+      "michelin": {
+        "distinction": null,
+        "edition": null,
+        "verified": false,
+        "sourceUrl": null
+      },
+      "lastVerified": "2026-07-30",
+      "confidence": "high",
+      "sources": [
+        {
+          "type": "official",
+          "url": "https://www.kanda-matsuya.jp/"
+        },
+        {
+          "type": "tabelog",
+          "url": "https://tabelog.com/tokyo/A1310/A131002/13000340/"
+        }
+      ]
+    },
+    {
+      "index": 50,
+      "id": "namiki-yabu-soba",
+      "canonical": {
+        "name": "Namiki Yabusoba",
+        "nameJa": "並木藪蕎麦",
+        "branch": "Asakusa",
+        "cuisine": "Soba",
+        "neighborhood": "Asakusa"
+      },
+      "status": "active",
+      "publishable": false,
+      "holdReasons": [
+        "audit_flag:obsolete_michelin_plate"
+      ],
+      "michelin": {
+        "distinction": null,
+        "edition": null,
+        "verified": false,
+        "sourceUrl": null
+      },
+      "lastVerified": "2026-07-30",
+      "confidence": "high",
+      "sources": [
+        {
+          "type": "tabelog",
+          "url": "https://tabelog.com/tokyo/A1311/A131102/13003650/"
+        }
+      ]
+    },
+    {
+      "index": 51,
+      "id": "tamawarai",
+      "canonical": {
+        "name": "Tamawarai",
+        "nameJa": "玉笑",
+        "branch": "Jingumae",
+        "cuisine": "Soba",
+        "neighborhood": "Jingumae"
+      },
+      "status": "active",
+      "publishable": false,
+      "holdReasons": [
+        "audit_flag:michelin_category_updated"
+      ],
+      "michelin": {
+        "distinction": "selected",
+        "edition": 2026,
+        "verified": true,
+        "sourceUrl": "https://guide.michelin.com/ca/en/tokyo-region/tokyo/restaurant/tamawarai"
+      },
+      "lastVerified": "2026-07-30",
+      "confidence": "high",
+      "sources": [
+        {
+          "type": "michelin",
+          "url": "https://guide.michelin.com/ca/en/tokyo-region/tokyo/restaurant/tamawarai"
+        },
+        {
+          "type": "tabelog",
+          "url": "https://tabelog.com/tokyo/A1306/A130601/13129390/"
+        }
+      ]
+    },
+    {
+      "index": 52,
+      "id": "honmura-an",
+      "canonical": {
+        "name": "Honmura An",
+        "nameJa": "本むら庵 荻窪本店",
+        "branch": "Ogikubo honten",
+        "cuisine": "Soba",
+        "neighborhood": "Ogikubo"
+      },
+      "status": "active",
+      "publishable": false,
+      "holdReasons": [
+        "audit_flag:obsolete_michelin_plate",
+        "audit_flag:stale_neighborhood"
+      ],
+      "michelin": {
+        "distinction": null,
+        "edition": null,
+        "verified": false,
+        "sourceUrl": null
+      },
+      "lastVerified": "2026-07-30",
+      "confidence": "high",
+      "sources": [
+        {
+          "type": "official",
+          "url": "https://www.honmura-an.co.jp/"
+        },
+        {
+          "type": "tabelog",
+          "url": "https://tabelog.com/tokyo/A1319/A131906/13001095/"
+        }
+      ]
+    },
+    {
+      "index": 53,
+      "id": "sarashina-horii",
+      "canonical": {
+        "name": "Sarashina Horii Azabu Honten",
+        "nameJa": "総本家 更科堀井 本店",
+        "branch": "Azabu honten",
+        "cuisine": "Soba",
+        "neighborhood": "Azabu-Juban"
+      },
+      "status": "active",
+      "publishable": false,
+      "holdReasons": [
+        "audit_flag:obsolete_michelin_plate"
+      ],
+      "michelin": {
+        "distinction": null,
+        "edition": null,
+        "verified": false,
+        "sourceUrl": null
+      },
+      "lastVerified": "2026-07-30",
+      "confidence": "high",
+      "sources": [
+        {
+          "type": "official",
+          "url": "https://www.sarashina-horii.com/"
+        },
+        {
+          "type": "tabelog",
+          "url": "https://tabelog.com/tokyo/A1307/A130702/13001226/"
+        }
+      ]
+    },
+    {
+      "index": 54,
+      "id": "obana",
+      "canonical": {
+        "name": "Obana",
+        "nameJa": "尾花",
+        "branch": "Minami-Senju",
+        "cuisine": "Unagi",
+        "neighborhood": "Minami-Senju"
+      },
+      "status": "active",
+      "publishable": false,
+      "holdReasons": [
+        "audit_flag:obsolete_michelin_plate",
+        "audit_flag:stale_neighborhood"
+      ],
+      "michelin": {
+        "distinction": null,
+        "edition": null,
+        "verified": false,
+        "sourceUrl": null
+      },
+      "lastVerified": "2026-07-30",
+      "confidence": "high",
+      "sources": [
+        {
+          "type": "tabelog",
+          "url": "https://tabelog.com/tokyo/A1324/A132401/13003509/"
+        }
+      ]
+    },
+    {
+      "index": 55,
+      "id": "nodaiwa",
+      "canonical": {
+        "name": "Nodaiwa Azabu Iikura Honten",
+        "nameJa": "五代目 野田岩 麻布飯倉本店",
+        "branch": "Azabu Iikura honten",
+        "cuisine": "Unagi",
+        "neighborhood": "Higashi-Azabu"
+      },
+      "status": "active",
+      "publishable": false,
+      "holdReasons": [
+        "audit_flag:neighborhood_imprecise"
+      ],
+      "michelin": {
+        "distinction": "one_star",
+        "edition": 2026,
+        "verified": true,
+        "sourceUrl": "https://guide.michelin.com/gb/en/tokyo-region/tokyo/restaurant/nodaiwa-azabu-Iikura-honten-1194124"
+      },
+      "lastVerified": "2026-07-30",
+      "confidence": "high",
+      "sources": [
+        {
+          "type": "official",
+          "url": "https://www.nodaiwa.co.jp/"
+        },
+        {
+          "type": "michelin",
+          "url": "https://guide.michelin.com/gb/en/tokyo-region/tokyo/restaurant/nodaiwa-azabu-Iikura-honten-1194124"
+        },
+        {
+          "type": "tabelog",
+          "url": "https://tabelog.com/tokyo/A1314/A131401/13002789/"
+        },
+        {
+          "type": "other",
+          "url": "https://guide.michelin.com/jp/en/article/michelin-guide-ceremony/nodaiwa-kanemoto-michelin-guide-tokyo-2026-mentor-chef-award"
+        }
+      ]
+    },
+    {
+      "index": 56,
+      "id": "kabuto",
+      "canonical": {
+        "name": "Kabuto",
+        "nameJa": "かぶと",
+        "branch": "Ikebukuro",
+        "cuisine": "Unagi",
+        "neighborhood": "Ikebukuro"
+      },
+      "status": "active",
+      "publishable": false,
+      "holdReasons": [
+        "audit_flag:obsolete_michelin_plate",
+        "audit_flag:stale_neighborhood"
+      ],
+      "michelin": {
+        "distinction": null,
+        "edition": null,
+        "verified": false,
+        "sourceUrl": null
+      },
+      "lastVerified": "2026-07-30",
+      "confidence": "high",
+      "sources": [
+        {
+          "type": "tabelog",
+          "url": "https://tabelog.com/tokyo/A1305/A130501/13016660/"
+        }
+      ]
+    },
+    {
+      "index": 57,
+      "id": "hashimoto-unagi",
+      "canonical": {
+        "name": "Unagi Hashimoto",
+        "nameJa": "うなぎ はし本",
+        "branch": "Suido",
+        "cuisine": "Unagi",
+        "neighborhood": "Edogawabashi"
+      },
+      "status": "active",
+      "publishable": false,
+      "holdReasons": [
+        "audit_flag:stale_neighborhood"
+      ],
+      "michelin": {
+        "distinction": null,
+        "edition": null,
+        "verified": false,
+        "sourceUrl": null
+      },
+      "lastVerified": "2026-07-30",
+      "confidence": "high",
+      "sources": [
+        {
+          "type": "official",
+          "url": "https://www.unahashi.com/"
+        },
+        {
+          "type": "tabelog",
+          "url": "https://tabelog.com/tokyo/A1309/A130905/13018616/"
+        }
+      ]
+    },
+    {
+      "index": 58,
+      "id": "ikenohata-yabu",
+      "canonical": {
+        "name": "Ikenohata Yabu Soba",
+        "nameJa": "池之端藪",
+        "branch": "Ikenohata",
+        "cuisine": "Soba",
+        "neighborhood": "Ueno"
+      },
+      "status": "closed",
+      "publishable": false,
+      "holdReasons": [
+        "audit_flag:closed",
+        "audit_flag:wrong_cuisine",
+        "not_currently_operating"
+      ],
+      "michelin": {
+        "distinction": null,
+        "edition": null,
+        "verified": false,
+        "sourceUrl": null
+      },
+      "lastVerified": "2026-07-30",
+      "confidence": "high",
+      "sources": [
+        {
+          "type": "tabelog",
+          "url": "https://tabelog.com/tokyo/A1311/A131101/13003606/"
+        }
+      ]
+    },
+    {
+      "index": 59,
+      "id": "gonpachi",
+      "canonical": {
+        "name": "Gonpachi Nishi-Azabu",
+        "nameJa": "権八 西麻布",
+        "branch": "Nishi-Azabu",
+        "cuisine": "Izakaya",
+        "neighborhood": "Nishi-Azabu"
+      },
+      "status": "active",
+      "publishable": false,
+      "holdReasons": [
+        "audit_flag:stale_neighborhood"
+      ],
+      "michelin": {
+        "distinction": null,
+        "edition": null,
+        "verified": false,
+        "sourceUrl": null
+      },
+      "lastVerified": "2026-07-30",
+      "confidence": "high",
+      "sources": [
+        {
+          "type": "official",
+          "url": "https://gonpachi.jp/nishi-azabu/"
+        },
+        {
+          "type": "tabelog",
+          "url": "https://tabelog.com/tokyo/A1307/A130701/13005298/"
+        }
+      ]
+    },
+    {
+      "index": 60,
+      "id": "uoharu",
+      "canonical": {
+        "name": null,
+        "nameJa": null,
+        "branch": null,
+        "cuisine": null,
+        "neighborhood": null
+      },
+      "status": "ambiguous",
+      "publishable": false,
+      "holdReasons": [
+        "audit_flag:branch_conflated",
+        "audit_flag:name_conflated",
+        "identity_or_branch_ambiguous",
+        "missing_canonical_cuisine",
+        "missing_canonical_name",
+        "missing_canonical_name_ja",
+        "missing_canonical_neighborhood"
+      ],
+      "michelin": {
+        "distinction": null,
+        "edition": null,
+        "verified": false,
+        "sourceUrl": null
+      },
+      "lastVerified": "2026-07-30",
+      "confidence": "high",
+      "sources": [
+        {
+          "type": "tabelog",
+          "url": "https://tabelog.com/tokyo/A1301/A130102/13176410/"
+        },
+        {
+          "type": "tabelog",
+          "url": "https://tabelog.com/tokyo/A1303/A130302/13056251/"
+        }
+      ]
+    },
+    {
+      "index": 61,
+      "id": "shirube",
+      "canonical": {
+        "name": "Shirube",
+        "nameJa": "汁べゑ 下北沢店",
+        "branch": "Shimokitazawa",
+        "cuisine": "Izakaya",
+        "neighborhood": "Shimokitazawa"
+      },
+      "status": "active",
+      "publishable": true,
+      "holdReasons": [],
+      "michelin": {
+        "distinction": null,
+        "edition": null,
+        "verified": false,
+        "sourceUrl": null
+      },
+      "lastVerified": "2026-07-30",
+      "confidence": "high",
+      "sources": [
+        {
+          "type": "tabelog",
+          "url": "https://tabelog.com/tokyo/A1318/A131802/13001398/"
+        }
+      ]
+    },
+    {
+      "index": 62,
+      "id": "torien",
+      "canonical": {
+        "name": null,
+        "nameJa": null,
+        "branch": null,
+        "cuisine": null,
+        "neighborhood": null
+      },
+      "status": "unverified",
+      "publishable": false,
+      "holdReasons": [
+        "audit_flag:possible_name_error",
+        "audit_flag:unverifiable",
+        "confidence_not_high",
+        "missing_canonical_cuisine",
+        "missing_canonical_name",
+        "missing_canonical_name_ja",
+        "missing_canonical_neighborhood",
+        "status_unverified"
+      ],
+      "michelin": {
+        "distinction": null,
+        "edition": null,
+        "verified": false,
+        "sourceUrl": null
+      },
+      "lastVerified": "2026-07-30",
+      "confidence": "low",
+      "sources": [
+        {
+          "type": "tabelog",
+          "url": "https://tabelog.com/tokyo/A1311/A131101/13295722/"
+        }
+      ]
+    },
+    {
+      "index": 63,
+      "id": "tachinomi-toyo",
+      "canonical": {
+        "name": null,
+        "nameJa": null,
+        "branch": null,
+        "cuisine": null,
+        "neighborhood": null
+      },
+      "status": "unverified",
+      "publishable": false,
+      "holdReasons": [
+        "audit_flag:possible_name_conflation",
+        "audit_flag:unverifiable",
+        "confidence_not_high",
+        "missing_canonical_cuisine",
+        "missing_canonical_name",
+        "missing_canonical_name_ja",
+        "missing_canonical_neighborhood",
+        "status_unverified"
+      ],
+      "michelin": {
+        "distinction": null,
+        "edition": null,
+        "verified": false,
+        "sourceUrl": null
+      },
+      "lastVerified": "2026-07-30",
+      "confidence": "low",
+      "sources": [
+        {
+          "type": "tabelog",
+          "url": "https://tabelog.com/tokyo/A1313/A131301/13244820/"
+        },
+        {
+          "type": "tabelog",
+          "url": "https://tabelog.com/tokyo/A1313/A131301/13282832/"
+        }
+      ]
+    },
+    {
+      "index": 64,
+      "id": "donjaka",
+      "canonical": {
+        "name": null,
+        "nameJa": null,
+        "branch": null,
+        "cuisine": null,
+        "neighborhood": null
+      },
+      "status": "unverified",
+      "publishable": false,
+      "holdReasons": [
+        "audit_flag:possible_name_error",
+        "audit_flag:unverifiable",
+        "confidence_not_high",
+        "missing_canonical_cuisine",
+        "missing_canonical_name",
+        "missing_canonical_name_ja",
+        "missing_canonical_neighborhood",
+        "missing_direct_source",
+        "status_unverified"
+      ],
+      "michelin": {
+        "distinction": null,
+        "edition": null,
+        "verified": false,
+        "sourceUrl": null
+      },
+      "lastVerified": "2026-07-30",
+      "confidence": "low",
+      "sources": []
+    },
+    {
+      "index": 65,
+      "id": "toraji-shinjuku",
+      "canonical": {
+        "name": null,
+        "nameJa": null,
+        "branch": null,
+        "cuisine": null,
+        "neighborhood": "Shinjuku"
+      },
+      "status": "ambiguous",
+      "publishable": false,
+      "holdReasons": [
+        "audit_flag:branch_ambiguous",
+        "audit_flag:brand_conflated",
+        "audit_flag:wrong_cuisine",
+        "identity_or_branch_ambiguous",
+        "missing_canonical_cuisine",
+        "missing_canonical_name",
+        "missing_canonical_name_ja"
+      ],
+      "michelin": {
+        "distinction": null,
+        "edition": null,
+        "verified": false,
+        "sourceUrl": null
+      },
+      "lastVerified": "2026-07-30",
+      "confidence": "high",
+      "sources": [
+        {
+          "type": "official",
+          "url": "https://www.ebisu-toraji.com/"
+        },
+        {
+          "type": "official",
+          "url": "https://www.jojoen.co.jp/"
+        },
+        {
+          "type": "tabelog",
+          "url": "https://tabelog.com/tokyo/A1304/A130401/13010854/"
+        },
+        {
+          "type": "tabelog",
+          "url": "https://tabelog.com/tokyo/A1304/A130401/13038788/"
+        }
+      ]
+    },
+    {
+      "index": 66,
+      "id": "omoide-yokocho",
+      "canonical": {
+        "name": "Shinjuku Omoide Yokocho",
+        "nameJa": "思い出横丁",
+        "branch": null,
+        "cuisine": "Izakaya",
+        "neighborhood": "Shinjuku"
+      },
+      "status": "non_restaurant",
+      "publishable": false,
+      "holdReasons": [
+        "audit_flag:multi_venue_district",
+        "audit_flag:not_a_restaurant",
+        "not_a_restaurant"
+      ],
+      "michelin": {
+        "distinction": null,
+        "edition": null,
+        "verified": false,
+        "sourceUrl": null
+      },
+      "lastVerified": "2026-07-30",
+      "confidence": "high",
+      "sources": [
+        {
+          "type": "official",
+          "url": "https://shinjuku-omoide.com/"
+        }
+      ]
+    },
+    {
+      "index": 67,
+      "id": "aragawa",
+      "canonical": {
+        "name": "Aragawa",
+        "nameJa": "麤皮",
+        "branch": "Nishi-Shimbashi",
+        "cuisine": "Steak",
+        "neighborhood": "Onarimon"
+      },
+      "status": "active",
+      "publishable": false,
+      "holdReasons": [
+        "audit_flag:stale_michelin",
+        "audit_flag:stale_neighborhood",
+        "audit_flag:wrong_cuisine",
+        "audit_flag:wrong_japanese_name"
+      ],
+      "michelin": {
+        "distinction": null,
+        "edition": null,
+        "verified": false,
+        "sourceUrl": null
+      },
+      "lastVerified": "2026-07-30",
+      "confidence": "high",
+      "sources": [
+        {
+          "type": "official",
+          "url": "https://aragawa.jp/"
+        },
+        {
+          "type": "tabelog",
+          "url": "https://tabelog.com/tokyo/A1314/A131401/13002897/"
+        }
+      ]
+    },
+    {
+      "index": 68,
+      "id": "ukai-tei",
+      "canonical": {
+        "name": "Ginza Ukai-tei",
+        "nameJa": "銀座うかい亭",
+        "branch": "Ginza",
+        "cuisine": "Teppanyaki",
+        "neighborhood": "Ginza"
+      },
+      "status": "active",
+      "publishable": false,
+      "holdReasons": [
+        "audit_flag:stale_michelin",
+        "confidence_not_high"
+      ],
+      "michelin": {
+        "distinction": null,
+        "edition": null,
+        "verified": false,
+        "sourceUrl": null
+      },
+      "lastVerified": "2026-07-30",
+      "confidence": "moderate",
+      "sources": [
+        {
+          "type": "official",
+          "url": "https://www.ukai.co.jp/ginza/"
+        },
+        {
+          "type": "tabelog",
+          "url": "https://tabelog.com/tokyo/A1301/A130101/13002367/"
+        }
+      ]
+    },
+    {
+      "index": 69,
+      "id": "seryna-ginza",
+      "canonical": {
+        "name": "Ginza Seryna",
+        "nameJa": "銀座 瀬里奈",
+        "branch": "Ginza",
+        "cuisine": "Japanese",
+        "neighborhood": "Ginza"
+      },
+      "status": "active",
+      "publishable": false,
+      "holdReasons": [
+        "audit_flag:cuisine_too_narrow",
+        "audit_flag:obsolete_michelin_plate"
+      ],
+      "michelin": {
+        "distinction": null,
+        "edition": null,
+        "verified": false,
+        "sourceUrl": null
+      },
+      "lastVerified": "2026-07-30",
+      "confidence": "high",
+      "sources": [
+        {
+          "type": "official",
+          "url": "https://www.seryna.co.jp/seryna/ginza/"
+        },
+        {
+          "type": "tabelog",
+          "url": "https://tabelog.com/tokyo/A1301/A130101/13013317/"
+        }
+      ]
+    },
+    {
+      "index": 70,
+      "id": "satou-kichijoji",
+      "canonical": {
+        "name": "Kichijoji Satou",
+        "nameJa": "吉祥寺さとう",
+        "branch": "Kichijoji",
+        "cuisine": "Retail",
+        "neighborhood": "Kichijoji"
+      },
+      "status": "non_restaurant",
+      "publishable": false,
+      "holdReasons": [
+        "audit_flag:not_a_dine_in_restaurant",
+        "audit_flag:wrong_venue_type",
+        "not_a_restaurant"
+      ],
+      "michelin": {
+        "distinction": null,
+        "edition": null,
+        "verified": false,
+        "sourceUrl": null
+      },
+      "lastVerified": "2026-07-30",
+      "confidence": "high",
+      "sources": [
+        {
+          "type": "official",
+          "url": "https://www.shop-satou.com/"
+        },
+        {
+          "type": "tabelog",
+          "url": "https://tabelog.com/tokyo/A1320/A132001/13005807/"
+        }
+      ]
+    },
+    {
+      "index": 71,
+      "id": "gyukatsu-motomura",
+      "canonical": {
+        "name": "Gyukatsu Motomura Shibuya",
+        "nameJa": "牛かつもと村",
+        "branch": null,
+        "cuisine": "Gyukatsu",
+        "neighborhood": "Shibuya"
+      },
+      "status": "ambiguous",
+      "publishable": false,
+      "holdReasons": [
+        "audit_flag:branch_ambiguous",
+        "audit_flag:cuisine_imprecise",
+        "identity_or_branch_ambiguous"
+      ],
+      "michelin": {
+        "distinction": null,
+        "edition": null,
+        "verified": false,
+        "sourceUrl": null
+      },
+      "lastVerified": "2026-07-30",
+      "confidence": "high",
+      "sources": [
+        {
+          "type": "official",
+          "url": "https://www.gyukatsu-motomura.com/"
+        },
+        {
+          "type": "tabelog",
+          "url": "https://tabelog.com/tokyo/A1303/A130301/13153853/"
+        },
+        {
+          "type": "tabelog",
+          "url": "https://tabelog.com/tokyo/A1303/A130301/13183447/"
+        },
+        {
+          "type": "tabelog",
+          "url": "https://tabelog.com/tokyo/A1303/A130301/13202094/"
+        },
+        {
+          "type": "tabelog",
+          "url": "https://tabelog.com/tokyo/A1303/A130301/13317441/"
+        }
+      ]
+    },
+    {
+      "index": 72,
+      "id": "yoroniku",
+      "canonical": {
+        "name": "Yoroniku",
+        "nameJa": "よろにく",
+        "branch": "Minami-Aoyama",
+        "cuisine": "Yakiniku",
+        "neighborhood": "Minami-Aoyama"
+      },
+      "status": "active",
+      "publishable": false,
+      "holdReasons": [
+        "audit_flag:cuisine_imprecise",
+        "audit_flag:stale_michelin"
+      ],
+      "michelin": {
+        "distinction": null,
+        "edition": null,
+        "verified": false,
+        "sourceUrl": null
+      },
+      "lastVerified": "2026-07-30",
+      "confidence": "high",
+      "sources": [
+        {
+          "type": "official",
+          "url": "https://yoroniku.jp/"
+        },
+        {
+          "type": "tabelog",
+          "url": "https://tabelog.com/tokyo/A1306/A130602/13042979/"
+        }
+      ]
+    },
+    {
+      "index": 73,
+      "id": "jumbo-steak-han",
+      "canonical": {
+        "name": null,
+        "nameJa": null,
+        "branch": null,
+        "cuisine": null,
+        "neighborhood": null
+      },
+      "status": "unverified",
+      "publishable": false,
+      "holdReasons": [
+        "audit_flag:possible_brand_conflation",
+        "audit_flag:possible_fabrication",
+        "audit_flag:unverifiable",
+        "confidence_not_high",
+        "missing_canonical_cuisine",
+        "missing_canonical_name",
+        "missing_canonical_name_ja",
+        "missing_canonical_neighborhood",
+        "status_unverified"
+      ],
+      "michelin": {
+        "distinction": null,
+        "edition": null,
+        "verified": false,
+        "sourceUrl": null
+      },
+      "lastVerified": "2026-07-30",
+      "confidence": "low",
+      "sources": [
+        {
+          "type": "official",
+          "url": "https://hans-steak.com/"
+        },
+        {
+          "type": "tabelog",
+          "url": "https://tabelog.com/tokyo/A1310/A131002/13049711/"
+        }
+      ]
+    },
+    {
+      "index": 74,
+      "id": "ethiop",
+      "canonical": {
+        "name": "Curry Rice Ethiopia Honten",
+        "nameJa": "カリーライス専門店エチオピア 本店",
+        "branch": "Jimbocho honten",
+        "cuisine": "Curry",
+        "neighborhood": "Jimbocho"
+      },
+      "status": "active",
+      "publishable": true,
+      "holdReasons": [],
+      "michelin": {
+        "distinction": null,
+        "edition": null,
+        "verified": false,
+        "sourceUrl": null
+      },
+      "lastVerified": "2026-07-30",
+      "confidence": "high",
+      "sources": [
+        {
+          "type": "official",
+          "url": "https://www.ethiopia-curry.com/"
+        },
+        {
+          "type": "tabelog",
+          "url": "https://tabelog.com/tokyo/A1310/A131003/13000638/"
+        }
+      ]
+    },
+    {
+      "index": 75,
+      "id": "coco-ichibanya",
+      "canonical": {
+        "name": "CoCo Ichibanya Shibuya",
+        "nameJa": "ココイチ",
+        "branch": null,
+        "cuisine": "Curry",
+        "neighborhood": "Shibuya"
+      },
+      "status": "ambiguous",
+      "publishable": false,
+      "holdReasons": [
+        "audit_flag:branch_ambiguous",
+        "confidence_not_high",
+        "identity_or_branch_ambiguous"
+      ],
+      "michelin": {
+        "distinction": null,
+        "edition": null,
+        "verified": false,
+        "sourceUrl": null
+      },
+      "lastVerified": "2026-07-30",
+      "confidence": "moderate",
+      "sources": [
+        {
+          "type": "official",
+          "url": "https://www.ichibanya.co.jp/"
+        },
+        {
+          "type": "tabelog",
+          "url": "https://tabelog.com/tokyo/A1303/A130301/13085313/"
+        }
+      ]
+    },
+    {
+      "index": 76,
+      "id": "moyan-curry",
+      "canonical": {
+        "name": "Mouyan Curry Shinjuku",
+        "nameJa": "もうやんカレー",
+        "branch": null,
+        "cuisine": "Curry",
+        "neighborhood": "Shinjuku"
+      },
+      "status": "ambiguous",
+      "publishable": false,
+      "holdReasons": [
+        "audit_flag:branch_ambiguous",
+        "identity_or_branch_ambiguous"
+      ],
+      "michelin": {
+        "distinction": null,
+        "edition": null,
+        "verified": false,
+        "sourceUrl": null
+      },
+      "lastVerified": "2026-07-30",
+      "confidence": "high",
+      "sources": [
+        {
+          "type": "official",
+          "url": "https://www.moyan.jp/"
+        },
+        {
+          "type": "tabelog",
+          "url": "https://tabelog.com/tokyo/A1304/A130401/13001046/"
+        },
+        {
+          "type": "tabelog",
+          "url": "https://tabelog.com/tokyo/A1304/A130401/13004209/"
+        },
+        {
+          "type": "tabelog",
+          "url": "https://tabelog.com/tokyo/A1304/A130401/13194702/"
+        }
+      ]
+    },
+    {
+      "index": 77,
+      "id": "bondy",
+      "canonical": {
+        "name": "Bondy Jimbocho Honten",
+        "nameJa": "欧風カレー ボンディ 神保町本店",
+        "branch": "Jimbocho honten",
+        "cuisine": "Curry",
+        "neighborhood": "Jimbocho"
+      },
+      "status": "active",
+      "publishable": true,
+      "holdReasons": [],
+      "michelin": {
+        "distinction": null,
+        "edition": null,
+        "verified": false,
+        "sourceUrl": null
+      },
+      "lastVerified": "2026-07-30",
+      "confidence": "high",
+      "sources": [
+        {
+          "type": "official",
+          "url": "https://bondy.co.jp/"
+        },
+        {
+          "type": "tabelog",
+          "url": "https://tabelog.com/tokyo/A1310/A131003/13000439/"
+        }
+      ]
+    },
+    {
+      "index": 78,
+      "id": "delhi",
+      "canonical": {
+        "name": "Delhi Ueno",
+        "nameJa": "デリー 上野店",
+        "branch": "Ueno",
+        "cuisine": "Curry",
+        "neighborhood": "Ueno"
+      },
+      "status": "active",
+      "publishable": true,
+      "holdReasons": [],
+      "michelin": {
+        "distinction": null,
+        "edition": null,
+        "verified": false,
+        "sourceUrl": null
+      },
+      "lastVerified": "2026-07-30",
+      "confidence": "high",
+      "sources": [
+        {
+          "type": "official",
+          "url": "https://www.delhi.co.jp/"
+        },
+        {
+          "type": "tabelog",
+          "url": "https://tabelog.com/tokyo/A1311/A131101/13003605/"
+        }
+      ]
+    },
+    {
+      "index": 79,
+      "id": "sometaro",
+      "canonical": {
+        "name": "Sometaro",
+        "nameJa": "風流お好み焼 染太郎",
+        "branch": "Nishi-Asakusa",
+        "cuisine": "Okonomiyaki",
+        "neighborhood": "Nishi-Asakusa"
+      },
+      "status": "active",
+      "publishable": true,
+      "holdReasons": [],
+      "michelin": {
+        "distinction": null,
+        "edition": null,
+        "verified": false,
+        "sourceUrl": null
+      },
+      "lastVerified": "2026-07-30",
+      "confidence": "high",
+      "sources": [
+        {
+          "type": "official",
+          "url": "https://www.sometaro.com/"
+        },
+        {
+          "type": "tabelog",
+          "url": "https://tabelog.com/tokyo/A1311/A131102/13003710/"
+        }
+      ]
+    },
+    {
+      "index": 80,
+      "id": "sakuratei",
+      "canonical": {
+        "name": "Sakura-tei",
+        "nameJa": "さくら亭",
+        "branch": "Harajuku",
+        "cuisine": "Okonomiyaki",
+        "neighborhood": "Harajuku"
+      },
+      "status": "active",
+      "publishable": true,
+      "holdReasons": [],
+      "michelin": {
+        "distinction": null,
+        "edition": null,
+        "verified": false,
+        "sourceUrl": null
+      },
+      "lastVerified": "2026-07-30",
+      "confidence": "high",
+      "sources": [
+        {
+          "type": "official",
+          "url": "https://www.sakuratei.co.jp/"
+        },
+        {
+          "type": "tabelog",
+          "url": "https://tabelog.com/tokyo/A1306/A130601/13007421/"
+        }
+      ]
+    },
+    {
+      "index": 81,
+      "id": "kiji-tokyo",
+      "canonical": {
+        "name": "Kiji Marunouchi",
+        "nameJa": "お好み焼 きじ 丸の内店",
+        "branch": "TOKIA Marunouchi",
+        "cuisine": "Okonomiyaki",
+        "neighborhood": "Marunouchi"
+      },
+      "status": "active",
+      "publishable": false,
+      "holdReasons": [
+        "audit_flag:neighborhood_imprecise"
+      ],
+      "michelin": {
+        "distinction": null,
+        "edition": null,
+        "verified": false,
+        "sourceUrl": null
+      },
+      "lastVerified": "2026-07-30",
+      "confidence": "high",
+      "sources": [
+        {
+          "type": "tabelog",
+          "url": "https://tabelog.com/tokyo/A1302/A130201/13020110/"
+        }
+      ]
+    },
+    {
+      "index": 82,
+      "id": "tsukishima-monja",
+      "canonical": {
+        "name": "Tsukishima Monja Moheji Honten",
+        "nameJa": "もへじ",
+        "branch": "Tsukishima Monja Moheji Honten",
+        "cuisine": "Okonomiyaki",
+        "neighborhood": "Tsukishima"
+      },
+      "status": "active",
+      "publishable": false,
+      "holdReasons": [
+        "audit_flag:branch_ambiguous",
+        "audit_flag:neighborhood_mismatch",
+        "confidence_not_high"
+      ],
+      "michelin": {
+        "distinction": null,
+        "edition": null,
+        "verified": false,
+        "sourceUrl": null
+      },
+      "lastVerified": "2026-07-30",
+      "confidence": "moderate",
+      "sources": [
+        {
+          "type": "tabelog",
+          "url": "https://tabelog.com/tokyo/A1313/A131302/13178986/"
+        }
+      ]
+    },
+    {
+      "index": 83,
+      "id": "okonomiyaki-kizi",
+      "canonical": {
+        "name": null,
+        "nameJa": null,
+        "branch": null,
+        "cuisine": null,
+        "neighborhood": null
+      },
+      "status": "unverified",
+      "publishable": false,
+      "holdReasons": [
+        "audit_flag:branch_unverifiable",
+        "audit_flag:possible_chain_conflation",
+        "confidence_not_high",
+        "missing_canonical_cuisine",
+        "missing_canonical_name",
+        "missing_canonical_name_ja",
+        "missing_canonical_neighborhood",
+        "missing_direct_source",
+        "status_unverified"
+      ],
+      "michelin": {
+        "distinction": null,
+        "edition": null,
+        "verified": false,
+        "sourceUrl": null
+      },
+      "lastVerified": "2026-07-30",
+      "confidence": "unknown",
+      "sources": []
+    },
+    {
+      "index": 84,
+      "id": "kitchen-nankai",
+      "canonical": {
+        "name": "Kitchen Nankai Jimbocho",
+        "nameJa": "キッチン南海 神保町店",
+        "branch": "Kitchen Nankai Jimbocho",
+        "cuisine": "Yoshoku",
+        "neighborhood": "Jimbocho"
+      },
+      "status": "active",
+      "publishable": false,
+      "holdReasons": [
+        "audit_flag:original_branch_closed",
+        "audit_flag:successor_identity"
+      ],
+      "michelin": {
+        "distinction": null,
+        "edition": null,
+        "verified": false,
+        "sourceUrl": null
+      },
+      "lastVerified": "2026-07-30",
+      "confidence": "high",
+      "sources": [
+        {
+          "type": "tabelog",
+          "url": "https://tabelog.com/tokyo/A1310/A131003/13000612/"
+        },
+        {
+          "type": "tabelog",
+          "url": "https://tabelog.com/tokyo/A1310/A131003/13249021/"
+        }
+      ]
+    },
+    {
+      "index": 85,
+      "id": "taimeiken",
+      "canonical": {
+        "name": "Nihonbashi Taimeiken",
+        "nameJa": "日本橋たいめいけん",
+        "branch": "Nihonbashi Taimeiken",
+        "cuisine": "Yoshoku",
+        "neighborhood": "Nihonbashi-Muromachi"
+      },
+      "status": "active",
+      "publishable": false,
+      "holdReasons": [
+        "audit_flag:moved"
+      ],
+      "michelin": {
+        "distinction": null,
+        "edition": null,
+        "verified": false,
+        "sourceUrl": null
+      },
+      "lastVerified": "2026-07-30",
+      "confidence": "high",
+      "sources": [
+        {
+          "type": "tabelog",
+          "url": "https://tabelog.com/tokyo/A1302/A130202/13000488/"
+        },
+        {
+          "type": "tabelog",
+          "url": "https://tabelog.com/tokyo/A1302/A130202/13252161/"
+        }
+      ]
+    },
+    {
+      "index": 86,
+      "id": "rengatei",
+      "canonical": {
+        "name": "Rengatei",
+        "nameJa": "煉瓦亭",
+        "branch": "Rengatei",
+        "cuisine": "Yoshoku",
+        "neighborhood": "Ginza"
+      },
+      "status": "active",
+      "publishable": true,
+      "holdReasons": [],
+      "michelin": {
+        "distinction": null,
+        "edition": null,
+        "verified": false,
+        "sourceUrl": null
+      },
+      "lastVerified": "2026-07-30",
+      "confidence": "high",
+      "sources": [
+        {
+          "type": "tabelog",
+          "url": "https://tabelog.com/tokyo/A1301/A130101/13002430/"
+        }
+      ]
+    },
+    {
+      "index": 87,
+      "id": "yoshikami",
+      "canonical": {
+        "name": "Yoshikami",
+        "nameJa": "ヨシカミ",
+        "branch": "Yoshikami",
+        "cuisine": "Yoshoku",
+        "neighborhood": "Asakusa"
+      },
+      "status": "active",
+      "publishable": true,
+      "holdReasons": [],
+      "michelin": {
+        "distinction": null,
+        "edition": null,
+        "verified": false,
+        "sourceUrl": null
+      },
+      "lastVerified": "2026-07-30",
+      "confidence": "high",
+      "sources": [
+        {
+          "type": "official",
+          "url": "http://www.yoshikami.co.jp"
+        },
+        {
+          "type": "tabelog",
+          "url": "https://tabelog.com/tokyo/A1311/A131102/13003654/"
+        }
+      ]
+    },
+    {
+      "index": 88,
+      "id": "grill-grand",
+      "canonical": {
+        "name": "Grill Grand",
+        "nameJa": "グリルグランド",
+        "branch": "Grill Grand",
+        "cuisine": "Yoshoku",
+        "neighborhood": "Asakusa"
+      },
+      "status": "active",
+      "publishable": true,
+      "holdReasons": [],
+      "michelin": {
+        "distinction": null,
+        "edition": null,
+        "verified": false,
+        "sourceUrl": null
+      },
+      "lastVerified": "2026-07-30",
+      "confidence": "high",
+      "sources": [
+        {
+          "type": "tabelog",
+          "url": "https://tabelog.com/tokyo/A1311/A131102/13008702/"
+        }
+      ]
+    },
+    {
+      "index": 89,
+      "id": "joel-robuchon",
+      "canonical": {
+        "name": "Gastronomie Joël Robuchon",
+        "nameJa": "ガストロノミー ジョエル・ロブション",
+        "branch": "Gastronomie Joël Robuchon",
+        "cuisine": "French",
+        "neighborhood": "Ebisu / Mita"
+      },
+      "status": "active",
+      "publishable": true,
+      "holdReasons": [],
+      "michelin": {
+        "distinction": "three_stars",
+        "edition": 2026,
+        "verified": true,
+        "sourceUrl": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/joel-robuchon-1193981"
+      },
+      "lastVerified": "2026-07-30",
+      "confidence": "high",
+      "sources": [
+        {
+          "type": "michelin",
+          "url": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/joel-robuchon-1193981"
+        },
+        {
+          "type": "tabelog",
+          "url": "https://tabelog.com/tokyo/A1303/A130302/13009310/"
+        }
+      ]
+    },
+    {
+      "index": 90,
+      "id": "leffervescence",
+      "canonical": {
+        "name": "L'Effervescence",
+        "nameJa": "レフェルヴェソンス",
+        "branch": "L'Effervescence",
+        "cuisine": "French",
+        "neighborhood": "Nishi-Azabu"
+      },
+      "status": "active",
+      "publishable": false,
+      "holdReasons": [
+        "audit_flag:michelin_stale"
+      ],
+      "michelin": {
+        "distinction": "three_stars",
+        "edition": 2026,
+        "verified": true,
+        "sourceUrl": "https://guide.michelin.com/jp/en/tokyo-region/tokyo/restaurant/l-effervescence"
+      },
+      "lastVerified": "2026-07-30",
+      "confidence": "high",
+      "sources": [
+        {
+          "type": "michelin",
+          "url": "https://guide.michelin.com/jp/en/tokyo-region/tokyo/restaurant/l-effervescence"
+        },
+        {
+          "type": "tabelog",
+          "url": "https://tabelog.com/tokyo/A1306/A130602/13116356/"
+        }
+      ]
+    },
+    {
+      "index": 91,
+      "id": "florilege",
+      "canonical": {
+        "name": "Florilège",
+        "nameJa": "フロリレージュ",
+        "branch": "Florilège",
+        "cuisine": "French",
+        "neighborhood": "Azabudai / Toranomon"
+      },
+      "status": "active",
+      "publishable": false,
+      "holdReasons": [
+        "audit_flag:moved",
+        "audit_flag:neighborhood_mismatch"
+      ],
+      "michelin": {
+        "distinction": "two_stars",
+        "edition": 2026,
+        "verified": true,
+        "sourceUrl": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/florilege"
+      },
+      "lastVerified": "2026-07-30",
+      "confidence": "high",
+      "sources": [
+        {
+          "type": "official",
+          "url": "https://www.aoyama-florilege.jp/"
+        },
+        {
+          "type": "michelin",
+          "url": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/florilege"
+        }
+      ]
+    },
+    {
+      "index": 92,
+      "id": "narisawa",
+      "canonical": {
+        "name": "NARISAWA",
+        "nameJa": "ナリサワ",
+        "branch": "NARISAWA",
+        "cuisine": "French",
+        "neighborhood": "Minami-Aoyama"
+      },
+      "status": "active",
+      "publishable": true,
+      "holdReasons": [],
+      "michelin": {
+        "distinction": "two_stars",
+        "edition": 2026,
+        "verified": true,
+        "sourceUrl": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/narisawa"
+      },
+      "lastVerified": "2026-07-30",
+      "confidence": "high",
+      "sources": [
+        {
+          "type": "michelin",
+          "url": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/narisawa"
+        }
+      ]
+    },
+    {
+      "index": 93,
+      "id": "quintessence",
+      "canonical": {
+        "name": "Quintessence",
+        "nameJa": "カンテサンス",
+        "branch": "Quintessence",
+        "cuisine": "French",
+        "neighborhood": "Kita-Shinagawa"
+      },
+      "status": "active",
+      "publishable": true,
+      "holdReasons": [],
+      "michelin": {
+        "distinction": "three_stars",
+        "edition": 2026,
+        "verified": true,
+        "sourceUrl": "https://guide.michelin.com/jp/en/tokyo-region/tokyo/restaurant/quintessence-1193907"
+      },
+      "lastVerified": "2026-07-30",
+      "confidence": "high",
+      "sources": [
+        {
+          "type": "michelin",
+          "url": "https://guide.michelin.com/jp/en/tokyo-region/tokyo/restaurant/quintessence-1193907"
+        },
+        {
+          "type": "tabelog",
+          "url": "https://tabelog.com/tokyo/A1314/A131405/13159567/"
+        }
+      ]
+    },
+    {
+      "index": 94,
+      "id": "crony",
+      "canonical": {
+        "name": "Crony",
+        "nameJa": "クロニー",
+        "branch": "Crony",
+        "cuisine": "French",
+        "neighborhood": "Higashi-Azabu / Akabanebashi"
+      },
+      "status": "active",
+      "publishable": false,
+      "holdReasons": [
+        "audit_flag:michelin_false",
+        "audit_flag:moved",
+        "audit_flag:neighborhood_mismatch"
+      ],
+      "michelin": {
+        "distinction": "two_stars",
+        "edition": 2026,
+        "verified": true,
+        "sourceUrl": "https://guide.michelin.com/en/tokyo-region/tokyo/restaurant/crony-1194937"
+      },
+      "lastVerified": "2026-07-30",
+      "confidence": "high",
+      "sources": [
+        {
+          "type": "michelin",
+          "url": "https://guide.michelin.com/en/tokyo-region/tokyo/restaurant/crony-1194937"
+        },
+        {
+          "type": "tabelog",
+          "url": "https://tabelog.com/tokyo/A1314/A131401/13256097/"
+        }
+      ]
+    },
+    {
+      "index": 95,
+      "id": "pellegrino",
+      "canonical": {
+        "name": "Pellegrino",
+        "nameJa": "ペレグリーノ",
+        "branch": "Pellegrino",
+        "cuisine": "Italian",
+        "neighborhood": "Ebisu / Hiroo"
+      },
+      "status": "active",
+      "publishable": false,
+      "holdReasons": [
+        "audit_flag:michelin_stale_unverified",
+        "audit_flag:neighborhood_mismatch",
+        "confidence_not_high"
+      ],
+      "michelin": {
+        "distinction": null,
+        "edition": null,
+        "verified": false,
+        "sourceUrl": null
+      },
+      "lastVerified": "2026-07-30",
+      "confidence": "moderate",
+      "sources": [
+        {
+          "type": "tabelog",
+          "url": "https://tabelog.com/tokyo/A1303/A130302/13072775/"
+        }
+      ]
+    },
+    {
+      "index": 96,
+      "id": "seirinkan",
+      "canonical": {
+        "name": "Seirinkan",
+        "nameJa": "聖林館",
+        "branch": "Seirinkan",
+        "cuisine": "Italian",
+        "neighborhood": "Nakameguro"
+      },
+      "status": "active",
+      "publishable": false,
+      "holdReasons": [
+        "audit_flag:michelin_stale_unverified",
+        "confidence_not_high"
+      ],
+      "michelin": {
+        "distinction": null,
+        "edition": null,
+        "verified": false,
+        "sourceUrl": null
+      },
+      "lastVerified": "2026-07-30",
+      "confidence": "moderate",
+      "sources": [
+        {
+          "type": "tabelog",
+          "url": "https://tabelog.com/tokyo/A1317/A131701/13003188/"
+        }
+      ]
+    },
+    {
+      "index": 97,
+      "id": "trattoria-tsukiji-paradiso",
+      "canonical": {
+        "name": "Trattoria Tsukiji Paradiso",
+        "nameJa": "トラットリア築地パラディーゾ",
+        "branch": "Trattoria Tsukiji Paradiso",
+        "cuisine": "Italian",
+        "neighborhood": "Tsukiji"
+      },
+      "status": "active",
+      "publishable": false,
+      "holdReasons": [
+        "audit_flag:obsolete_plate_taxonomy"
+      ],
+      "michelin": {
+        "distinction": null,
+        "edition": null,
+        "verified": false,
+        "sourceUrl": null
+      },
+      "lastVerified": "2026-07-30",
+      "confidence": "high",
+      "sources": [
+        {
+          "type": "tabelog",
+          "url": "https://tabelog.com/tokyo/A1313/A131301/13132422/"
+        }
+      ]
+    },
+    {
+      "index": 98,
+      "id": "savoy-pizza",
+      "canonical": {
+        "name": "SAVOY classic",
+        "nameJa": "サヴォイ",
+        "branch": "SAVOY classic",
+        "cuisine": "Italian",
+        "neighborhood": "Azabu-Juban"
+      },
+      "status": "active",
+      "publishable": false,
+      "holdReasons": [
+        "audit_flag:branch_ambiguous",
+        "audit_flag:michelin_stale_unverified",
+        "audit_flag:moved",
+        "confidence_not_high"
+      ],
+      "michelin": {
+        "distinction": null,
+        "edition": null,
+        "verified": false,
+        "sourceUrl": null
+      },
+      "lastVerified": "2026-07-30",
+      "confidence": "moderate",
+      "sources": [
+        {
+          "type": "official",
+          "url": "https://savoy-pizza.com/hanare"
+        },
+        {
+          "type": "tabelog",
+          "url": "https://tabelog.com/tokyo/A1307/A130702/13036875/"
+        },
+        {
+          "type": "tabelog",
+          "url": "https://tabelog.com/tokyo/A1307/A130702/13321715/"
+        }
+      ]
+    },
+    {
+      "index": 99,
+      "id": "heinz-beck",
+      "canonical": {
+        "name": "Heinz Beck Tokyo",
+        "nameJa": "ハインツベック",
+        "branch": "Heinz Beck Tokyo",
+        "cuisine": "Italian",
+        "neighborhood": "Otemachi / Marunouchi"
+      },
+      "status": "closed",
+      "publishable": false,
+      "holdReasons": [
+        "audit_flag:closed",
+        "audit_flag:neighborhood_mismatch",
+        "audit_flag:obsolete_plate_taxonomy",
+        "not_currently_operating"
+      ],
+      "michelin": {
+        "distinction": null,
+        "edition": null,
+        "verified": false,
+        "sourceUrl": null
+      },
+      "lastVerified": "2026-07-30",
+      "confidence": "high",
+      "sources": [
+        {
+          "type": "tabelog",
+          "url": "https://tabelog.com/tokyo/A1302/A130201/13173596/"
+        }
+      ]
+    },
+    {
+      "index": 100,
+      "id": "china-fureika",
+      "canonical": {
+        "name": "Chugoku Hanten Fureika",
+        "nameJa": "中国飯店 富麗華",
+        "branch": "Chugoku Hanten Fureika",
+        "cuisine": "Chinese",
+        "neighborhood": "Higashi-Azabu / Azabu-Juban"
+      },
+      "status": "active",
+      "publishable": false,
+      "holdReasons": [
+        "audit_flag:michelin_stale"
+      ],
+      "michelin": {
+        "distinction": "selected",
+        "edition": 2026,
+        "verified": true,
+        "sourceUrl": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/chugoku-hanten-fureika"
+      },
+      "lastVerified": "2026-07-30",
+      "confidence": "high",
+      "sources": [
+        {
+          "type": "michelin",
+          "url": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/chugoku-hanten-fureika"
+        },
+        {
+          "type": "tabelog",
+          "url": "https://tabelog.com/tokyo/A1307/A130702/13004967/"
+        }
+      ]
+    },
+    {
+      "index": 101,
+      "id": "jasmine-thai",
+      "canonical": {
+        "name": "Jasmine Thai Yotsuya",
+        "nameJa": "ジャスミンタイ 四谷店",
+        "branch": "Jasmine Thai Yotsuya",
+        "cuisine": "Thai",
+        "neighborhood": "Yotsuya"
+      },
+      "status": "active",
+      "publishable": false,
+      "holdReasons": [
+        "audit_flag:branch_ambiguous",
+        "audit_flag:neighborhood_mismatch",
+        "confidence_not_high"
+      ],
+      "michelin": {
+        "distinction": null,
+        "edition": null,
+        "verified": false,
+        "sourceUrl": null
+      },
+      "lastVerified": "2026-07-30",
+      "confidence": "moderate",
+      "sources": [
+        {
+          "type": "tabelog",
+          "url": "https://tabelog.com/tokyo/A1309/A130902/13044257/"
+        }
+      ]
+    },
+    {
+      "index": 102,
+      "id": "sanki",
+      "canonical": {
+        "name": null,
+        "nameJa": null,
+        "branch": null,
+        "cuisine": null,
+        "neighborhood": null
+      },
+      "status": "unverified",
+      "publishable": false,
+      "holdReasons": [
+        "audit_flag:branch_unverifiable",
+        "audit_flag:possible_fabrication",
+        "confidence_not_high",
+        "missing_canonical_cuisine",
+        "missing_canonical_name",
+        "missing_canonical_name_ja",
+        "missing_canonical_neighborhood",
+        "missing_direct_source",
+        "status_unverified"
+      ],
+      "michelin": {
+        "distinction": null,
+        "edition": null,
+        "verified": false,
+        "sourceUrl": null
+      },
+      "lastVerified": "2026-07-30",
+      "confidence": "unknown",
+      "sources": []
+    },
+    {
+      "index": 103,
+      "id": "rai-rai-ken",
+      "canonical": {
+        "name": null,
+        "nameJa": null,
+        "branch": null,
+        "cuisine": null,
+        "neighborhood": null
+      },
+      "status": "unverified",
+      "publishable": false,
+      "holdReasons": [
+        "audit_flag:branch_unverifiable",
+        "audit_flag:historical_identity_conflation",
+        "confidence_not_high",
+        "missing_canonical_cuisine",
+        "missing_canonical_name",
+        "missing_canonical_name_ja",
+        "missing_canonical_neighborhood",
+        "missing_direct_source",
+        "status_unverified"
+      ],
+      "michelin": {
+        "distinction": null,
+        "edition": null,
+        "verified": false,
+        "sourceUrl": null
+      },
+      "lastVerified": "2026-07-30",
+      "confidence": "unknown",
+      "sources": []
+    },
+    {
+      "index": 104,
+      "id": "mimiu",
+      "canonical": {
+        "name": "Mimiu Tokyo operation",
+        "nameJa": "美々卯",
+        "branch": "Mimiu Tokyo operation",
+        "cuisine": "Udon",
+        "neighborhood": null
+      },
+      "status": "closed",
+      "publishable": false,
+      "holdReasons": [
+        "audit_flag:branch_ambiguous",
+        "audit_flag:closed",
+        "audit_flag:obsolete_plate_taxonomy",
+        "confidence_not_high",
+        "missing_canonical_neighborhood",
+        "not_currently_operating"
+      ],
+      "michelin": {
+        "distinction": null,
+        "edition": null,
+        "verified": false,
+        "sourceUrl": null
+      },
+      "lastVerified": "2026-07-30",
+      "confidence": "moderate",
+      "sources": [
+        {
+          "type": "official",
+          "url": "https://shop.mimiu.co.jp/"
+        },
+        {
+          "type": "tabelog",
+          "url": "https://tabelog.com/tokyo/A1302/A130202/13002507/"
+        }
+      ]
+    },
+    {
+      "index": 105,
+      "id": "shin-okubo-korean",
+      "canonical": {
+        "name": null,
+        "nameJa": null,
+        "branch": null,
+        "cuisine": null,
+        "neighborhood": null
+      },
+      "status": "unverified",
+      "publishable": false,
+      "holdReasons": [
+        "audit_flag:branch_unverifiable",
+        "audit_flag:geographic_identity_conflation",
+        "confidence_not_high",
+        "missing_canonical_cuisine",
+        "missing_canonical_name",
+        "missing_canonical_name_ja",
+        "missing_canonical_neighborhood",
+        "missing_direct_source",
+        "status_unverified"
+      ],
+      "michelin": {
+        "distinction": null,
+        "edition": null,
+        "verified": false,
+        "sourceUrl": null
+      },
+      "lastVerified": "2026-07-30",
+      "confidence": "unknown",
+      "sources": []
+    },
+    {
+      "index": 106,
+      "id": "bibim",
+      "canonical": {
+        "name": null,
+        "nameJa": null,
+        "branch": null,
+        "cuisine": null,
+        "neighborhood": null
+      },
+      "status": "unverified",
+      "publishable": false,
+      "holdReasons": [
+        "audit_flag:branch_unverifiable",
+        "audit_flag:possible_chain_conflation",
+        "confidence_not_high",
+        "missing_canonical_cuisine",
+        "missing_canonical_name",
+        "missing_canonical_name_ja",
+        "missing_canonical_neighborhood",
+        "missing_direct_source",
+        "status_unverified"
+      ],
+      "michelin": {
+        "distinction": null,
+        "edition": null,
+        "verified": false,
+        "sourceUrl": null
+      },
+      "lastVerified": "2026-07-30",
+      "confidence": "unknown",
+      "sources": []
+    },
+    {
+      "index": 107,
+      "id": "seoul-kitchen",
+      "canonical": {
+        "name": null,
+        "nameJa": null,
+        "branch": null,
+        "cuisine": null,
+        "neighborhood": null
+      },
+      "status": "unverified",
+      "publishable": false,
+      "holdReasons": [
+        "audit_flag:branch_unverifiable",
+        "audit_flag:possible_fabrication",
+        "confidence_not_high",
+        "missing_canonical_cuisine",
+        "missing_canonical_name",
+        "missing_canonical_name_ja",
+        "missing_canonical_neighborhood",
+        "missing_direct_source",
+        "status_unverified"
+      ],
+      "michelin": {
+        "distinction": null,
+        "edition": null,
+        "verified": false,
+        "sourceUrl": null
+      },
+      "lastVerified": "2026-07-30",
+      "confidence": "unknown",
+      "sources": []
+    },
+    {
+      "index": 108,
+      "id": "jongro",
+      "canonical": {
+        "name": null,
+        "nameJa": null,
+        "branch": null,
+        "cuisine": null,
+        "neighborhood": null
+      },
+      "status": "unverified",
+      "publishable": false,
+      "holdReasons": [
+        "audit_flag:branch_unverifiable",
+        "audit_flag:possible_branch_conflation",
+        "confidence_not_high",
+        "missing_canonical_cuisine",
+        "missing_canonical_name",
+        "missing_canonical_name_ja",
+        "missing_canonical_neighborhood",
+        "missing_direct_source",
+        "status_unverified"
+      ],
+      "michelin": {
+        "distinction": null,
+        "edition": null,
+        "verified": false,
+        "sourceUrl": null
+      },
+      "lastVerified": "2026-07-30",
+      "confidence": "unknown",
+      "sources": [
+        {
+          "type": "other",
+          "url": "https://tabelog.com/tokyo/A1313/A131301/13021949/"
+        }
+      ]
+    },
+    {
+      "index": 109,
+      "id": "korean-dining-chego",
+      "canonical": {
+        "name": "Chegoya Shibuya",
+        "nameJa": "チェゴヤ 渋谷店",
+        "branch": "Chegoya Shibuya",
+        "cuisine": "Korean",
+        "neighborhood": "Shibuya"
+      },
+      "status": "closed",
+      "publishable": false,
+      "holdReasons": [
+        "audit_flag:closed",
+        "audit_flag:name_mismatch",
+        "audit_flag:possible_identity_conflation",
+        "confidence_not_high",
+        "not_currently_operating"
+      ],
+      "michelin": {
+        "distinction": null,
+        "edition": null,
+        "verified": false,
+        "sourceUrl": null
+      },
+      "lastVerified": "2026-07-30",
+      "confidence": "moderate",
+      "sources": [
+        {
+          "type": "tabelog",
+          "url": "https://tabelog.com/tokyo/A1303/A130301/13027601/"
+        }
+      ]
+    },
+    {
+      "index": 110,
+      "id": "fuglen-tokyo",
+      "canonical": {
+        "name": "Fuglen Tokyo",
+        "nameJa": "フグレントウキョウ",
+        "branch": "Fuglen Tokyo",
+        "cuisine": "Cafe",
+        "neighborhood": "Tomigaya / Yoyogi Park"
+      },
+      "status": "active",
+      "publishable": false,
+      "holdReasons": [
+        "audit_flag:neighborhood_too_broad"
+      ],
+      "michelin": {
+        "distinction": null,
+        "edition": null,
+        "verified": false,
+        "sourceUrl": null
+      },
+      "lastVerified": "2026-07-30",
+      "confidence": "high",
+      "sources": [
+        {
+          "type": "tabelog",
+          "url": "https://tabelog.com/tokyo/A1318/A131810/13141002/"
+        }
+      ]
+    },
+    {
+      "index": 111,
+      "id": "blue-bottle-aoyama",
+      "canonical": {
+        "name": "Blue Bottle Coffee Aoyama Cafe",
+        "nameJa": "ブルーボトルコーヒー 青山カフェ",
+        "branch": "Blue Bottle Coffee Aoyama Cafe",
+        "cuisine": "Cafe",
+        "neighborhood": "Minami-Aoyama"
+      },
+      "status": "active",
+      "publishable": true,
+      "holdReasons": [],
+      "michelin": {
+        "distinction": null,
+        "edition": null,
+        "verified": false,
+        "sourceUrl": null
+      },
+      "lastVerified": "2026-07-30",
+      "confidence": "high",
+      "sources": [
+        {
+          "type": "official",
+          "url": "https://bluebottlecoffee.jp/cafes/aoyama"
+        },
+        {
+          "type": "tabelog",
+          "url": "https://tabelog.com/tokyo/A1306/A130602/13179495/"
+        }
+      ]
+    },
+    {
+      "index": 112,
+      "id": "onibus-coffee",
+      "canonical": {
+        "name": "Onibus Coffee Nakameguro",
+        "nameJa": "ONIBUS COFFEE 中目黒店",
+        "branch": "Onibus Coffee Nakameguro",
+        "cuisine": "Cafe",
+        "neighborhood": "Nakameguro"
+      },
+      "status": "active",
+      "publishable": false,
+      "holdReasons": [
+        "audit_flag:branch_ambiguous",
+        "confidence_not_high"
+      ],
+      "michelin": {
+        "distinction": null,
+        "edition": null,
+        "verified": false,
+        "sourceUrl": null
+      },
+      "lastVerified": "2026-07-30",
+      "confidence": "moderate",
+      "sources": [
+        {
+          "type": "official",
+          "url": "https://onibuscoffee.com/blogs/news/170"
+        },
+        {
+          "type": "official",
+          "url": "https://onibuscoffee.com/pages/locations/nakameguro"
+        },
+        {
+          "type": "tabelog",
+          "url": "https://tabelog.com/tokyo/A1317/A131701/13300070/"
+        }
+      ]
+    },
+    {
+      "index": 113,
+      "id": "kayaba-coffee",
+      "canonical": {
+        "name": "Kayaba Coffee",
+        "nameJa": "カヤバ珈琲",
+        "branch": "Kayaba Coffee",
+        "cuisine": "Cafe",
+        "neighborhood": "Yanaka"
+      },
+      "status": "active",
+      "publishable": false,
+      "holdReasons": [
+        "audit_flag:neighborhood_mismatch"
+      ],
+      "michelin": {
+        "distinction": null,
+        "edition": null,
+        "verified": false,
+        "sourceUrl": null
+      },
+      "lastVerified": "2026-07-30",
+      "confidence": "high",
+      "sources": [
+        {
+          "type": "tabelog",
+          "url": "https://tabelog.com/tokyo/A1311/A131104/13019585/"
+        }
+      ]
+    },
+    {
+      "index": 114,
+      "id": "chatei-hatou",
+      "canonical": {
+        "name": "Chatei Hatou",
+        "nameJa": "茶亭羽當",
+        "branch": "Chatei Hatou",
+        "cuisine": "Cafe",
+        "neighborhood": "Shibuya"
+      },
+      "status": "active",
+      "publishable": true,
+      "holdReasons": [],
+      "michelin": {
+        "distinction": null,
+        "edition": null,
+        "verified": false,
+        "sourceUrl": null
+      },
+      "lastVerified": "2026-07-30",
+      "confidence": "high",
+      "sources": [
+        {
+          "type": "tabelog",
+          "url": "https://tabelog.com/tokyo/A1303/A130301/13001169/"
+        }
+      ]
+    },
+    {
+      "index": 115,
+      "id": "bricolage-bread",
+      "canonical": {
+        "name": "Bricolage Bread & Co.",
+        "nameJa": "ブリコラージュブレッド",
+        "branch": "Bricolage Bread & Co.",
+        "cuisine": "Bakery",
+        "neighborhood": "Roppongi"
+      },
+      "status": "active",
+      "publishable": true,
+      "holdReasons": [],
+      "michelin": {
+        "distinction": null,
+        "edition": null,
+        "verified": false,
+        "sourceUrl": null
+      },
+      "lastVerified": "2026-07-30",
+      "confidence": "high",
+      "sources": [
+        {
+          "type": "official",
+          "url": "https://bricolagebread.com/"
+        },
+        {
+          "type": "tabelog",
+          "url": "https://tabelog.com/tokyo/A1307/A130701/13222794/"
+        }
+      ]
+    },
+    {
+      "index": 116,
+      "id": "pelican-bakery",
+      "canonical": {
+        "name": "Pan no Pelican",
+        "nameJa": "パンのペリカン",
+        "branch": "Pan no Pelican",
+        "cuisine": "Bakery",
+        "neighborhood": "Tawaramachi / Asakusa"
+      },
+      "status": "active",
+      "publishable": true,
+      "holdReasons": [],
+      "michelin": {
+        "distinction": null,
+        "edition": null,
+        "verified": false,
+        "sourceUrl": null
+      },
+      "lastVerified": "2026-07-30",
+      "confidence": "high",
+      "sources": [
+        {
+          "type": "tabelog",
+          "url": "https://tabelog.com/tokyo/A1311/A131102/13003662/"
+        }
+      ]
+    },
+    {
+      "index": 117,
+      "id": "viron-shibuya",
+      "canonical": {
+        "name": "VIRON Shibuya",
+        "nameJa": "VIRON 渋谷店",
+        "branch": "VIRON Shibuya",
+        "cuisine": "Bakery",
+        "neighborhood": "Udagawacho / Shibuya"
+      },
+      "status": "active",
+      "publishable": true,
+      "holdReasons": [],
+      "michelin": {
+        "distinction": null,
+        "edition": null,
+        "verified": false,
+        "sourceUrl": null
+      },
+      "lastVerified": "2026-07-30",
+      "confidence": "high",
+      "sources": [
+        {
+          "type": "tabelog",
+          "url": "https://tabelog.com/tokyo/A1303/A130301/13004626/"
+        }
+      ]
+    },
+    {
+      "index": 118,
+      "id": "365-nichi",
+      "canonical": {
+        "name": "365 Nichi",
+        "nameJa": "365日",
+        "branch": "365 Nichi",
+        "cuisine": "Bakery",
+        "neighborhood": "Tomigaya / Yoyogi-Hachiman"
+      },
+      "status": "active",
+      "publishable": false,
+      "holdReasons": [
+        "audit_flag:moved",
+        "audit_flag:neighborhood_mismatch"
+      ],
+      "michelin": {
+        "distinction": null,
+        "edition": null,
+        "verified": false,
+        "sourceUrl": null
+      },
+      "lastVerified": "2026-07-30",
+      "confidence": "high",
+      "sources": [
+        {
+          "type": "official",
+          "url": "https://ultrakitchen.jp/"
+        },
+        {
+          "type": "tabelog",
+          "url": "https://tabelog.com/tokyo/A1318/A131810/13164031/"
+        },
+        {
+          "type": "tabelog",
+          "url": "https://tabelog.com/tokyo/A1318/A131810/13263836/"
+        }
+      ]
+    },
+    {
+      "index": 119,
+      "id": "toshi-yoroizuka",
+      "canonical": {
+        "name": "Toshi Yoroizuka Tokyo",
+        "nameJa": "トシ・ヨロイヅカ 東京",
+        "branch": "Toshi Yoroizuka Tokyo",
+        "cuisine": "Dessert",
+        "neighborhood": "Kyobashi"
+      },
+      "status": "active",
+      "publishable": false,
+      "holdReasons": [
+        "audit_flag:neighborhood_mismatch"
+      ],
+      "michelin": {
+        "distinction": null,
+        "edition": null,
+        "verified": false,
+        "sourceUrl": null
+      },
+      "lastVerified": "2026-07-30",
+      "confidence": "high",
+      "sources": [
+        {
+          "type": "tabelog",
+          "url": "https://tabelog.com/tokyo/A1302/A130202/13202758/"
+        }
+      ]
+    },
+    {
+      "index": 120,
+      "id": "bar-high-five",
+      "canonical": {
+        "name": "Bar High Five",
+        "nameJa": "バーハイファイブ",
+        "branch": "Bar High Five",
+        "cuisine": "Bar",
+        "neighborhood": "Ginza"
+      },
+      "status": "active",
+      "publishable": false,
+      "holdReasons": [
+        "audit_flag:moved"
+      ],
+      "michelin": {
+        "distinction": null,
+        "edition": null,
+        "verified": false,
+        "sourceUrl": null
+      },
+      "lastVerified": "2026-07-30",
+      "confidence": "high",
+      "sources": [
+        {
+          "type": "official",
+          "url": "http://www.barhighfive.com/"
+        },
+        {
+          "type": "tabelog",
+          "url": "https://tabelog.com/tokyo/A1301/A130101/13188812/"
+        },
+        {
+          "type": "tabelog",
+          "url": "https://tabelog.com/tokyo/A1301/A130103/13060358/"
+        }
+      ]
+    },
+    {
+      "index": 121,
+      "id": "gen-yamamoto",
+      "canonical": {
+        "name": "Gen Yamamoto",
+        "nameJa": "ゲンヤマモト",
+        "branch": "Gen Yamamoto",
+        "cuisine": "Bar",
+        "neighborhood": "Azabu-Juban"
+      },
+      "status": "active",
+      "publishable": true,
+      "holdReasons": [],
+      "michelin": {
+        "distinction": null,
+        "edition": null,
+        "verified": false,
+        "sourceUrl": null
+      },
+      "lastVerified": "2026-07-30",
+      "confidence": "high",
+      "sources": [
+        {
+          "type": "official",
+          "url": "http://www.genyamamoto.jp"
+        },
+        {
+          "type": "tabelog",
+          "url": "https://tabelog.com/tokyo/A1307/A130702/13154605/"
+        }
+      ]
+    },
+    {
+      "index": 122,
+      "id": "star-bar",
+      "canonical": {
+        "name": "Star Bar Ginza",
+        "nameJa": "STAR BAR GINZA",
+        "branch": "Star Bar Ginza",
+        "cuisine": "Bar",
+        "neighborhood": "Ginza"
+      },
+      "status": "active",
+      "publishable": true,
+      "holdReasons": [],
+      "michelin": {
+        "distinction": null,
+        "edition": null,
+        "verified": false,
+        "sourceUrl": null
+      },
+      "lastVerified": "2026-07-30",
+      "confidence": "high",
+      "sources": [
+        {
+          "type": "official",
+          "url": "http://starbar.jp/"
+        },
+        {
+          "type": "tabelog",
+          "url": "https://tabelog.com/tokyo/A1301/A130101/13002270/"
+        }
+      ]
+    },
+    {
+      "index": 123,
+      "id": "ben-fiddich",
+      "canonical": {
+        "name": "Ben Fiddich",
+        "nameJa": "ベンフィディック",
+        "branch": "Ben Fiddich",
+        "cuisine": "Bar",
+        "neighborhood": "Nishi-Shinjuku"
+      },
+      "status": "active",
+      "publishable": true,
+      "holdReasons": [],
+      "michelin": {
+        "distinction": null,
+        "edition": null,
+        "verified": false,
+        "sourceUrl": null
+      },
+      "lastVerified": "2026-07-30",
+      "confidence": "high",
+      "sources": [
+        {
+          "type": "tabelog",
+          "url": "https://tabelog.com/tokyo/A1304/A130401/13159249/"
+        }
+      ]
+    },
+    {
+      "index": 124,
+      "id": "zoetrope",
+      "canonical": {
+        "name": "Zoetrope",
+        "nameJa": "ゾエトロープ",
+        "branch": "Zoetrope",
+        "cuisine": "Bar",
+        "neighborhood": "Nishi-Shinjuku"
+      },
+      "status": "active",
+      "publishable": true,
+      "holdReasons": [],
+      "michelin": {
+        "distinction": null,
+        "edition": null,
+        "verified": false,
+        "sourceUrl": null
+      },
+      "lastVerified": "2026-07-30",
+      "confidence": "high",
+      "sources": [
+        {
+          "type": "tabelog",
+          "url": "https://tabelog.com/tokyo/A1304/A130401/13026543/"
+        }
+      ]
+    },
+    {
+      "index": 125,
+      "id": "criollo",
+      "canonical": {
+        "name": "Criollo Honten",
+        "nameJa": "クリオロ本店",
+        "branch": "Criollo Honten",
+        "cuisine": "Dessert",
+        "neighborhood": "Kotake-Mukaihara"
+      },
+      "status": "active",
+      "publishable": false,
+      "holdReasons": [
+        "audit_flag:branch_ambiguous",
+        "audit_flag:neighborhood_mismatch",
+        "audit_flag:no_shinjuku_branch_verified",
+        "confidence_not_high"
+      ],
+      "michelin": {
+        "distinction": null,
+        "edition": null,
+        "verified": false,
+        "sourceUrl": null
+      },
+      "lastVerified": "2026-07-30",
+      "confidence": "moderate",
+      "sources": [
+        {
+          "type": "tabelog",
+          "url": "https://tabelog.com/tokyo/A1322/A132202/13194959/"
+        }
+      ]
+    },
+    {
+      "index": 126,
+      "id": "hidemi-sugino",
+      "canonical": {
+        "name": "Hidemi Sugino",
+        "nameJa": "イデミ スギノ",
+        "branch": "Hidemi Sugino",
+        "cuisine": "Dessert",
+        "neighborhood": "Kyobashi"
+      },
+      "status": "closed",
+      "publishable": false,
+      "holdReasons": [
+        "audit_flag:closed",
+        "audit_flag:identity_conflation",
+        "audit_flag:nameJa_wrong_restaurant",
+        "audit_flag:neighborhood_mismatch",
+        "not_currently_operating"
+      ],
+      "michelin": {
+        "distinction": null,
+        "edition": null,
+        "verified": false,
+        "sourceUrl": null
+      },
+      "lastVerified": "2026-07-30",
+      "confidence": "high",
+      "sources": [
+        {
+          "type": "tabelog",
+          "url": "https://tabelog.com/tokyo/A1302/A130202/13002285/"
+        }
+      ]
+    },
+    {
+      "index": 127,
+      "id": "suzukien-matcha",
+      "canonical": {
+        "name": "Suzukien Asakusa Honten",
+        "nameJa": "壽々喜園 浅草本店",
+        "branch": "Suzukien Asakusa Honten",
+        "cuisine": "Dessert",
+        "neighborhood": "Asakusa"
+      },
+      "status": "active",
+      "publishable": true,
+      "holdReasons": [],
+      "michelin": {
+        "distinction": null,
+        "edition": null,
+        "verified": false,
+        "sourceUrl": null
+      },
+      "lastVerified": "2026-07-30",
+      "confidence": "high",
+      "sources": [
+        {
+          "type": "tabelog",
+          "url": "https://tabelog.com/tokyo/A1311/A131102/13153620/"
+        }
+      ]
+    },
+    {
+      "index": 128,
+      "id": "nanaya-gelato",
+      "canonical": {
+        "name": "Nanaya Aoyama",
+        "nameJa": "ななや 青山店",
+        "branch": "Nanaya Aoyama",
+        "cuisine": "Dessert",
+        "neighborhood": "Aoyama / Shibuya"
+      },
+      "status": "active",
+      "publishable": false,
+      "holdReasons": [
+        "audit_flag:branch_label_missing",
+        "audit_flag:neighborhood_mismatch"
+      ],
+      "michelin": {
+        "distinction": null,
+        "edition": null,
+        "verified": false,
+        "sourceUrl": null
+      },
+      "lastVerified": "2026-07-30",
+      "confidence": "high",
+      "sources": [
+        {
+          "type": "tabelog",
+          "url": "https://tabelog.com/tokyo/A1303/A130301/13199165/"
+        }
+      ]
+    },
+    {
+      "index": 129,
+      "id": "patisserie-sadaharu-aoki",
+      "canonical": {
+        "name": "Patisserie Sadaharu Aoki Paris Marunouchi",
+        "nameJa": "パティスリー・サダハル・アオキ・パリ 丸の内店",
+        "branch": "Patisserie Sadaharu Aoki Paris Marunouchi",
+        "cuisine": "Dessert",
+        "neighborhood": "Marunouchi / Yurakucho"
+      },
+      "status": "active",
+      "publishable": false,
+      "holdReasons": [
+        "audit_flag:branch_ambiguous",
+        "audit_flag:neighborhood_mismatch",
+        "audit_flag:no_aoyama_branch_verified",
+        "confidence_not_high"
+      ],
+      "michelin": {
+        "distinction": null,
+        "edition": null,
+        "verified": false,
+        "sourceUrl": null
+      },
+      "lastVerified": "2026-07-30",
+      "confidence": "moderate",
+      "sources": [
+        {
+          "type": "official",
+          "url": "https://www.sadaharuaoki.jp/marunouchi/"
+        },
+        {
+          "type": "tabelog",
+          "url": "https://tabelog.com/tokyo/A1301/A130102/13018800/"
+        }
+      ]
+    },
+    {
+      "index": 130,
+      "id": "teppan-baby",
+      "canonical": {
+        "name": "Teppan Baby Shibuya",
+        "nameJa": "鉄板ベイビー 渋谷店",
+        "branch": "Teppan Baby Shibuya",
+        "cuisine": "Teppanyaki",
+        "neighborhood": "Shibuya"
+      },
+      "status": "closed",
+      "publishable": false,
+      "holdReasons": [
+        "audit_flag:closed",
+        "not_currently_operating"
+      ],
+      "michelin": {
+        "distinction": null,
+        "edition": null,
+        "verified": false,
+        "sourceUrl": null
+      },
+      "lastVerified": "2026-07-30",
+      "confidence": "high",
+      "sources": [
+        {
+          "type": "tabelog",
+          "url": "https://tabelog.com/tokyo/A1303/A130301/13236050/"
+        }
+      ]
+    },
+    {
+      "index": 131,
+      "id": "teppanyaki-okuda",
+      "canonical": {
+        "name": "Ginza Okuda",
+        "nameJa": "銀座 奥田",
+        "branch": "Ginza Okuda",
+        "cuisine": "Japanese",
+        "neighborhood": "Ginza"
+      },
+      "status": "active",
+      "publishable": false,
+      "holdReasons": [
+        "audit_flag:cuisine_identity_conflation",
+        "audit_flag:obsolete_plate_taxonomy"
+      ],
+      "michelin": {
+        "distinction": null,
+        "edition": null,
+        "verified": false,
+        "sourceUrl": null
+      },
+      "lastVerified": "2026-07-30",
+      "confidence": "high",
+      "sources": [
+        {
+          "type": "tabelog",
+          "url": "https://tabelog.com/tokyo/A1301/A130101/13129763/"
+        }
+      ]
+    },
+    {
+      "index": 132,
+      "id": "hanten",
+      "canonical": {
+        "name": null,
+        "nameJa": null,
+        "branch": null,
+        "cuisine": null,
+        "neighborhood": null
+      },
+      "status": "unverified",
+      "publishable": false,
+      "holdReasons": [
+        "audit_flag:branch_unverifiable",
+        "audit_flag:obsolete_plate_taxonomy",
+        "audit_flag:possible_fabrication",
+        "confidence_not_high",
+        "missing_canonical_cuisine",
+        "missing_canonical_name",
+        "missing_canonical_name_ja",
+        "missing_canonical_neighborhood",
+        "missing_direct_source",
+        "status_unverified"
+      ],
+      "michelin": {
+        "distinction": null,
+        "edition": null,
+        "verified": false,
+        "sourceUrl": null
+      },
+      "lastVerified": "2026-07-30",
+      "confidence": "unknown",
+      "sources": []
+    },
+    {
+      "index": 133,
+      "id": "usukifugu-yamadaya",
+      "canonical": {
+        "name": "Usukifugu Yamadaya Nishiazabu",
+        "nameJa": "臼杵ふぐ 山田屋 西麻布",
+        "branch": "Usukifugu Yamadaya Nishiazabu",
+        "cuisine": "Izakaya",
+        "neighborhood": "Nishi-Azabu"
+      },
+      "status": "closed",
+      "publishable": false,
+      "holdReasons": [
+        "audit_flag:closed_or_indefinitely_suspended",
+        "audit_flag:michelin_stale",
+        "not_currently_operating"
+      ],
+      "michelin": {
+        "distinction": null,
+        "edition": null,
+        "verified": false,
+        "sourceUrl": null
+      },
+      "lastVerified": "2026-07-30",
+      "confidence": "high",
+      "sources": [
+        {
+          "type": "tabelog",
+          "url": "https://tabelog.com/tokyo/A1307/A130703/13034857/"
+        }
+      ]
+    },
+    {
+      "index": 134,
+      "id": "tempura-motoyoshi",
+      "canonical": {
+        "name": "Tempura Motoyoshi",
+        "nameJa": "天ぷら 元吉",
+        "branch": "Tempura Motoyoshi",
+        "cuisine": "Tempura",
+        "neighborhood": "Ebisu-Nishi / Daikanyama"
+      },
+      "status": "active",
+      "publishable": false,
+      "holdReasons": [
+        "audit_flag:moved",
+        "audit_flag:neighborhood_mismatch",
+        "audit_flag:obsolete_plate_taxonomy"
+      ],
+      "michelin": {
+        "distinction": null,
+        "edition": null,
+        "verified": false,
+        "sourceUrl": null
+      },
+      "lastVerified": "2026-07-30",
+      "confidence": "high",
+      "sources": [
+        {
+          "type": "official",
+          "url": "https://motoyoshi-1120.com/"
+        },
+        {
+          "type": "tabelog",
+          "url": "https://tabelog.com/tokyo/A1303/A130302/13270939/"
+        },
+        {
+          "type": "tabelog",
+          "url": "https://tabelog.com/tokyo/A1306/A130603/13035758/"
+        }
+      ]
+    },
+    {
+      "index": 135,
+      "id": "soba-kaoru",
+      "canonical": {
+        "name": null,
+        "nameJa": null,
+        "branch": null,
+        "cuisine": null,
+        "neighborhood": null
+      },
+      "status": "unverified",
+      "publishable": false,
+      "holdReasons": [
+        "audit_flag:branch_unverifiable",
+        "audit_flag:obsolete_plate_taxonomy",
+        "audit_flag:possible_fabrication",
+        "confidence_not_high",
+        "missing_canonical_cuisine",
+        "missing_canonical_name",
+        "missing_canonical_name_ja",
+        "missing_canonical_neighborhood",
+        "missing_direct_source",
+        "status_unverified"
+      ],
+      "michelin": {
+        "distinction": null,
+        "edition": null,
+        "verified": false,
+        "sourceUrl": null
+      },
+      "lastVerified": "2026-07-30",
+      "confidence": "unknown",
+      "sources": []
+    },
+    {
+      "index": 136,
+      "id": "cantonese-en",
+      "canonical": {
+        "name": "Cantonese En",
+        "nameJa": "カントニーズ 燕 ケン タカセ",
+        "branch": "Cantonese En",
+        "cuisine": "Chinese",
+        "neighborhood": "Marunouchi / Tokyo Station"
+      },
+      "status": "active",
+      "publishable": false,
+      "holdReasons": [
+        "audit_flag:neighborhood_mismatch",
+        "audit_flag:obsolete_plate_taxonomy"
+      ],
+      "michelin": {
+        "distinction": null,
+        "edition": null,
+        "verified": false,
+        "sourceUrl": null
+      },
+      "lastVerified": "2026-07-30",
+      "confidence": "high",
+      "sources": [
+        {
+          "type": "official",
+          "url": "https://www.tokyostationhotel.jp/restaurants/cantoneseen/?id=floormap"
+        },
+        {
+          "type": "tabelog",
+          "url": "https://tabelog.com/tokyo/A1302/A130201/13147494/"
+        }
+      ]
+    },
+    {
+      "index": 137,
+      "id": "sushi-kimura",
+      "canonical": {
+        "name": "Sushi Kimura / すし 喜邑",
+        "nameJa": "すし 喜邑",
+        "branch": "Sushi Kimura / すし 喜邑",
+        "cuisine": "Sushi",
+        "neighborhood": "Futako-Tamagawa"
+      },
+      "status": "temporarily_closed",
+      "publishable": false,
+      "holdReasons": [
+        "audit_flag:identity_conflation",
+        "audit_flag:michelin_stale_unverified",
+        "audit_flag:nameJa_mismatch",
+        "audit_flag:neighborhood_mismatch",
+        "audit_flag:temporarily_closed",
+        "temporarily_closed"
+      ],
+      "michelin": {
+        "distinction": null,
+        "edition": null,
+        "verified": false,
+        "sourceUrl": null
+      },
+      "lastVerified": "2026-07-30",
+      "confidence": "high",
+      "sources": [
+        {
+          "type": "tabelog",
+          "url": "https://tabelog.com/tokyo/A1317/A131708/13026584/"
+        }
+      ]
+    },
+    {
+      "index": 138,
+      "id": "ginza-onodera",
+      "canonical": {
+        "name": "Sushi Ginza Onodera Sohonten",
+        "nameJa": "鮨 銀座おのでら 総本店",
+        "branch": "Sushi Ginza Onodera Sohonten",
+        "cuisine": "Sushi",
+        "neighborhood": "Ginza"
+      },
+      "status": "active",
+      "publishable": false,
+      "holdReasons": [
+        "audit_flag:michelin_brand_conflation_risk",
+        "audit_flag:michelin_stale_unverified",
+        "confidence_not_high"
+      ],
+      "michelin": {
+        "distinction": null,
+        "edition": null,
+        "verified": false,
+        "sourceUrl": null
+      },
+      "lastVerified": "2026-07-30",
+      "confidence": "moderate",
+      "sources": [
+        {
+          "type": "official",
+          "url": "https://onodera-group.com/sushi-ginza/"
+        }
+      ]
+    },
+    {
+      "index": 139,
+      "id": "nihonbashi-kakigaracho-sugita",
+      "canonical": {
+        "name": "Nihombashi Kakigaracho Sugita",
+        "nameJa": "日本橋蛎殻町 すぎた",
+        "branch": "Nihombashi Kakigaracho Sugita",
+        "cuisine": "Sushi",
+        "neighborhood": "Nihonbashi-Kakigaracho / Suitengumae"
+      },
+      "status": "active",
+      "publishable": false,
+      "holdReasons": [
+        "audit_flag:michelin_stale_unverified",
+        "audit_flag:name_too_generic"
+      ],
+      "michelin": {
+        "distinction": null,
+        "edition": null,
+        "verified": false,
+        "sourceUrl": null
+      },
+      "lastVerified": "2026-07-30",
+      "confidence": "high",
+      "sources": [
+        {
+          "type": "tabelog",
+          "url": "https://tabelog.com/tokyo/A1302/A130204/13018162/"
+        }
+      ]
+    },
+    {
+      "index": 140,
+      "id": "mensho-ramen",
+      "canonical": {
+        "name": "MENSHO flagship",
+        "nameJa": "MENSHO",
+        "branch": "MENSHO flagship",
+        "cuisine": "Ramen",
+        "neighborhood": "Gokokuji"
+      },
+      "status": "active",
+      "publishable": false,
+      "holdReasons": [
+        "audit_flag:branch_ambiguous",
+        "audit_flag:neighborhood_mismatch",
+        "audit_flag:no_gotanda_branch_verified",
+        "confidence_not_high"
+      ],
+      "michelin": {
+        "distinction": null,
+        "edition": null,
+        "verified": false,
+        "sourceUrl": null
+      },
+      "lastVerified": "2026-07-30",
+      "confidence": "moderate",
+      "sources": [
+        {
+          "type": "official",
+          "url": "http://menya-shono.com/mensho/"
+        },
+        {
+          "type": "tabelog",
+          "url": "https://tabelog.com/tokyo/A1323/A132302/13203848/"
+        }
+      ]
+    },
+    {
+      "index": 141,
+      "id": "hayashi-ramen",
+      "canonical": {
+        "name": "Ramen Hayashi",
+        "nameJa": "らーめん はやし",
+        "branch": "Ramen Hayashi",
+        "cuisine": "Ramen",
+        "neighborhood": "Dogenzaka / Shibuya"
+      },
+      "status": "active",
+      "publishable": false,
+      "holdReasons": [
+        "audit_flag:neighborhood_mismatch"
+      ],
+      "michelin": {
+        "distinction": null,
+        "edition": null,
+        "verified": false,
+        "sourceUrl": null
+      },
+      "lastVerified": "2026-07-30",
+      "confidence": "high",
+      "sources": [
+        {
+          "type": "tabelog",
+          "url": "https://tabelog.com/tokyo/A1303/A130301/13003367/"
+        }
+      ]
+    },
+    {
+      "index": 142,
+      "id": "ginza-kagari",
+      "canonical": {
+        "name": "Ginza Kagari Honten",
+        "nameJa": "銀座 篝 本店",
+        "branch": "Ginza Kagari Honten",
+        "cuisine": "Ramen",
+        "neighborhood": "Ginza"
+      },
+      "status": "active",
+      "publishable": false,
+      "holdReasons": [
+        "audit_flag:moved",
+        "audit_flag:obsolete_plate_taxonomy",
+        "audit_flag:semantic_duplicate_of_record_18"
+      ],
+      "michelin": {
+        "distinction": null,
+        "edition": null,
+        "verified": false,
+        "sourceUrl": null
+      },
+      "lastVerified": "2026-07-30",
+      "confidence": "high",
+      "sources": [
+        {
+          "type": "tabelog",
+          "url": "https://tabelog.com/tokyo/A1301/A130101/13153231/"
+        },
+        {
+          "type": "tabelog",
+          "url": "https://tabelog.com/tokyo/A1301/A130101/13230021/"
+        }
+      ]
+    },
+    {
+      "index": 143,
+      "id": "tempura-shunsai-tensei",
+      "canonical": {
+        "name": "Tempura Tensei",
+        "nameJa": "天ぷら 天青",
+        "branch": "Tempura Tensei",
+        "cuisine": "Tempura",
+        "neighborhood": "Minami-Aoyama / Gaiemmae"
+      },
+      "status": "active",
+      "publishable": false,
+      "holdReasons": [
+        "audit_flag:neighborhood_imprecise",
+        "audit_flag:obsolete_plate_taxonomy"
+      ],
+      "michelin": {
+        "distinction": null,
+        "edition": null,
+        "verified": false,
+        "sourceUrl": null
+      },
+      "lastVerified": "2026-07-30",
+      "confidence": "high",
+      "sources": [
+        {
+          "type": "tabelog",
+          "url": "https://tabelog.com/tokyo/A1306/A130603/13016592/"
+        }
+      ]
+    },
+    {
+      "index": 144,
+      "id": "yakitori-hachibei",
+      "canonical": {
+        "name": null,
+        "nameJa": null,
+        "branch": null,
+        "cuisine": null,
+        "neighborhood": null
+      },
+      "status": "unverified",
+      "publishable": false,
+      "holdReasons": [
+        "audit_flag:branch_unverifiable",
+        "audit_flag:possible_name_or_chain_conflation",
+        "confidence_not_high",
+        "missing_canonical_cuisine",
+        "missing_canonical_name",
+        "missing_canonical_name_ja",
+        "missing_canonical_neighborhood",
+        "missing_direct_source",
+        "status_unverified"
+      ],
+      "michelin": {
+        "distinction": null,
+        "edition": null,
+        "verified": false,
+        "sourceUrl": null
+      },
+      "lastVerified": "2026-07-30",
+      "confidence": "unknown",
+      "sources": []
+    },
+    {
+      "index": 145,
+      "id": "izakaya-torishin",
+      "canonical": {
+        "name": null,
+        "nameJa": null,
+        "branch": null,
+        "cuisine": null,
+        "neighborhood": null
+      },
+      "status": "unverified",
+      "publishable": false,
+      "holdReasons": [
+        "audit_flag:branch_unverifiable",
+        "audit_flag:common_name_collision",
+        "audit_flag:obsolete_plate_taxonomy",
+        "confidence_not_high",
+        "missing_canonical_cuisine",
+        "missing_canonical_name",
+        "missing_canonical_name_ja",
+        "missing_canonical_neighborhood",
+        "missing_direct_source",
+        "status_unverified"
+      ],
+      "michelin": {
+        "distinction": null,
+        "edition": null,
+        "verified": false,
+        "sourceUrl": null
+      },
+      "lastVerified": "2026-07-30",
+      "confidence": "unknown",
+      "sources": []
+    },
+    {
+      "index": 146,
+      "id": "tonkatsu-hasegawa",
+      "canonical": {
+        "name": "Hasegawa Ryogoku Honten",
+        "nameJa": "とんかつ はせ川 両国本店",
+        "branch": "Hasegawa Ryogoku Honten",
+        "cuisine": "Tonkatsu",
+        "neighborhood": "Ryogoku"
+      },
+      "status": "active",
+      "publishable": false,
+      "holdReasons": [
+        "audit_flag:branch_conflation",
+        "audit_flag:nameJa_mismatch",
+        "audit_flag:neighborhood_mismatch",
+        "audit_flag:obsolete_plate_taxonomy"
+      ],
+      "michelin": {
+        "distinction": null,
+        "edition": null,
+        "verified": false,
+        "sourceUrl": null
+      },
+      "lastVerified": "2026-07-30",
+      "confidence": "high",
+      "sources": [
+        {
+          "type": "tabelog",
+          "url": "https://tabelog.com/tokyo/A1312/A131201/13019126/"
+        }
+      ]
+    },
+    {
+      "index": 147,
+      "id": "udon-maruka",
+      "canonical": {
+        "name": "Udon Maruka",
+        "nameJa": "うどん 丸香",
+        "branch": "Udon Maruka",
+        "cuisine": "Udon",
+        "neighborhood": "Jimbocho / Kanda-Ogawamachi"
+      },
+      "status": "active",
+      "publishable": false,
+      "holdReasons": [
+        "audit_flag:neighborhood_imprecise",
+        "audit_flag:obsolete_plate_taxonomy"
+      ],
+      "michelin": {
+        "distinction": null,
+        "edition": null,
+        "verified": false,
+        "sourceUrl": null
+      },
+      "lastVerified": "2026-07-30",
+      "confidence": "high",
+      "sources": [
+        {
+          "type": "tabelog",
+          "url": "https://tabelog.com/tokyo/A1310/A131003/13000629/"
+        }
+      ]
+    },
+    {
+      "index": 148,
+      "id": "izakaya-ajinotorii",
+      "canonical": {
+        "name": null,
+        "nameJa": null,
+        "branch": null,
+        "cuisine": null,
+        "neighborhood": null
+      },
+      "status": "unverified",
+      "publishable": false,
+      "holdReasons": [
+        "audit_flag:branch_unverifiable",
+        "audit_flag:possible_fabrication",
+        "confidence_not_high",
+        "missing_canonical_cuisine",
+        "missing_canonical_name",
+        "missing_canonical_name_ja",
+        "missing_canonical_neighborhood",
+        "missing_direct_source",
+        "status_unverified"
+      ],
+      "michelin": {
+        "distinction": null,
+        "edition": null,
+        "verified": false,
+        "sourceUrl": null
+      },
+      "lastVerified": "2026-07-30",
+      "confidence": "unknown",
+      "sources": []
+    },
+    {
+      "index": 149,
+      "id": "nabezo-shibuya",
+      "canonical": {
+        "name": "MOMO PARADISE Shibuya Center-gai or Shibuya Koen-dori",
+        "nameJa": "モーモーパラダイス 渋谷",
+        "branch": "MOMO PARADISE Shibuya Center-gai or Shibuya Koen-dori",
+        "cuisine": "Shabu-shabu",
+        "neighborhood": "Shibuya"
+      },
+      "status": "active",
+      "publishable": false,
+      "holdReasons": [
+        "audit_flag:branch_ambiguous",
+        "audit_flag:renamed"
+      ],
+      "michelin": {
+        "distinction": null,
+        "edition": null,
+        "verified": false,
+        "sourceUrl": null
+      },
+      "lastVerified": "2026-07-30",
+      "confidence": "high",
+      "sources": [
+        {
+          "type": "tabelog",
+          "url": "https://tabelog.com/tokyo/A1303/A130301/13001711/"
+        },
+        {
+          "type": "tabelog",
+          "url": "https://tabelog.com/tokyo/A1303/A130301/13098947/"
+        }
+      ]
+    },
+    {
+      "index": 150,
+      "id": "indian-dhaba",
+      "canonical": {
+        "name": "Dhaba India Kyobashi",
+        "nameJa": "ダバインディア",
+        "branch": "Dhaba India Kyobashi",
+        "cuisine": "Curry",
+        "neighborhood": "Kyobashi"
+      },
+      "status": "closed",
+      "publishable": false,
+      "holdReasons": [
+        "audit_flag:closed",
+        "audit_flag:michelin_stale",
+        "audit_flag:neighborhood_mismatch",
+        "not_currently_operating"
+      ],
+      "michelin": {
+        "distinction": null,
+        "edition": null,
+        "verified": false,
+        "sourceUrl": null
+      },
+      "lastVerified": "2026-07-30",
+      "confidence": "high",
+      "sources": [
+        {
+          "type": "tabelog",
+          "url": "https://tabelog.com/tokyo/A1302/A130202/13000506/"
+        }
+      ]
+    },
+    {
+      "index": 151,
+      "id": "french-bistro-la-bise",
+      "canonical": {
+        "name": null,
+        "nameJa": null,
+        "branch": null,
+        "cuisine": null,
+        "neighborhood": null
+      },
+      "status": "unverified",
+      "publishable": false,
+      "holdReasons": [
+        "audit_flag:branch_unverifiable",
+        "audit_flag:obsolete_plate_taxonomy",
+        "audit_flag:possible_fabrication",
+        "confidence_not_high",
+        "missing_canonical_cuisine",
+        "missing_canonical_name",
+        "missing_canonical_name_ja",
+        "missing_canonical_neighborhood",
+        "missing_direct_source",
+        "status_unverified"
+      ],
+      "michelin": {
+        "distinction": null,
+        "edition": null,
+        "verified": false,
+        "sourceUrl": null
+      },
+      "lastVerified": "2026-07-30",
+      "confidence": "unknown",
+      "sources": []
+    },
+    {
+      "index": 152,
+      "id": "italian-carmine",
+      "canonical": {
+        "name": "Ristorante Carmine",
+        "nameJa": "リストランテ カルミネ",
+        "branch": "Ristorante Carmine",
+        "cuisine": "Italian",
+        "neighborhood": "Ushigome-Kagurazaka"
+      },
+      "status": "active",
+      "publishable": false,
+      "holdReasons": [
+        "audit_flag:branch_identity_conflation",
+        "audit_flag:neighborhood_mismatch"
+      ],
+      "michelin": {
+        "distinction": null,
+        "edition": null,
+        "verified": false,
+        "sourceUrl": null
+      },
+      "lastVerified": "2026-07-30",
+      "confidence": "high",
+      "sources": [
+        {
+          "type": "official",
+          "url": "https://carmine.owst.jp/"
+        },
+        {
+          "type": "tabelog",
+          "url": "https://tabelog.com/tokyo/A1309/A130905/13000394/"
+        }
+      ]
+    },
+    {
+      "index": 153,
+      "id": "chukasoba-ginza-hachigou",
+      "canonical": {
+        "name": "Chukasoba Ginza Hachigou",
+        "nameJa": "中華そば 銀座 八五",
+        "branch": "Chukasoba Ginza Hachigou",
+        "cuisine": "Ramen",
+        "neighborhood": "Ginza / Shintomicho"
+      },
+      "status": "active",
+      "publishable": false,
+      "holdReasons": [
+        "audit_flag:michelin_current_status_unverified",
+        "audit_flag:nameJa_incorrect"
+      ],
+      "michelin": {
+        "distinction": null,
+        "edition": null,
+        "verified": false,
+        "sourceUrl": null
+      },
+      "lastVerified": "2026-07-30",
+      "confidence": "high",
+      "sources": [
+        {
+          "type": "tabelog",
+          "url": "https://tabelog.com/tokyo/A1301/A130101/13228602/"
+        }
+      ]
+    },
+    {
+      "index": 154,
+      "id": "wagyu-yazawa",
+      "canonical": {
+        "name": "Meat Yazawa Gotanda Honten",
+        "nameJa": "ミート矢澤 五反田本店",
+        "branch": "Meat Yazawa Gotanda Honten",
+        "cuisine": "Hamburger steak",
+        "neighborhood": "Gotanda"
+      },
+      "status": "active",
+      "publishable": false,
+      "holdReasons": [
+        "audit_flag:name_too_generic"
+      ],
+      "michelin": {
+        "distinction": null,
+        "edition": null,
+        "verified": false,
+        "sourceUrl": null
+      },
+      "lastVerified": "2026-07-30",
+      "confidence": "high",
+      "sources": [
+        {
+          "type": "tabelog",
+          "url": "https://tabelog.com/tokyo/A1316/A131603/13042320/"
+        }
+      ]
+    },
+    {
+      "index": 155,
+      "id": "cafe-sarutahiko",
+      "canonical": {
+        "name": "Sarutahiko Coffee Ebisu Honten",
+        "nameJa": "猿田彦珈琲 恵比寿本店",
+        "branch": "Sarutahiko Coffee Ebisu Honten",
+        "cuisine": "Cafe",
+        "neighborhood": "Ebisu"
+      },
+      "status": "active",
+      "publishable": false,
+      "holdReasons": [
+        "audit_flag:branch_label_missing"
+      ],
+      "michelin": {
+        "distinction": null,
+        "edition": null,
+        "verified": false,
+        "sourceUrl": null
+      },
+      "lastVerified": "2026-07-30",
+      "confidence": "high",
+      "sources": [
+        {
+          "type": "official",
+          "url": "https://sarutahiko.jp/"
+        },
+        {
+          "type": "tabelog",
+          "url": "https://tabelog.com/tokyo/A1303/A130302/13127577/"
+        }
+      ]
+    },
+    {
+      "index": 156,
+      "id": "toraya-cafe",
+      "canonical": {
+        "name": "Toraya Cafe Omotesando Hills",
+        "nameJa": "TORAYA CAFE 表参道ヒルズ店",
+        "branch": "Toraya Cafe Omotesando Hills",
+        "cuisine": "Dessert",
+        "neighborhood": "Omotesando"
+      },
+      "status": "closed",
+      "publishable": false,
+      "holdReasons": [
+        "audit_flag:closed",
+        "audit_flag:nameJa_imprecise",
+        "not_currently_operating"
+      ],
+      "michelin": {
+        "distinction": null,
+        "edition": null,
+        "verified": false,
+        "sourceUrl": null
+      },
+      "lastVerified": "2026-07-30",
+      "confidence": "high",
+      "sources": [
+        {
+          "type": "tabelog",
+          "url": "https://tabelog.com/tokyo/A1306/A130602/13040550/"
+        }
+      ]
+    },
+    {
+      "index": 157,
+      "id": "takadanobaba-taisho-ken",
+      "canonical": {
+        "name": "Takadanobaba Taishoken",
+        "nameJa": "高田馬場大勝軒",
+        "branch": "Takadanobaba Taishoken",
+        "cuisine": "Ramen",
+        "neighborhood": "Takadanobaba"
+      },
+      "status": "closed",
+      "publishable": false,
+      "holdReasons": [
+        "audit_flag:closed",
+        "audit_flag:romanization_incorrect",
+        "not_currently_operating"
+      ],
+      "michelin": {
+        "distinction": null,
+        "edition": null,
+        "verified": false,
+        "sourceUrl": null
+      },
+      "lastVerified": "2026-07-30",
+      "confidence": "high",
+      "sources": [
+        {
+          "type": "tabelog",
+          "url": "https://tabelog.com/tokyo/A1305/A130503/13033115/"
+        }
+      ]
+    },
+    {
+      "index": 158,
+      "id": "shinjuku-kappo-nakajima",
+      "canonical": {
+        "name": "Shinjuku Kappo Nakajima",
+        "nameJa": "新宿割烹 中嶋",
+        "branch": "Shinjuku Kappo Nakajima",
+        "cuisine": "Kappo",
+        "neighborhood": "Shinjuku-Sanchome"
+      },
+      "status": "active",
+      "publishable": false,
+      "holdReasons": [
+        "audit_flag:michelin_stale_unverified"
+      ],
+      "michelin": {
+        "distinction": null,
+        "edition": null,
+        "verified": false,
+        "sourceUrl": null
+      },
+      "lastVerified": "2026-07-30",
+      "confidence": "high",
+      "sources": [
+        {
+          "type": "tabelog",
+          "url": "https://tabelog.com/tokyo/A1304/A130401/13000959/"
+        }
+      ]
+    },
+    {
+      "index": 159,
+      "id": "manten-sushi",
+      "canonical": {
+        "name": "Manten Sushi Nihonbashi",
+        "nameJa": "まんてん鮨 日本橋",
+        "branch": "Manten Sushi Nihonbashi",
+        "cuisine": "Sushi",
+        "neighborhood": "Nihonbashi-Muromachi / Mitsukoshimae"
+      },
+      "status": "active",
+      "publishable": false,
+      "holdReasons": [
+        "audit_flag:obsolete_plate_taxonomy"
+      ],
+      "michelin": {
+        "distinction": null,
+        "edition": null,
+        "verified": false,
+        "sourceUrl": null
+      },
+      "lastVerified": "2026-07-30",
+      "confidence": "high",
+      "sources": [
+        {
+          "type": "tabelog",
+          "url": "https://tabelog.com/tokyo/A1302/A130202/13166422/"
+        }
+      ]
+    },
+    {
+      "index": 160,
+      "id": "trattoria-la-tartarughina",
+      "canonical": {
+        "name": "Trattoria La Tartarughina",
+        "nameJa": "ラ・タルタルギーナ",
+        "branch": "Trattoria La Tartarughina",
+        "cuisine": "Italian",
+        "neighborhood": "Kagurazaka / Akagishitamachi"
+      },
+      "status": "active",
+      "publishable": false,
+      "holdReasons": [
+        "audit_flag:obsolete_plate_taxonomy"
+      ],
+      "michelin": {
+        "distinction": null,
+        "edition": null,
+        "verified": false,
+        "sourceUrl": null
+      },
+      "lastVerified": "2026-07-30",
+      "confidence": "high",
+      "sources": [
+        {
+          "type": "official",
+          "url": "https://tartarughina.gorp.jp/"
+        },
+        {
+          "type": "tabelog",
+          "url": "https://tabelog.com/tokyo/A1309/A130905/13175090/"
+        }
+      ]
+    },
+    {
+      "index": 161,
+      "id": "cafe-de-lambre",
+      "canonical": {
+        "name": "Café de L'Ambre",
+        "nameJa": "カフェ・ド・ランブル",
+        "branch": "Café de L'Ambre",
+        "cuisine": "Cafe",
+        "neighborhood": "Ginza / Shinbashi edge"
+      },
+      "status": "active",
+      "publishable": true,
+      "holdReasons": [],
+      "michelin": {
+        "distinction": null,
+        "edition": null,
+        "verified": false,
+        "sourceUrl": null
+      },
+      "lastVerified": "2026-07-30",
+      "confidence": "high",
+      "sources": [
+        {
+          "type": "official",
+          "url": "https://cafedelambre.com/index.html"
+        },
+        {
+          "type": "tabelog",
+          "url": "https://tabelog.com/tokyo/A1301/A130103/13002564/"
+        }
+      ]
+    },
+    {
+      "index": 162,
+      "id": "soba-hosokawa",
+      "canonical": {
+        "name": "Edosoba Hosokawa",
+        "nameJa": "江戸蕎麦 ほそ川",
+        "branch": "Edosoba Hosokawa",
+        "cuisine": "Soba",
+        "neighborhood": "Ryogoku / Kamezawa"
+      },
+      "status": "active",
+      "publishable": false,
+      "holdReasons": [
+        "audit_flag:michelin_false",
+        "audit_flag:nameJa_imprecise",
+        "audit_flag:neighborhood_mismatch"
+      ],
+      "michelin": {
+        "distinction": "bib_gourmand",
+        "edition": 2026,
+        "verified": true,
+        "sourceUrl": "https://guide.michelin.com/en/tokyo-region/tokyo/restaurant/edosoba-hosokawa"
+      },
+      "lastVerified": "2026-07-30",
+      "confidence": "high",
+      "sources": [
+        {
+          "type": "michelin",
+          "url": "https://guide.michelin.com/en/tokyo-region/tokyo/restaurant/edosoba-hosokawa"
+        },
+        {
+          "type": "tabelog",
+          "url": "https://tabelog.com/tokyo/A1312/A131201/13002967/"
+        }
+      ]
+    }
+  ]
+}

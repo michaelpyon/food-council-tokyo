@@ -5,6 +5,7 @@ import SourceChips from './SourceChips';
 import { getScoreTier, getConfidence, getConfidenceLabel } from '../utils/scoring';
 import { PRICE_LABELS } from '../data/restaurants';
 import { mapsUrl, tabelogUrl } from '../utils/links';
+import { useModalPanel } from '../hooks/useModalPanel';
 
 function ScoreRow({ label, value }) {
   if (!value) return null;
@@ -41,6 +42,8 @@ function ConfidenceBar({ restaurant }) {
 }
 
 export default function DetailPanel({ restaurant, onClose, onSave, isSaved }) {
+  const { panelRef, initialFocusRef } = useModalPanel(Boolean(restaurant), onClose);
+
   return (
     <AnimatePresence>
       {restaurant && (
@@ -53,12 +56,18 @@ export default function DetailPanel({ restaurant, onClose, onSave, isSaved }) {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.15 }}
             onClick={onClose}
-            className="fixed inset-0 bg-black/30 backdrop-blur-sm z-50"
+            className="fixed inset-0 bg-text/30 backdrop-blur-sm z-50"
+            aria-hidden="true"
           />
 
           {/* Panel */}
           <Motion.aside
+            ref={panelRef}
             key="detail-panel"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby={`detail-title-${restaurant.id}`}
+            tabIndex={-1}
             initial={{ x: '100%' }}
             animate={{ x: 0 }}
             exit={{ x: '100%' }}
@@ -68,6 +77,7 @@ export default function DetailPanel({ restaurant, onClose, onSave, isSaved }) {
             {/* Header */}
             <div className="sticky top-0 bg-surface/95 backdrop-blur-sm border-b border-border px-5 py-3 flex items-center justify-between z-10">
               <button
+                ref={initialFocusRef}
                 onClick={onClose}
                 className="w-8 h-8 rounded-lg hover:bg-border/30 flex items-center justify-center transition-colors cursor-pointer"
                 aria-label="Close detail panel"
@@ -102,10 +112,13 @@ export default function DetailPanel({ restaurant, onClose, onSave, isSaved }) {
               <div className="flex items-start gap-4">
                 <ScoreBadge score={restaurant._compositeScore || 0} size="lg" />
                 <div>
-                  <h2 className="font-display text-2xl font-semibold text-text leading-tight">
+                  <h2
+                    id={`detail-title-${restaurant.id}`}
+                    className="font-display text-2xl font-semibold text-text leading-tight"
+                  >
                     {restaurant.name}
                   </h2>
-                  <p className="text-sm font-body text-muted mt-0.5">{restaurant.nameJa}</p>
+                  <p lang="ja" className="text-sm font-body text-muted mt-0.5">{restaurant.nameJa}</p>
                   <div className="flex items-center gap-2 mt-1.5">
                     <span className="text-sm font-body font-medium text-text">{restaurant.cuisine}</span>
                     {restaurant.subCuisine && (

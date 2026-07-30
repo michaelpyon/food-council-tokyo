@@ -26,15 +26,21 @@ afterEach(() => {
 
 vi.mock('motion/react', async () => {
   const React = await import('react');
+  const motionElements = new Map();
 
   const motion = new Proxy({}, {
-    get: (_, tag) => React.forwardRef(function MotionElement(props, ref) {
-      const { children, ...elementProps } = props;
-      for (const key of ['layout', 'initial', 'animate', 'exit', 'transition']) {
-        delete elementProps[key];
+    get: (_, tag) => {
+      if (!motionElements.has(tag)) {
+        motionElements.set(tag, React.forwardRef(function MotionElement(props, ref) {
+          const { children, ...elementProps } = props;
+          for (const key of ['layout', 'initial', 'animate', 'exit', 'transition']) {
+            delete elementProps[key];
+          }
+          return React.createElement(tag, { ...elementProps, ref }, children);
+        }));
       }
-      return React.createElement(tag, { ...elementProps, ref }, children);
-    }),
+      return motionElements.get(tag);
+    },
   });
 
   return {

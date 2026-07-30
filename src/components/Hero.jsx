@@ -19,9 +19,8 @@ export default function Hero({ totalCount, savedCount = 0, onStarterTrip }) {
             <div className="mt-5">
               <button
                 onClick={onStarterTrip}
-                className="inline-flex items-center gap-2 rounded-full bg-text text-surface text-sm font-body font-semibold px-5 py-2.5 hover:opacity-90 transition-opacity cursor-pointer focus:outline-none focus:ring-2 focus:ring-accent/40"
+                className="inline-flex items-center rounded-full bg-text text-surface text-sm font-body font-semibold px-5 py-2.5 hover:opacity-90 transition-opacity cursor-pointer focus:outline-none focus:ring-2 focus:ring-accent/40"
               >
-                <span aria-hidden="true">&#x2605;</span>
                 Build me a first-timer trip
               </button>
               <p className="mt-2 text-xs font-body text-muted">

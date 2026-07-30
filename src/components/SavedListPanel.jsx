@@ -5,10 +5,12 @@ import MichelinBadge from './MichelinBadge';
 import { PRICE_LABELS } from '../data/restaurants';
 import { mapsUrl, tabelogUrl } from '../utils/links';
 import { buildTripUrl, buildTripText, groupByNeighborhood } from '../utils/tripUrl';
+import { useModalPanel } from '../hooks/useModalPanel';
 
 export default function SavedListPanel({ isOpen, onClose, savedRestaurants, savedIds, filters, onRemove, onSelect }) {
   const [shareMsg, setShareMsg] = useState('');
   const [copyMsg, setCopyMsg] = useState('');
+  const { panelRef, initialFocusRef } = useModalPanel(isOpen, onClose);
 
   const flash = useCallback((setter, text) => {
     setter(text);
@@ -58,11 +60,17 @@ export default function SavedListPanel({ isOpen, onClose, savedRestaurants, save
             exit={{ opacity: 0 }}
             transition={{ duration: 0.15 }}
             onClick={onClose}
-            className="fixed inset-0 bg-black/30 backdrop-blur-sm z-50"
+            className="fixed inset-0 bg-text/30 backdrop-blur-sm z-50"
+            aria-hidden="true"
           />
 
           {/* Panel */}
           <Motion.aside
+            ref={panelRef}
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="saved-list-title"
+            tabIndex={-1}
             initial={{ x: '100%' }}
             animate={{ x: 0 }}
             exit={{ x: '100%' }}
@@ -73,12 +81,13 @@ export default function SavedListPanel({ isOpen, onClose, savedRestaurants, save
             <div className="sticky top-0 bg-surface/95 backdrop-blur-sm border-b border-border px-5 py-4 z-10">
               <div className="flex items-center justify-between">
                 <div>
-                  <h2 className="font-display text-xl font-semibold text-text">My Trip</h2>
+                  <h2 id="saved-list-title" className="font-display text-xl font-semibold text-text">My Trip</h2>
                   <p className="text-xs font-body text-muted mt-0.5">
                     {savedRestaurants.length} restaurant{savedRestaurants.length !== 1 ? 's' : ''} saved
                   </p>
                 </div>
                 <button
+                  ref={initialFocusRef}
                   onClick={onClose}
                   className="w-8 h-8 rounded-lg hover:bg-border/30 flex items-center justify-center transition-colors cursor-pointer"
                   aria-label="Close saved list"
@@ -118,7 +127,6 @@ export default function SavedListPanel({ isOpen, onClose, savedRestaurants, save
             <div className="p-4 space-y-5">
               {savedRestaurants.length === 0 ? (
                 <div className="text-center py-16">
-                  <div className="text-4xl mb-3">🗾</div>
                   <p className="text-sm font-body text-muted">No restaurants saved yet.</p>
                   <p className="text-xs font-body text-muted mt-1">Tap the heart on any card to start building your trip.</p>
                 </div>

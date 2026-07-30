@@ -42,7 +42,7 @@ export default function Header({ totalCount, filteredCount, savedCount, query = 
 
             {/* Saved button */}
             <button
-              onClick={onOpenSaved}
+              onClick={event => onOpenSaved(event.currentTarget)}
               aria-label={`Open My Trip (${savedCount} saved)`}
               className="relative flex items-center gap-1.5 h-9 px-3 rounded-lg border border-border bg-surface text-sm font-body font-medium text-text hover:bg-border/30 transition-colors cursor-pointer"
             >

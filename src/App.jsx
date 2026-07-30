@@ -1,4 +1,4 @@
-import { useState, useMemo, useCallback, useEffect } from 'react';
+import { useState, useMemo, useCallback, useEffect, useRef } from 'react';
 import { AnimatePresence } from 'motion/react';
 import { restaurants as rawRestaurants } from './data/restaurants';
 import { curatedLists, getCuratedListRestaurants } from './data/curatedLists';
@@ -49,6 +49,8 @@ export default function App() {
   const [savedIds, setSavedIdsState] = useState(getInitialSavedIds);
   const [showSaved, setShowSaved] = useState(false);
   const [activeListId, setActiveListId] = useState(null);
+  const detailTriggerRef = useRef(null);
+  const savedTriggerRef = useRef(null);
 
   // Apply curated list filter if active
   const curatedFiltered = useMemo(() => {
@@ -85,6 +87,26 @@ export default function App() {
     setFilters({ ...DEFAULT_FILTERS });
   }, []);
 
+  const handleSelectRestaurant = useCallback((restaurant, trigger) => {
+    detailTriggerRef.current = trigger || null;
+    setSelectedRestaurant(restaurant);
+  }, []);
+
+  const handleOpenSaved = useCallback(trigger => {
+    savedTriggerRef.current = trigger || null;
+    setShowSaved(true);
+  }, []);
+
+  const handleCloseDetail = useCallback(() => {
+    setSelectedRestaurant(null);
+    window.setTimeout(() => detailTriggerRef.current?.focus(), 0);
+  }, []);
+
+  const handleCloseSaved = useCallback(() => {
+    setShowSaved(false);
+    window.setTimeout(() => savedTriggerRef.current?.focus(), 0);
+  }, []);
+
   const handleSave = useCallback((id) => {
     setSavedIdsState(prev => {
       if (prev.includes(id)) {
@@ -118,18 +140,6 @@ export default function App() {
     setShowSaved(true);
   }, []);
 
-  // Close detail panel on escape
-  useEffect(() => {
-    const handleKey = (e) => {
-      if (e.key === 'Escape') {
-        if (selectedRestaurant) setSelectedRestaurant(null);
-        else if (showSaved) setShowSaved(false);
-      }
-    };
-    window.addEventListener('keydown', handleKey);
-    return () => window.removeEventListener('keydown', handleKey);
-  }, [selectedRestaurant, showSaved]);
-
   // Keep the address bar in sync so the trip and filtered view are deep-linkable.
   useEffect(() => {
     syncUrl(savedIds, filters);
@@ -142,7 +152,7 @@ export default function App() {
         filteredCount={filtered.length}
         savedCount={savedIds.length}
         query={filters.query}
-        onOpenSaved={() => setShowSaved(true)}
+        onOpenSaved={handleOpenSaved}
         onSearch={handleSearch}
       />
 
@@ -170,7 +180,6 @@ export default function App() {
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
         {filtered.length === 0 ? (
           <div className="text-center py-20">
-            <div className="text-5xl mb-4 text-border select-none" aria-hidden="true">&#x2665;</div>
             <p className="text-lg font-display text-text">No restaurants match your filters</p>
             <p className="text-sm font-body text-muted mt-1">This combination has no matches.</p>
             <button
@@ -188,7 +197,7 @@ export default function App() {
                 <RestaurantCard
                   key={restaurant.id}
                   restaurant={restaurant}
-                  onClick={setSelectedRestaurant}
+                  onClick={handleSelectRestaurant}
                   onSave={handleSave}
                   isSaved={savedIds.includes(restaurant.id)}
                 />
@@ -208,7 +217,7 @@ export default function App() {
       {/* Detail panel */}
       <DetailPanel
         restaurant={selectedRestaurant}
-        onClose={() => setSelectedRestaurant(null)}
+        onClose={handleCloseDetail}
         onSave={handleSave}
         isSaved={selectedRestaurant ? savedIds.includes(selectedRestaurant.id) : false}
       />
@@ -216,12 +225,12 @@ export default function App() {
       {/* Saved list panel */}
       <SavedListPanel
         isOpen={showSaved}
-        onClose={() => setShowSaved(false)}
+        onClose={handleCloseSaved}
         savedRestaurants={savedRestaurants}
         savedIds={savedIds}
         filters={filters}
         onRemove={handleSave}
-        onSelect={setSelectedRestaurant}
+        onSelect={handleSelectRestaurant}
       />
     </div>
   );

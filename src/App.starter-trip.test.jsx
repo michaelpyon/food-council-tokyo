@@ -23,7 +23,7 @@ describe('first-timer flows', () => {
 
     await user.click(screen.getByRole('button', { name: 'Build me a first-timer trip' }));
 
-    const tripPanel = screen.getByRole('complementary');
+    const tripPanel = screen.getByRole('dialog', { name: 'My Trip' });
     expect(within(tripPanel).getByText(/20 restaurants saved/i)).toBeTruthy();
     expect(within(tripPanel).queryByText('No restaurants saved yet.')).toBeNull();
   });

@@ -12,7 +12,7 @@ export default function CuratedLists({ lists, onSelectList, onStarterTrip, activ
 
         {/* Card grid - primary entry point */}
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-2 sm:gap-3">
-          {lists.map(list => {
+          {lists.map((list, index) => {
             const isActive = activeListId === list.id;
             return (
               <button
@@ -24,7 +24,9 @@ export default function CuratedLists({ lists, onSelectList, onStarterTrip, activ
                     : 'border-border bg-surface text-text hover:border-text/40 hover:shadow-sm'
                 }`}
               >
-                <div className="text-xl mb-2">{list.emoji}</div>
+                <div className={`text-[10px] font-body font-semibold tracking-widest mb-3 ${isActive ? 'text-surface/60' : 'text-muted'}`}>
+                  {String(index + 1).padStart(2, '0')}
+                </div>
                 <div className={`text-sm font-body font-semibold leading-snug mb-1 ${isActive ? 'text-surface' : 'text-text'}`}>
                   {list.title}
                 </div>
@@ -60,7 +62,6 @@ export default function CuratedLists({ lists, onSelectList, onStarterTrip, activ
               className="mt-4 flex flex-wrap items-center gap-2"
             >
               <span className="inline-flex items-center gap-1.5 text-xs font-body font-medium text-accent bg-accent/8 border border-accent/20 rounded-full px-3 py-1">
-                <span>{activeList.emoji}</span>
                 <span>{activeList.title}</span>
                 <button
                   onClick={() => onSelectList(null)}

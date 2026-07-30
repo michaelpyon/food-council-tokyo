@@ -6,6 +6,26 @@ import { mapsUrl, tabelogUrl } from '../utils/links';
 
 export default function RestaurantCard({ restaurant, onClick, onSave, isSaved }) {
   const r = restaurant;
+  const michelinLabel = r.michelin?.stars > 0
+    ? `${r.michelin.stars} Michelin star${r.michelin.stars > 1 ? 's' : ''}`
+    : r.michelin?.bib
+      ? 'Michelin Bib Gourmand'
+      : r.michelin?.plate
+        ? 'Michelin Plate'
+        : null;
+  const detailsLabel = [
+    `View details for ${r.name}`,
+    `score ${(r._compositeScore || 0).toFixed(1)}`,
+    r.nameJa,
+    r.cuisine,
+    r.subCuisine,
+    r.neighborhood,
+    PRICE_LABELS[r.priceRange],
+    michelinLabel,
+    r.tabelog?.score ? `Tabelog ${r.tabelog.score.toFixed(2)}` : null,
+    r.google?.rating ? `Google ${r.google.rating.toFixed(1)}` : null,
+    `${r.sources?.length || 0} sources`,
+  ].filter(Boolean).join(', ');
 
   return (
     <Motion.article
@@ -49,8 +69,8 @@ export default function RestaurantCard({ restaurant, onClick, onSave, isSaved })
 
         <button
           type="button"
-          onClick={() => onClick(r)}
-          aria-label={`View details for ${r.name}`}
+          onClick={event => onClick(r, event.currentTarget)}
+          aria-label={detailsLabel}
           className="block w-full text-left rounded-md cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/30"
         >
           <div className="flex items-start gap-2.5">
@@ -59,7 +79,7 @@ export default function RestaurantCard({ restaurant, onClick, onSave, isSaved })
               <h3 className="font-display text-base font-semibold text-text leading-tight truncate">
                 {r.name}
               </h3>
-              <p className="text-xs font-body text-muted mt-0.5 truncate">
+              <p lang="ja" className="text-xs font-body text-muted mt-0.5 truncate">
                 {r.nameJa}
               </p>
             </div>

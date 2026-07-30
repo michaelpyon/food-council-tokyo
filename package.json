@@ -5,8 +5,12 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "data:generate": "node scripts/normalize-restaurant-audits.mjs",
+    "data:check": "node scripts/normalize-restaurant-audits.mjs --check && node scripts/validate-normalized-restaurants.mjs",
+    "prebuild": "npm run data:check",
     "build": "vite build",
     "lint": "eslint .",
+    "pretest": "npm run data:check",
     "test": "vitest run",
     "preview": "vite preview"
   },

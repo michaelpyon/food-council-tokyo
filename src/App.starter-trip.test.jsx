@@ -3,28 +3,28 @@ import { render, screen, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import App from './App';
 
-describe('first-timer flows', () => {
-  it('shows restaurants for the First Time in Tokyo list', async () => {
+describe('verified trip flows', () => {
+  it('saves a verified record and shows direct evidence in My Trip', async () => {
     const user = userEvent.setup();
     render(<App />);
 
-    await user.click(screen.getByRole('button', { name: /First Time in Tokyo/i }));
-
-    // Regression: ISSUE-001 - First Time in Tokyo returned an empty grid.
-    // Found by /qa on 2026-07-30
-    // Report: .gstack/qa-reports/qa-report-localhost-2026-07-30.md
-    expect(screen.queryByText('No restaurants match your filters')).toBeNull();
-    expect(screen.getByText('20 of 163 restaurants')).toBeTruthy();
-  });
-
-  it('builds a non-empty first-timer trip from the hero', async () => {
-    const user = userEvent.setup();
-    render(<App />);
-
-    await user.click(screen.getByRole('button', { name: 'Build me a first-timer trip' }));
+    await user.click(screen.getByRole('button', { name: 'Save Ben Fiddich to My Trip' }));
+    await user.click(screen.getByRole('button', { name: 'Open My Trip (1 saved)' }));
 
     const tripPanel = screen.getByRole('dialog', { name: 'My Trip' });
-    expect(within(tripPanel).getByText(/20 restaurants saved/i)).toBeTruthy();
-    expect(within(tripPanel).queryByText('No restaurants saved yet.')).toBeNull();
+    expect(within(tripPanel).getByText('1 verified place saved')).toBeTruthy();
+    expect(within(tripPanel).getByText('Ben Fiddich')).toBeTruthy();
+    expect(within(tripPanel).getByRole('link', { name: 'Tabelog record' })).toBeTruthy();
+    expect(within(tripPanel).queryByText(/score/i)).toBeNull();
+  });
+
+  it('opens a shared trip immediately and discloses omitted legacy IDs', () => {
+    window.history.replaceState(null, '', '/?trip=ben-fiddich,sukiyabashi-jiro');
+    render(<App />);
+
+    const tripPanel = screen.getByRole('dialog', { name: 'My Trip' });
+    expect(within(tripPanel).getByText('Ben Fiddich')).toBeTruthy();
+    expect(within(tripPanel).getByText('1 legacy place was left out')).toBeTruthy();
+    expect(within(tripPanel).queryByText('Sukiyabashi Jiro')).toBeNull();
   });
 });

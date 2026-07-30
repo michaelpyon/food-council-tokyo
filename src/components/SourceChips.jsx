@@ -1,30 +1,28 @@
-const SOURCE_CONFIG = {
-  tabelog: { label: 'Tabelog', bg: 'bg-orange-50', text: 'text-orange-700', border: 'border-orange-200' },
-  google: { label: 'Google', bg: 'bg-blue-50', text: 'text-blue-700', border: 'border-blue-200' },
-  michelin: { label: 'Michelin', bg: 'bg-red-50', text: 'text-red-700', border: 'border-red-200' },
-  eater: { label: 'Eater', bg: 'bg-emerald-50', text: 'text-emerald-700', border: 'border-emerald-200' },
-  cnt: { label: 'CN Traveler', bg: 'bg-purple-50', text: 'text-purple-700', border: 'border-purple-200' },
-  nyt: { label: 'NYT', bg: 'bg-gray-100', text: 'text-gray-700', border: 'border-gray-300' },
-  timeout: { label: 'Time Out', bg: 'bg-pink-50', text: 'text-pink-700', border: 'border-pink-200' },
-};
+import { sourceLabel, verifiedSources } from '../utils/links';
 
-export default function SourceChips({ sources, compact = false }) {
-  if (!sources || sources.length === 0) return null;
+export default function SourceChips({ restaurant, compact = false }) {
+  const sources = verifiedSources(restaurant);
+  if (sources.length === 0) return null;
 
   return (
-    <div className="flex flex-wrap gap-1">
-      {sources.map(source => {
-        const config = SOURCE_CONFIG[source];
-        if (!config) return null;
-        return (
-          <span
-            key={source}
-            className={`inline-flex items-center rounded-full border px-2 py-0.5 font-body font-medium ${config.bg} ${config.text} ${config.border} ${compact ? 'text-[10px]' : 'text-xs'}`}
-          >
-            {config.label}
-          </span>
-        );
-      })}
+    <div className="flex flex-wrap gap-2">
+      {sources.map(source => (
+        <a
+          key={source.url}
+          href={source.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={`inline-flex items-center gap-1 rounded-md border border-border bg-surface font-body font-semibold text-text hover:border-accent/40 hover:text-accent transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/25 ${
+            compact ? 'px-2 py-1 text-[11px]' : 'px-3 py-2 text-xs'
+          }`}
+        >
+          {sourceLabel(source)}
+          <svg className="w-3 h-3" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
+            <path d="M6 3h7v7M13 3 5 11" />
+            <path d="M11 9v4H3V5h4" />
+          </svg>
+        </a>
+      ))}
     </div>
   );
 }

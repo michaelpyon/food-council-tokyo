@@ -1,48 +1,49 @@
 import { describe, expect, it } from 'vitest';
-import { render, screen } from '@testing-library/react';
+import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import App from './App';
 
-describe('filter state', () => {
-  it('treats a manual filter as a new global search', async () => {
+describe('verified filter state', () => {
+  it('filters by neighborhood and only enables possible Michelin combinations', async () => {
     const user = userEvent.setup();
     render(<App />);
 
-    await user.click(screen.getByRole('button', { name: /The Ramen Circuit/i }));
-    expect(screen.getByText('16 of 163 restaurants')).toBeTruthy();
+    expect(screen.getByText('28 of 28 verified records')).toBeTruthy();
 
-    const cuisineFilter = screen.getAllByRole('combobox')[0];
-    await user.selectOptions(cuisineFilter, 'Sushi');
+    const neighborhoodFilter = screen.getByRole('combobox', { name: 'Neighborhood' });
+    await user.selectOptions(neighborhoodFilter, 'Ginza');
+    expect(screen.getByText('3 of 28 verified records')).toBeTruthy();
 
-    // Regression: ISSUE-002 - the Sushi filter was invisibly intersected with
-    // the active Ramen Circuit list and returned 0.
-    // Found by /qa on 2026-07-30
-    // Report: .gstack/qa-reports/qa-report-localhost-2026-07-30.md
-    expect(screen.queryByText('No restaurants match your filters')).toBeNull();
-    expect(screen.queryByRole('button', { name: 'Clear list filter' })).toBeNull();
-    expect(screen.getByRole('button', { name: /View details for Sukiyabashi Jiro/i })).toBeTruthy();
+    await user.click(screen.getByRole('button', { name: 'Michelin verified (5)' }));
+    expect(screen.getByText('1 of 28 verified records')).toBeTruthy();
+    expect(screen.getByText('Tempura Kondo')).toBeTruthy();
+
+    expect(screen.getByRole('option', { name: 'Asakusa (0)' }).disabled).toBe(true);
   });
 
-  it('clears every active filter from the empty state', async () => {
+  it('clears an empty search without leaving hidden state behind', async () => {
     const user = userEvent.setup();
     render(<App />);
 
-    const search = screen.getByRole('searchbox', { name: 'Search restaurants' });
-    await user.type(search, 'no restaurant has this name');
+    const search = screen.getByRole('searchbox', { name: 'Search verified places' });
+    await user.type(search, 'no verified place has this name');
 
-    expect(screen.getByText('No restaurants match your filters')).toBeTruthy();
+    expect(screen.getByText('No verified records match')).toBeTruthy();
     await user.click(screen.getByRole('button', { name: 'Clear all filters' }));
 
-    expect(screen.queryByText('No restaurants match your filters')).toBeNull();
-    expect(screen.getByText('163 of 163 restaurants')).toBeTruthy();
+    expect(screen.queryByText('No verified records match')).toBeNull();
+    expect(screen.getByText('28 of 28 verified records')).toBeTruthy();
     expect(search.value).toBe('');
   });
 
-  it('offers only source filters that can narrow the dataset', () => {
+  it('ignores and removes legacy filter parameters', async () => {
+    window.history.replaceState(null, '', '/?cuisine=Sushi&source=eater&hood=Unknown&price=4');
     render(<App />);
 
-    expect(screen.queryByRole('option', { name: 'Tabelog' })).toBeNull();
-    expect(screen.queryByRole('option', { name: 'Google' })).toBeNull();
-    expect(screen.getByRole('option', { name: 'Listed by Michelin' })).toBeTruthy();
+    expect(screen.getByText('28 of 28 verified records')).toBeTruthy();
+    expect(screen.queryByRole('option', { name: 'Highest Rated' })).toBeNull();
+    expect(screen.queryByRole('option', { name: 'Tabelog Score' })).toBeNull();
+
+    await waitFor(() => expect(window.location.search).toBe(''));
   });
 });

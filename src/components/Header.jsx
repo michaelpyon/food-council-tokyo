@@ -4,7 +4,7 @@ export default function Header({ totalCount, filteredCount, savedCount, query = 
   };
 
   return (
-    <header className="sticky top-0 z-40 bg-bg/95 backdrop-blur-sm border-b border-border">
+    <header className="sticky top-0 z-40 bg-bg border-b border-border">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo / Title */}
@@ -25,8 +25,8 @@ export default function Header({ totalCount, filteredCount, savedCount, query = 
                 type="search"
                 value={query}
                 onChange={handleSearch}
-                placeholder="Search restaurants..."
-                aria-label="Search restaurants"
+                placeholder="Search verified places..."
+                aria-label="Search verified places"
                 className="w-40 sm:w-56 lg:w-72 h-9 pl-9 pr-3 rounded-lg border border-border bg-surface text-sm font-body text-text placeholder:text-muted focus:outline-none focus:ring-2 focus:ring-accent/20 focus:border-accent transition-colors"
               />
               <svg
@@ -61,7 +61,7 @@ export default function Header({ totalCount, filteredCount, savedCount, query = 
 
         {/* Stats bar */}
         <div className="flex items-center gap-4 pb-2 text-xs font-body text-muted">
-          <span>{filteredCount} of {totalCount} restaurants</span>
+          <span aria-live="polite">{filteredCount} of {totalCount} verified records</span>
         </div>
       </div>
     </header>

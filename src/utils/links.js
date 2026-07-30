@@ -1,23 +1,19 @@
-/**
- * Honest outbound links for each restaurant.
- *
- * There are no addresses or coordinates in the dataset, so these are
- * by-name searches that resolve to the real place on Google Maps and
- * Tabelog. If a restaurant ever gains a real reservationUrl, prefer it.
- */
+const SOURCE_LABELS = {
+  official: 'Official site',
+  tabelog: 'Tabelog record',
+  michelin: 'Michelin Guide',
+  other: 'Supporting source',
+};
 
-export function mapsUrl(restaurant) {
-  const query = `${restaurant.name} ${restaurant.neighborhood} Tokyo`;
-  return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(query)}`;
+export function sourceLabel(source) {
+  return SOURCE_LABELS[source?.type] || 'Evidence source';
 }
 
-export function tabelogUrl(restaurant) {
-  return `https://tabelog.com/en/rstLst/?sw=${encodeURIComponent(restaurant.name)}`;
-}
-
-/**
- * Prefer a real reservation link when one exists; today all are null.
- */
-export function bookingUrl(restaurant) {
-  return restaurant.reservationUrl || tabelogUrl(restaurant);
+export function verifiedSources(restaurant) {
+  const seen = new Set();
+  return (restaurant.sources || []).filter(source => {
+    if (!source?.url || seen.has(source.url)) return false;
+    seen.add(source.url);
+    return true;
+  });
 }

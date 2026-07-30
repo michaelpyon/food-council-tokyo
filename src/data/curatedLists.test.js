@@ -1,27 +1,45 @@
 import { describe, expect, it } from 'vitest';
-import { restaurants as rawRestaurants } from './restaurants';
-import { curatedLists, getCuratedListRestaurants } from './curatedLists';
-import { computeCompositeScore } from '../utils/scoring';
+import publicData from '../../data-audit/normalized/publishable-restaurants.json';
+import { restaurants } from './verifiedRestaurants';
 
-const restaurants = rawRestaurants.map(restaurant => ({
-  ...restaurant,
-  _compositeScore: computeCompositeScore(restaurant),
-}));
+const FORBIDDEN_FIELDS = [
+  'tabelog',
+  'google',
+  'priceRange',
+  'description',
+  'tags',
+  'awards',
+  'photoSeed',
+  'reservationUrl',
+  '_compositeScore',
+];
 
-describe('curated lists', () => {
-  it.each(curatedLists)('$title returns at least 1 restaurant', (list) => {
-    // Regression: ISSUE-001 - First Time in Tokyo returned no restaurants.
-    // Found by /qa on 2026-07-30
-    // Report: .gstack/qa-reports/qa-report-localhost-2026-07-30.md
-    expect(getCuratedListRestaurants(restaurants, list).length).toBeGreaterThan(0);
+describe('verified restaurant contract', () => {
+  it('publishes the strict 28-record cut and holds the other 135', () => {
+    expect(publicData.sourceRecordCount).toBe(163);
+    expect(publicData.count).toBe(28);
+    expect(publicData.heldCount).toBe(135);
+    expect(restaurants).toHaveLength(28);
+    expect(new Set(restaurants.map(restaurant => restaurant.id)).size).toBe(28);
   });
 
-  it('keeps the first-timer list useful and bounded', () => {
-    const list = curatedLists.find(candidate => candidate.id === 'first-timers');
-    const results = getCuratedListRestaurants(restaurants, list);
+  it('contains direct evidence and no unsupported enrichment', () => {
+    for (const record of publicData.records) {
+      expect(record.lastVerified).toBe('2026-07-30');
+      expect(record.sources.length).toBeGreaterThan(0);
+      expect(record.sources.every(source => /^https?:\/\//.test(source.url))).toBe(true);
+      for (const field of FORBIDDEN_FIELDS) {
+        expect(Object.hasOwn(record, field)).toBe(false);
+      }
+    }
+  });
 
-    expect(results).toHaveLength(20);
-    expect(results.every(restaurant => restaurant.tags?.includes('walk-in-ok'))).toBe(true);
-    expect(results.every(restaurant => restaurant.priceRange <= 3)).toBe(true);
+  it('publishes only the 5 directly verified Michelin distinctions', () => {
+    const michelin = publicData.records.filter(
+      record => record.michelin.verified && record.michelin.distinction,
+    );
+
+    expect(michelin).toHaveLength(5);
+    expect(michelin.every(record => record.michelin.sourceUrl)).toBe(true);
   });
 });

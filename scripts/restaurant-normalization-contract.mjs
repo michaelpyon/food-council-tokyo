@@ -104,7 +104,6 @@ const PUBLIC_RECORD_KEYS = [
   "name",
   "nameJa",
   "branch",
-  "cuisine",
   "neighborhood",
   "michelin",
   "lastVerified",
@@ -354,7 +353,7 @@ export function validatePublicArtifact(publicArtifact, normalizedArtifact) {
     push(errors, sameKeys(record, PUBLIC_RECORD_KEYS), `${prefix} keys do not match the contract`);
     push(errors, record?.index === expected?.index, `${prefix}.index does not match normalized record`);
     push(errors, record?.id === expected?.id, `${prefix}.id does not match normalized record`);
-    for (const key of ["name", "nameJa", "branch", "cuisine", "neighborhood"]) {
+    for (const key of ["name", "nameJa", "branch", "neighborhood"]) {
       push(
         errors,
         record?.[key] === expected?.canonical?.[key],

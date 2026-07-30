@@ -11,7 +11,6 @@
       "name": "Sushizanmai Honten",
       "nameJa": "すしざんまい 本店",
       "branch": "Tsukiji honten",
-      "cuisine": "Sushi",
       "neighborhood": "Tsukiji",
       "michelin": {
         "distinction": null,
@@ -37,7 +36,6 @@
       "name": "Mutekiya",
       "nameJa": "無敵家",
       "branch": "Ikebukuro",
-      "cuisine": "Ramen",
       "neighborhood": "Ikebukuro",
       "michelin": {
         "distinction": null,
@@ -63,7 +61,6 @@
       "name": "Ippudo Ebisu",
       "nameJa": "一風堂 恵比寿店",
       "branch": "Ebisu",
-      "cuisine": "Ramen",
       "neighborhood": "Ebisu",
       "michelin": {
         "distinction": null,
@@ -89,7 +86,6 @@
       "name": "Kagurazaka Ishikawa",
       "nameJa": "神楽坂 石かわ",
       "branch": "Kagurazaka",
-      "cuisine": "Kaiseki",
       "neighborhood": "Kagurazaka",
       "michelin": {
         "distinction": "three_stars",
@@ -115,7 +111,6 @@
       "name": "Tempura Kondo",
       "nameJa": "てんぷら 近藤",
       "branch": "Ginza",
-      "cuisine": "Tempura",
       "neighborhood": "Ginza",
       "michelin": {
         "distinction": "two_stars",
@@ -145,7 +140,6 @@
       "name": "Shirube",
       "nameJa": "汁べゑ 下北沢店",
       "branch": "Shimokitazawa",
-      "cuisine": "Izakaya",
       "neighborhood": "Shimokitazawa",
       "michelin": {
         "distinction": null,
@@ -167,7 +161,6 @@
       "name": "Curry Rice Ethiopia Honten",
       "nameJa": "カリーライス専門店エチオピア 本店",
       "branch": "Jimbocho honten",
-      "cuisine": "Curry",
       "neighborhood": "Jimbocho",
       "michelin": {
         "distinction": null,
@@ -193,7 +186,6 @@
       "name": "Bondy Jimbocho Honten",
       "nameJa": "欧風カレー ボンディ 神保町本店",
       "branch": "Jimbocho honten",
-      "cuisine": "Curry",
       "neighborhood": "Jimbocho",
       "michelin": {
         "distinction": null,
@@ -219,7 +211,6 @@
       "name": "Delhi Ueno",
       "nameJa": "デリー 上野店",
       "branch": "Ueno",
-      "cuisine": "Curry",
       "neighborhood": "Ueno",
       "michelin": {
         "distinction": null,
@@ -245,7 +236,6 @@
       "name": "Sometaro",
       "nameJa": "風流お好み焼 染太郎",
       "branch": "Nishi-Asakusa",
-      "cuisine": "Okonomiyaki",
       "neighborhood": "Nishi-Asakusa",
       "michelin": {
         "distinction": null,
@@ -271,7 +261,6 @@
       "name": "Sakura-tei",
       "nameJa": "さくら亭",
       "branch": "Harajuku",
-      "cuisine": "Okonomiyaki",
       "neighborhood": "Harajuku",
       "michelin": {
         "distinction": null,
@@ -297,7 +286,6 @@
       "name": "Rengatei",
       "nameJa": "煉瓦亭",
       "branch": "Rengatei",
-      "cuisine": "Yoshoku",
       "neighborhood": "Ginza",
       "michelin": {
         "distinction": null,
@@ -319,7 +307,6 @@
       "name": "Yoshikami",
       "nameJa": "ヨシカミ",
       "branch": "Yoshikami",
-      "cuisine": "Yoshoku",
       "neighborhood": "Asakusa",
       "michelin": {
         "distinction": null,
@@ -345,7 +332,6 @@
       "name": "Grill Grand",
       "nameJa": "グリルグランド",
       "branch": "Grill Grand",
-      "cuisine": "Yoshoku",
       "neighborhood": "Asakusa",
       "michelin": {
         "distinction": null,
@@ -367,7 +353,6 @@
       "name": "Gastronomie Joël Robuchon",
       "nameJa": "ガストロノミー ジョエル・ロブション",
       "branch": "Gastronomie Joël Robuchon",
-      "cuisine": "French",
       "neighborhood": "Ebisu / Mita",
       "michelin": {
         "distinction": "three_stars",
@@ -393,7 +378,6 @@
       "name": "NARISAWA",
       "nameJa": "ナリサワ",
       "branch": "NARISAWA",
-      "cuisine": "French",
       "neighborhood": "Minami-Aoyama",
       "michelin": {
         "distinction": "two_stars",
@@ -415,7 +399,6 @@
       "name": "Quintessence",
       "nameJa": "カンテサンス",
       "branch": "Quintessence",
-      "cuisine": "French",
       "neighborhood": "Kita-Shinagawa",
       "michelin": {
         "distinction": "three_stars",
@@ -441,7 +424,6 @@
       "name": "Blue Bottle Coffee Aoyama Cafe",
       "nameJa": "ブルーボトルコーヒー 青山カフェ",
       "branch": "Blue Bottle Coffee Aoyama Cafe",
-      "cuisine": "Cafe",
       "neighborhood": "Minami-Aoyama",
       "michelin": {
         "distinction": null,
@@ -467,7 +449,6 @@
       "name": "Chatei Hatou",
       "nameJa": "茶亭羽當",
       "branch": "Chatei Hatou",
-      "cuisine": "Cafe",
       "neighborhood": "Shibuya",
       "michelin": {
         "distinction": null,
@@ -489,7 +470,6 @@
       "name": "Bricolage Bread & Co.",
       "nameJa": "ブリコラージュブレッド",
       "branch": "Bricolage Bread & Co.",
-      "cuisine": "Bakery",
       "neighborhood": "Roppongi",
       "michelin": {
         "distinction": null,
@@ -515,7 +495,6 @@
       "name": "Pan no Pelican",
       "nameJa": "パンのペリカン",
       "branch": "Pan no Pelican",
-      "cuisine": "Bakery",
       "neighborhood": "Tawaramachi / Asakusa",
       "michelin": {
         "distinction": null,
@@ -537,7 +516,6 @@
       "name": "VIRON Shibuya",
       "nameJa": "VIRON 渋谷店",
       "branch": "VIRON Shibuya",
-      "cuisine": "Bakery",
       "neighborhood": "Udagawacho / Shibuya",
       "michelin": {
         "distinction": null,
@@ -559,7 +537,6 @@
       "name": "Gen Yamamoto",
       "nameJa": "ゲンヤマモト",
       "branch": "Gen Yamamoto",
-      "cuisine": "Bar",
       "neighborhood": "Azabu-Juban",
       "michelin": {
         "distinction": null,
@@ -585,7 +562,6 @@
       "name": "Star Bar Ginza",
       "nameJa": "STAR BAR GINZA",
       "branch": "Star Bar Ginza",
-      "cuisine": "Bar",
       "neighborhood": "Ginza",
       "michelin": {
         "distinction": null,
@@ -611,7 +587,6 @@
       "name": "Ben Fiddich",
       "nameJa": "ベンフィディック",
       "branch": "Ben Fiddich",
-      "cuisine": "Bar",
       "neighborhood": "Nishi-Shinjuku",
       "michelin": {
         "distinction": null,
@@ -633,7 +608,6 @@
       "name": "Zoetrope",
       "nameJa": "ゾエトロープ",
       "branch": "Zoetrope",
-      "cuisine": "Bar",
       "neighborhood": "Nishi-Shinjuku",
       "michelin": {
         "distinction": null,
@@ -655,7 +629,6 @@
       "name": "Suzukien Asakusa Honten",
       "nameJa": "壽々喜園 浅草本店",
       "branch": "Suzukien Asakusa Honten",
-      "cuisine": "Dessert",
       "neighborhood": "Asakusa",
       "michelin": {
         "distinction": null,
@@ -677,7 +650,6 @@
       "name": "Café de L'Ambre",
       "nameJa": "カフェ・ド・ランブル",
       "branch": "Café de L'Ambre",
-      "cuisine": "Cafe",
       "neighborhood": "Ginza / Shinbashi edge",
       "michelin": {
         "distinction": null,

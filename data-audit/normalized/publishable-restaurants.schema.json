@@ -93,7 +93,6 @@
         "name",
         "nameJa",
         "branch",
-        "cuisine",
         "neighborhood",
         "michelin",
         "lastVerified",
@@ -118,10 +117,6 @@
           "minLength": 1
         },
         "branch": {
-          "type": "string",
-          "minLength": 1
-        },
-        "cuisine": {
           "type": "string",
           "minLength": 1
         },

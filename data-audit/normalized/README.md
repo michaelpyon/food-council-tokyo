@@ -2,7 +2,7 @@
 
 `restaurants.json` is the complete 163-record administrative audit. It preserves held records, normalized status, confidence, source URLs, and explicit hold reasons.
 
-`publishable-restaurants.json` is the app-safe public artifact. It contains only records that pass the strict release gate:
+`publishable-restaurants.json` is the app-safe public artifact. It contains only records that pass the strict release gate. Cuisine stays in the administrative audit and is excluded from the public contract.
 
 ```text
 status=active AND confidence=high AND auditFlags=0

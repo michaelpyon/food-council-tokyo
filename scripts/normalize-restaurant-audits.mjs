@@ -448,7 +448,6 @@ async function buildArtifact() {
         name: record.canonical.name,
         nameJa: record.canonical.nameJa,
         branch: record.canonical.branch,
-        cuisine: record.canonical.cuisine,
         neighborhood: record.canonical.neighborhood,
         michelin: record.michelin,
         lastVerified: record.lastVerified,

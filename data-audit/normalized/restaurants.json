@@ -38,7 +38,7 @@
     },
     {
       "path": "data-audit/audit-000-081.json",
-      "sha256": "93b75079223ec306026002bb84db9ec813c70299dcca45ee7f5b4b6b59fd672e"
+      "sha256": "3cbefad35076957e92a4d498358f8dd13c031414efba1c059e3778f0c6d9bbd3"
     },
     {
       "path": "data-audit/audit-082-162.json",
@@ -2852,10 +2852,6 @@
       "lastVerified": "2026-07-30",
       "confidence": "high",
       "sources": [
-        {
-          "type": "official",
-          "url": "https://www.sometaro.com/"
-        },
         {
           "type": "tabelog",
           "url": "https://tabelog.com/tokyo/A1311/A131102/13003710/"

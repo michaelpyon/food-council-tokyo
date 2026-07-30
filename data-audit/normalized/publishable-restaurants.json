@@ -246,10 +246,6 @@
       "lastVerified": "2026-07-30",
       "sources": [
         {
-          "type": "official",
-          "url": "https://www.sometaro.com/"
-        },
-        {
           "type": "tabelog",
           "url": "https://tabelog.com/tokyo/A1311/A131102/13003710/"
         }

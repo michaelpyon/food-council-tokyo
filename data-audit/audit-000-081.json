@@ -1810,7 +1810,7 @@
         "notes": "Direct branch match."
       },
       "sources": {
-        "official": ["https://www.sometaro.com/"],
+        "official": [],
         "michelin": [],
         "tabelog": ["https://tabelog.com/tokyo/A1311/A131102/13003710/"],
         "other": []

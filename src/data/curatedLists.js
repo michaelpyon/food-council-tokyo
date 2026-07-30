@@ -11,8 +11,8 @@ export const curatedLists = [
     emoji: '🗼',
     filter: (r) =>
       r.tags?.includes('walk-in-ok') &&
-      r.priceRange <= 3 &&
-      (r._compositeScore || 0) >= 6.0,
+      r.priceRange <= 3,
+    sort: (a, b) => (b._compositeScore || 0) - (a._compositeScore || 0),
     limit: 20,
   },
   {
@@ -91,3 +91,12 @@ export const curatedLists = [
     filter: (r) => r.michelin?.bib === true,
   },
 ];
+
+export function getCuratedListRestaurants(restaurants, list) {
+  if (!list) return restaurants;
+
+  let result = restaurants.filter(list.filter);
+  if (list.sort) result = [...result].sort(list.sort);
+  if (list.limit) result = result.slice(0, list.limit);
+  return result;
+}

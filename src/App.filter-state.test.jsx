@@ -37,4 +37,12 @@ describe('filter state', () => {
     expect(screen.getByText('163 of 163 restaurants')).toBeTruthy();
     expect(search.value).toBe('');
   });
+
+  it('offers only source filters that can narrow the dataset', () => {
+    render(<App />);
+
+    expect(screen.queryByRole('option', { name: 'Tabelog' })).toBeNull();
+    expect(screen.queryByRole('option', { name: 'Google' })).toBeNull();
+    expect(screen.getByRole('option', { name: 'Listed by Michelin' })).toBeTruthy();
+  });
 });

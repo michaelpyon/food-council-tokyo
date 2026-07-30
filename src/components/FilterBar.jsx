@@ -91,7 +91,7 @@ export default function FilterBar({ filters, onFilterChange, sortKey, onSortChan
             <svg className="w-3 h-3" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
               <path d="M8 1.5l1.763 3.572 3.937.572-2.85 2.777.673 3.921L8 10.395l-3.523 1.947.673-3.921-2.85-2.777 3.937-.572L8 1.5z" />
             </svg>
-            Michelin
+            Michelin star or Bib
           </button>
 
           {/* Source filter */}
@@ -100,10 +100,8 @@ export default function FilterBar({ filters, onFilterChange, sortKey, onSortChan
             onChange={(e) => handleChange('source', e.target.value)}
             className="h-8 px-3 rounded-md border border-border bg-surface text-xs font-body font-medium text-text focus:outline-none focus:ring-2 focus:ring-accent/20 cursor-pointer"
           >
-            <option value="all">All Sources</option>
-            <option value="tabelog">Tabelog</option>
-            <option value="google">Google</option>
-            <option value="michelin">Michelin</option>
+            <option value="all">Any coverage</option>
+            <option value="michelin">Listed by Michelin</option>
             <option value="eater">Eater</option>
             <option value="cnt">CN Traveler</option>
             <option value="nyt">NYT</option>

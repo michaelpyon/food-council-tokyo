@@ -29,9 +29,10 @@ export function filterRestaurants(restaurants, filters) {
       if (!filters.priceRange.includes(r.priceRange)) return false;
     }
 
-    // Michelin filter
+    // Michelin award filter. "Plate" entries are legacy guide selections, not
+    // stars or Bib Gourmands, so they don't belong under this control.
     if (filters.michelinOnly) {
-      if (!r.michelin || (r.michelin.stars === 0 && !r.michelin.bib && !r.michelin.plate)) {
+      if (!r.michelin || (r.michelin.stars === 0 && !r.michelin.bib)) {
         return false;
       }
     }

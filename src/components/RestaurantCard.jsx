@@ -75,7 +75,7 @@ export default function RestaurantCard({ restaurant, onClick, onSave, isSaved })
             <span>{r.neighborhood}</span>
           </div>
 
-          {r.michelin && (r.michelin.stars > 0 || r.michelin.bib) && (
+          {r.michelin && (r.michelin.stars > 0 || r.michelin.bib || r.michelin.plate) && (
             <div className="mt-2">
               <MichelinBadge michelin={r.michelin} compact />
             </div>

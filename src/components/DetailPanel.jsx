@@ -12,11 +12,11 @@ function formatVerifiedDate(date) {
   }).format(new Date(`${date}T00:00:00Z`));
 }
 
-export default function DetailPanel({ restaurant, onClose, onSave, isSaved }) {
+export default function DetailPanel({ restaurant, onClose, onExitComplete, onSave, isSaved }) {
   const { panelRef, initialFocusRef } = useModalPanel(Boolean(restaurant), onClose);
 
   return (
-    <AnimatePresence>
+    <AnimatePresence onExitComplete={onExitComplete}>
       {restaurant && (
         <>
           <Motion.div

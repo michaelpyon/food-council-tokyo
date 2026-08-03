@@ -1,4 +1,12 @@
-export default function Header({ totalCount, filteredCount, savedCount, query = '', onOpenSaved, onSearch }) {
+export default function Header({
+  totalCount,
+  filteredCount,
+  savedCount,
+  query = '',
+  onOpenSaved,
+  onSearch,
+  savedButtonRef,
+}) {
   const handleSearch = (e) => {
     onSearch(e.target.value);
   };
@@ -41,6 +49,7 @@ export default function Header({ totalCount, filteredCount, savedCount, query = 
 
           {/* Saved button */}
           <button
+            ref={savedButtonRef}
             onClick={event => onOpenSaved(event.currentTarget)}
             aria-label={`Open My Trip (${savedCount} saved)`}
             className="relative order-2 flex items-center gap-1.5 h-9 px-3 rounded-lg border border-border bg-surface text-sm font-body font-medium text-text hover:bg-border/30 transition-colors cursor-pointer sm:order-3"

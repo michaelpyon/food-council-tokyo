@@ -116,7 +116,9 @@ export default function App() {
   }, []);
 
   const handleSelectSavedRestaurant = useCallback((restaurant) => {
-    detailTriggerRef.current = savedTriggerRef.current;
+    const tripTrigger = savedTriggerRef.current;
+    tripTrigger?.focus();
+    detailTriggerRef.current = tripTrigger;
     setShowSaved(false);
     setSelectedRestaurant(restaurant);
   }, []);
@@ -124,6 +126,10 @@ export default function App() {
   const handleCloseDetail = useCallback(() => {
     setSelectedRestaurant(null);
     window.setTimeout(() => detailTriggerRef.current?.focus(), 0);
+  }, []);
+
+  const handleDetailExitComplete = useCallback(() => {
+    detailTriggerRef.current?.focus();
   }, []);
 
   const handleCloseSaved = useCallback(() => {
@@ -150,6 +156,7 @@ export default function App() {
         query={filters.query}
         onOpenSaved={handleOpenSaved}
         onSearch={handleSearch}
+        savedButtonRef={savedTriggerRef}
       />
 
       <Hero
@@ -218,6 +225,7 @@ export default function App() {
       <DetailPanel
         restaurant={selectedRestaurant}
         onClose={handleCloseDetail}
+        onExitComplete={handleDetailExitComplete}
         onSave={handleSave}
         isSaved={selectedRestaurant ? savedIds.includes(selectedRestaurant.id) : false}
       />

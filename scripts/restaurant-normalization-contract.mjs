@@ -249,6 +249,24 @@ export function isAllowedPublicSourceUrl(value) {
   return url.protocol === "https:" || PUBLIC_HTTP_SOURCE_ALLOWLIST.includes(value);
 }
 
+export function toPublicMichelin(michelin) {
+  if (!michelin?.verified || !isAllowedPublicSourceUrl(michelin?.sourceUrl)) {
+    return {
+      distinction: null,
+      edition: null,
+      verified: false,
+      sourceUrl: null,
+    };
+  }
+
+  return {
+    distinction: michelin.distinction,
+    edition: michelin.edition,
+    verified: true,
+    sourceUrl: michelin.sourceUrl,
+  };
+}
+
 function isHoldReason(value) {
   return BASE_HOLD_REASONS.includes(value) || /^audit_flag:[A-Za-z0-9_]+$/.test(value);
 }
@@ -509,8 +527,13 @@ export function validatePublicArtifact(publicArtifact, normalizedArtifact) {
     }
     push(
       errors,
-      JSON.stringify(record?.michelin) === JSON.stringify(expected?.michelin),
+      JSON.stringify(record?.michelin) === JSON.stringify(toPublicMichelin(expected?.michelin)),
       `${prefix}.michelin does not match normalized record`,
+    );
+    push(
+      errors,
+      !record?.michelin?.verified || isAllowedPublicSourceUrl(record?.michelin?.sourceUrl),
+      `${prefix}.michelin.sourceUrl must be public-safe when the distinction is verified`,
     );
     push(
       errors,

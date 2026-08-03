@@ -15,6 +15,7 @@ import {
   isAccessRestricted,
   isBlockingHoldReason,
   needsNameJaCorrectionHold,
+  toPublicMichelin,
   validateNormalizedArtifact,
   validatePublicArtifact,
 } from "./restaurant-normalization-contract.mjs";
@@ -470,7 +471,7 @@ async function buildArtifact() {
         nameJa: record.canonical.nameJa,
         branch: record.canonical.branch,
         neighborhood: record.canonical.neighborhood,
-        michelin: record.michelin,
+        michelin: toPublicMichelin(record.michelin),
         lastVerified: record.lastVerified,
         sources: record.sources.filter((source) => isAllowedPublicSourceUrl(source.url)),
       })),

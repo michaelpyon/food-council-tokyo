@@ -6,7 +6,7 @@ Verified through: 2026-07-30
 
 ## Bottom line
 
-The app doesn’t publish the raw 163-record dataset. The normalization pipeline reads both audit files, reconciles their schemas, and generates 2 artifacts:
+The app doesn’t publish the raw 163-record dataset. The normalization pipeline joins `src/data/restaurants.js` with both audit files, reconciles the audit schemas, and generates 2 artifacts:
 
 - A 163-record administrative dataset
 - A 28-record public dataset, with 135 records held
@@ -43,7 +43,7 @@ Ratings, review counts, prices, descriptions, cuisine labels, reservation claims
 
 The test and build commands fail if:
 
-- Generated artifacts drift from the 2 source audits
+- Generated artifacts drift from `src/data/restaurants.js` or either source audit
 - Record counts or provenance hashes change unexpectedly
 - A public record fails the status, confidence, flag, identity, or source gate
 - Unsupported ratings, prices, descriptions, restaurant photos, or stale counts enter the product

@@ -6,7 +6,7 @@ import {
   HELD_RECORD_COUNT,
 } from './data/verifiedRestaurants';
 import { filterRestaurants, sortRestaurants } from './utils/filters';
-import { getSavedIds, saveRestaurant, unsaveRestaurant, setSavedIds } from './utils/storage';
+import { getSavedIds, setSavedIds } from './utils/storage';
 import { readTripFromUrl, readFiltersFromUrl, syncUrl } from './utils/tripUrl';
 import Header from './components/Header';
 import Hero from './components/Hero';
@@ -138,9 +138,13 @@ export default function App() {
   }, []);
 
   const handleSave = useCallback((id) => {
-    setSavedIdsState(previous => (
-      previous.includes(id) ? unsaveRestaurant(id) : saveRestaurant(id)
-    ));
+    setSavedIdsState((previous) => {
+      const next = previous.includes(id)
+        ? previous.filter(savedId => savedId !== id)
+        : [...previous, id];
+      setSavedIds(next);
+      return next;
+    });
   }, []);
 
   useEffect(() => {

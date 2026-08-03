@@ -12,6 +12,7 @@
     "build": "vite build",
     "lint": "eslint .",
     "pretest": "npm run data:check && npm run product:check",
+    "pretest:coverage": "npm run data:check && npm run product:check",
     "test": "vitest run",
     "test:coverage": "vitest run --coverage",
     "preview": "vite preview"

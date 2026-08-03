@@ -20,7 +20,7 @@ Every public record is branch-resolved, operating, high-confidence, free of unre
 - Combined records: 163
 - Unique IDs: 163
 - Index-to-source ID mismatches: 0
-- Source links in the original audit: 265
+- Source links in the audit: 264
 
 The 2 source files use different field names and status vocabularies. `scripts/normalize-restaurant-audits.mjs` converts them into 1 canonical format before product validation or build.
 

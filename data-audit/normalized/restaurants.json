@@ -42,7 +42,7 @@
     },
     {
       "path": "data-audit/audit-082-162.json",
-      "sha256": "27637563729e986aea869dc70f23ce9b821a5ffec4ab5e12ec6e44ba7e0f7ac4"
+      "sha256": "3e19bdeef17bd5c96bc636985400a6edd77fd860735c9ae16addd8c76eb17874"
     }
   ],
   "counts": {
@@ -4258,7 +4258,7 @@
       "sources": [
         {
           "type": "official",
-          "url": "https://starbar.jp/"
+          "url": "https://www.starbar.jp/"
         },
         {
           "type": "tabelog",

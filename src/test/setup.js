@@ -46,5 +46,6 @@ vi.mock('motion/react', async () => {
   return {
     motion,
     AnimatePresence: ({ children }) => children,
+    MotionConfig: ({ children }) => children,
   };
 });

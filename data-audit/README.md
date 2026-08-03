@@ -39,6 +39,10 @@ The app publishes only the fields supported by this audit:
 
 Ratings, review counts, prices, descriptions, cuisine labels, reservation claims, and restaurant photos remain unpublished until each field receives direct evidence. The social image states the current 28-record count.
 
+### HTTP evidence exception
+
+Gen Yamamoto’s official source remains `http://www.genyamamoto.jp`. Both same-domain HTTPS variants fail certificate hostname verification, while the HTTP page and the record’s separate HTTPS Tabelog source remain reachable. The public-data contract contains an exact allowlist for this 1 URL and rejects HTTP for every other public evidence source. Remove the exception when the official site serves a valid same-domain HTTPS certificate.
+
 ## Release controls
 
 The test and build commands fail if:

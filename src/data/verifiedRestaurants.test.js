@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import publicData from '../../data-audit/normalized/publishable-restaurants.json';
+import { PUBLIC_HTTP_SOURCE_ALLOWLIST } from '../../scripts/restaurant-normalization-contract.mjs';
 import { restaurants } from './verifiedRestaurants';
 
 const FORBIDDEN_FIELDS = [
@@ -26,14 +27,21 @@ describe('verified restaurant contract', () => {
   });
 
   it('contains direct evidence and no unsupported enrichment', () => {
+    const httpSources = [];
     for (const record of publicData.records) {
       expect(record.lastVerified).toBe('2026-07-30');
       expect(record.sources.length).toBeGreaterThan(0);
-      expect(record.sources.every(source => /^https?:\/\//.test(source.url))).toBe(true);
+      for (const source of record.sources) {
+        if (source.url.startsWith('http://')) httpSources.push(source.url);
+        expect(
+          source.url.startsWith('https://') || PUBLIC_HTTP_SOURCE_ALLOWLIST.includes(source.url),
+        ).toBe(true);
+      }
       for (const field of FORBIDDEN_FIELDS) {
         expect(Object.hasOwn(record, field)).toBe(false);
       }
     }
+    expect(httpSources).toEqual(PUBLIC_HTTP_SOURCE_ALLOWLIST);
   });
 
   it('publishes only the 5 directly verified Michelin distinctions', () => {

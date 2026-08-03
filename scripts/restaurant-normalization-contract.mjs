@@ -30,6 +30,10 @@ export const SOURCE_TYPE_VOCABULARY = [
   "other",
 ];
 
+export const PUBLIC_HTTP_SOURCE_ALLOWLIST = [
+  "http://www.genyamamoto.jp",
+];
+
 export const BASE_HOLD_REASONS = [
   "not_currently_operating",
   "temporarily_closed",
@@ -132,6 +136,12 @@ function isUrl(value) {
   } catch {
     return false;
   }
+}
+
+function isAllowedPublicSourceUrl(value) {
+  if (!isUrl(value)) return false;
+  const url = new URL(value);
+  return url.protocol === "https:" || PUBLIC_HTTP_SOURCE_ALLOWLIST.includes(value);
 }
 
 function isHoldReason(value) {
@@ -380,6 +390,13 @@ export function validatePublicArtifact(publicArtifact, normalizedArtifact) {
       JSON.stringify(record?.sources) === JSON.stringify(expected?.sources),
       `${prefix}.sources does not match normalized record`,
     );
+    for (const [sourceIndex, source] of (record?.sources || []).entries()) {
+      push(
+        errors,
+        isAllowedPublicSourceUrl(source?.url),
+        `${prefix}.sources[${sourceIndex}].url must use HTTPS or the exact public HTTP allowlist`,
+      );
+    }
 
     for (const excludedField of [
       ...EXCLUDED_LEGACY_FIELDS,

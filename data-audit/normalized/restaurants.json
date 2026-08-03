@@ -57,7 +57,9 @@
       {
         "url": "https://yoroniku.jp/",
         "reason": "dns_failure"
-      },
+      }
+    ],
+    "supersededPublicSourceExclusions": [
       {
         "url": "https://tabelog.com/tokyo/A1307/A130701/13001859/",
         "reason": "superseded_listing"

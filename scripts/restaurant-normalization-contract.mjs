@@ -97,6 +97,9 @@ export const PUBLIC_SOURCE_EXCLUSIONS = [
   { url: "https://www.kanda-matsuya.jp/", reason: "hostname_mismatch" },
   { url: "https://www.nodaiwa.co.jp/", reason: "https_connection_failure" },
   { url: "https://yoroniku.jp/", reason: "dns_failure" },
+];
+
+export const SUPERSEDED_PUBLIC_SOURCE_EXCLUSIONS = [
   { url: "https://tabelog.com/tokyo/A1307/A130701/13001859/", reason: "superseded_listing" },
   { url: "https://tabelog.com/tokyo/A1302/A130202/13000488/", reason: "superseded_listing" },
   { url: "https://tabelog.com/tokyo/A1318/A131810/13164031/", reason: "superseded_listing" },
@@ -105,7 +108,9 @@ export const PUBLIC_SOURCE_EXCLUSIONS = [
 ];
 
 const PUBLIC_SOURCE_EXCLUSION_SET = new Set(
-  PUBLIC_SOURCE_EXCLUSIONS.map((source) => source.url),
+  [...PUBLIC_SOURCE_EXCLUSIONS, ...SUPERSEDED_PUBLIC_SOURCE_EXCLUSIONS].map(
+    (source) => source.url,
+  ),
 );
 
 export const ACCESS_RESTRICTED_IDS = [
@@ -170,6 +175,7 @@ const POLICY_KEYS = [
   "accessRestrictedAuditFlags",
   "nonBlockingAuditFlags",
   "publicSourceExclusions",
+  "supersededPublicSourceExclusions",
   "statusVocabulary",
   "michelinVocabulary",
   "excludedLegacyFields",
@@ -282,6 +288,11 @@ export function validateNormalizedArtifact(artifact, sourceRecords) {
     errors,
     JSON.stringify(artifact?.policy?.publicSourceExclusions) === JSON.stringify(PUBLIC_SOURCE_EXCLUSIONS),
     "publicSourceExclusions does not match the browser-health exclusion list",
+  );
+  push(
+    errors,
+    JSON.stringify(artifact?.policy?.supersededPublicSourceExclusions) === JSON.stringify(SUPERSEDED_PUBLIC_SOURCE_EXCLUSIONS),
+    "supersededPublicSourceExclusions does not match the resolved-branch exclusion list",
   );
   push(
     errors,

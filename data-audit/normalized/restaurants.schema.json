@@ -29,6 +29,7 @@
         "accessRestrictedAuditFlags",
         "nonBlockingAuditFlags",
         "publicSourceExclusions",
+        "supersededPublicSourceExclusions",
         "statusVocabulary",
         "michelinVocabulary",
         "excludedLegacyFields"
@@ -79,6 +80,30 @@
             {"url": "https://www.kanda-matsuya.jp/", "reason": "hostname_mismatch"},
             {"url": "https://www.nodaiwa.co.jp/", "reason": "https_connection_failure"},
             {"url": "https://yoroniku.jp/", "reason": "dns_failure"}
+          ]
+        },
+        "supersededPublicSourceExclusions": {
+          "const": [
+            {
+              "url": "https://tabelog.com/tokyo/A1307/A130701/13001859/",
+              "reason": "superseded_listing"
+            },
+            {
+              "url": "https://tabelog.com/tokyo/A1302/A130202/13000488/",
+              "reason": "superseded_listing"
+            },
+            {
+              "url": "https://tabelog.com/tokyo/A1318/A131810/13164031/",
+              "reason": "superseded_listing"
+            },
+            {
+              "url": "https://tabelog.com/tokyo/A1301/A130103/13060358/",
+              "reason": "superseded_listing"
+            },
+            {
+              "url": "https://tabelog.com/tokyo/A1306/A130603/13035758/",
+              "reason": "superseded_listing"
+            }
           ]
         },
         "statusVocabulary": {

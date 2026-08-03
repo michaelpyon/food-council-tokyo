@@ -1,5 +1,4 @@
 import { useState, useMemo, useCallback, useEffect, useRef } from 'react';
-import { AnimatePresence } from 'motion/react';
 import {
   restaurants,
   VERIFIED_THROUGH,
@@ -186,17 +185,15 @@ export default function App() {
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <AnimatePresence mode="popLayout">
-              {filtered.map(restaurant => (
-                <RestaurantCard
-                  key={restaurant.id}
-                  restaurant={restaurant}
-                  onClick={handleSelectRestaurant}
-                  onSave={handleSave}
-                  isSaved={savedIds.includes(restaurant.id)}
-                />
-              ))}
-            </AnimatePresence>
+            {filtered.map(restaurant => (
+              <RestaurantCard
+                key={restaurant.id}
+                restaurant={restaurant}
+                onClick={handleSelectRestaurant}
+                onSave={handleSave}
+                isSaved={savedIds.includes(restaurant.id)}
+              />
+            ))}
           </div>
         )}
       </main>

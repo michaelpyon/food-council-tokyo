@@ -24,10 +24,8 @@ export default function RestaurantCard({ restaurant, onClick, onSave, isSaved })
 
   return (
     <Motion.article
-      layout
       initial={{ opacity: 0, y: 12 }}
       animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: -8 }}
       transition={{ type: 'spring', duration: 0.3, bounce: 0 }}
       className="group flex min-h-64 flex-col justify-between rounded-xl border border-border bg-surface p-5 hover:border-text/25"
     >

@@ -28,10 +28,13 @@ const DEFAULT_FILTERS = {
 
 function getInitialSavedState() {
   const fromUrl = readTripFromUrl();
-  const base = fromUrl !== null ? fromUrl : getSavedIds();
-  const unique = [...new Set(base)];
-  const ids = unique.filter(id => VALID_IDS.has(id));
-  const omittedIds = unique.filter(id => !VALID_IDS.has(id));
+  const storedIds = [...new Set(getSavedIds())].filter(id => VALID_IDS.has(id));
+  const importedIds = fromUrl === null ? [] : [...new Set(fromUrl)];
+  const currentImportedIds = importedIds.filter(id => VALID_IDS.has(id));
+  const omittedIds = importedIds.filter(id => !VALID_IDS.has(id));
+  const ids = fromUrl !== null && currentImportedIds.length > 0
+    ? currentImportedIds
+    : storedIds;
   setSavedIds(ids);
 
   return {

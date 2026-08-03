@@ -194,7 +194,7 @@ export default function App() {
             <button
               type="button"
               onClick={handleClearAllFilters}
-              className="mt-5 h-10 px-4 rounded-lg border border-border bg-surface text-sm font-body font-semibold text-text hover:border-text/30 transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/30"
+              className="mt-5 h-11 px-4 rounded-lg border border-border bg-surface text-sm font-body font-semibold text-text hover:border-text/30 transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/30"
             >
               Clear all filters
             </button>

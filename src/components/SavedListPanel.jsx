@@ -93,7 +93,7 @@ export default function SavedListPanel({
                   ref={initialFocusRef}
                   type="button"
                   onClick={onClose}
-                  className="w-9 h-9 rounded-lg hover:bg-border/30 flex items-center justify-center transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/30"
+                  className="w-11 h-11 rounded-lg hover:bg-border/30 flex items-center justify-center transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/30"
                   aria-label="Close saved list"
                 >
                   <svg className="w-5 h-5 text-text" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} aria-hidden="true">
@@ -107,7 +107,7 @@ export default function SavedListPanel({
                   <button
                     type="button"
                     onClick={handleShare}
-                    className="flex-1 inline-flex items-center justify-center gap-1.5 h-9 rounded-lg bg-accent text-white text-sm font-body font-semibold hover:bg-accent-hover transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/35"
+                    className="flex-1 inline-flex items-center justify-center gap-1.5 h-11 rounded-lg bg-accent text-white text-sm font-body font-semibold hover:bg-accent-hover transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/35"
                   >
                     <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} aria-hidden="true">
                       <path strokeLinecap="round" strokeLinejoin="round" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
@@ -117,7 +117,7 @@ export default function SavedListPanel({
                   <button
                     type="button"
                     onClick={handleCopyText}
-                    className="flex-1 inline-flex items-center justify-center gap-1.5 h-9 rounded-lg border border-border text-sm font-body font-semibold text-text hover:bg-bg/60 transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/25"
+                    className="flex-1 inline-flex items-center justify-center gap-1.5 h-11 rounded-lg border border-border text-sm font-body font-semibold text-text hover:bg-bg/60 transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/25"
                   >
                     <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} aria-hidden="true">
                       <path strokeLinecap="round" strokeLinejoin="round" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
@@ -188,7 +188,7 @@ export default function SavedListPanel({
                             <button
                               type="button"
                               onClick={() => onRemove(restaurant.id)}
-                              className="shrink-0 w-8 h-8 rounded-md hover:bg-accent/10 flex items-center justify-center transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/25"
+                              className="shrink-0 w-11 h-11 rounded-md hover:bg-accent/10 flex items-center justify-center transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/25"
                               aria-label={`Remove ${restaurant.name} from My Trip`}
                             >
                               <svg className="w-4 h-4 text-muted" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} aria-hidden="true">

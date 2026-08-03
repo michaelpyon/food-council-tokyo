@@ -48,7 +48,7 @@ export default function DetailPanel({ restaurant, onClose, onExitComplete, onSav
                 ref={initialFocusRef}
                 type="button"
                 onClick={onClose}
-                className="w-9 h-9 rounded-lg hover:bg-border/30 flex items-center justify-center transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/30"
+                className="w-11 h-11 rounded-lg hover:bg-border/30 flex items-center justify-center transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/30"
                 aria-label="Close detail panel"
               >
                 <svg className="w-5 h-5 text-text" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} aria-hidden="true">
@@ -58,7 +58,7 @@ export default function DetailPanel({ restaurant, onClose, onExitComplete, onSav
               <button
                 type="button"
                 onClick={() => onSave(restaurant.id)}
-                className={`flex items-center gap-1.5 h-9 px-3 rounded-lg border text-sm font-body font-semibold transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/30 ${
+                className={`flex items-center gap-1.5 h-11 px-3 rounded-lg border text-sm font-body font-semibold transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/30 ${
                   isSaved
                     ? 'border-accent bg-accent/10 text-accent'
                     : 'border-border text-text hover:bg-border/30'

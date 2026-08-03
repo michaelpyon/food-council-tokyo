@@ -33,7 +33,7 @@ export default function Header({
               onChange={handleSearch}
               placeholder="Search verified places..."
               aria-label="Search verified places"
-              className="h-9 w-full rounded-lg border border-border bg-surface pl-9 pr-3 text-sm font-body text-text placeholder:text-muted focus:outline-none focus:ring-2 focus:ring-accent/20 focus:border-accent transition-colors"
+              className="h-11 w-full rounded-lg border border-border bg-surface pl-9 pr-3 text-sm font-body text-text placeholder:text-muted focus:outline-none focus:ring-2 focus:ring-accent/20 focus:border-accent transition-colors"
             />
             <svg
               className="absolute left-2.5 top-1/2 -translate-y-1/2 w-4 h-4 text-muted"
@@ -52,7 +52,7 @@ export default function Header({
             ref={savedButtonRef}
             onClick={event => onOpenSaved(event.currentTarget)}
             aria-label={`Open My Trip (${savedCount} saved)`}
-            className="relative order-2 flex items-center gap-1.5 h-9 px-3 rounded-lg border border-border bg-surface text-sm font-body font-medium text-text hover:bg-border/30 transition-colors cursor-pointer sm:order-3"
+            className="relative order-2 flex items-center gap-1.5 h-11 min-w-11 px-3 rounded-lg border border-border bg-surface text-sm font-body font-medium text-text hover:bg-border/30 transition-colors cursor-pointer sm:order-3"
           >
             <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} aria-hidden="true">
               <path strokeLinecap="round" strokeLinejoin="round" d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />

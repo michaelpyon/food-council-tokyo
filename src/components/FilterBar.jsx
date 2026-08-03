@@ -41,7 +41,7 @@ export default function FilterBar({
             id="neighborhood-filter"
             value={filters.neighborhood || 'all'}
             onChange={(event) => handleChange('neighborhood', event.target.value)}
-            className="h-9 max-w-full px-3 rounded-md border border-border bg-surface text-xs font-body font-medium text-text focus:outline-none focus:ring-2 focus:ring-accent/25 cursor-pointer"
+            className="h-11 max-w-full px-3 rounded-md border border-border bg-surface text-xs font-body font-medium text-text focus:outline-none focus:ring-2 focus:ring-accent/25 cursor-pointer"
           >
             <option value="all">
               All neighborhoods ({filters.michelinOnly ? michelinCount : neighborhoods.reduce((sum, option) => sum + option.totalCount, 0)})
@@ -62,7 +62,7 @@ export default function FilterBar({
             onClick={() => handleChange('michelinOnly', !filters.michelinOnly)}
             disabled={michelinUnavailable && !filters.michelinOnly}
             aria-pressed={filters.michelinOnly}
-            className={`h-9 px-3 rounded-md border text-xs font-body font-medium transition-colors cursor-pointer inline-flex items-center gap-1.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/35 disabled:cursor-not-allowed disabled:opacity-45 ${
+            className={`h-11 px-3 rounded-md border text-xs font-body font-medium transition-colors cursor-pointer inline-flex items-center gap-1.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/35 disabled:cursor-not-allowed disabled:opacity-45 ${
               filters.michelinOnly
                 ? 'border-gold bg-gold-light text-gold'
                 : 'border-border bg-surface text-muted hover:text-text hover:border-text/20'
@@ -79,7 +79,7 @@ export default function FilterBar({
             id="restaurant-sort"
             value={sortKey}
             onChange={(event) => onSortChange(event.target.value)}
-            className="h-9 px-3 rounded-md border border-border bg-surface text-xs font-body font-medium text-text focus:outline-none focus:ring-2 focus:ring-accent/25 cursor-pointer sm:ml-auto"
+            className="h-11 px-3 rounded-md border border-border bg-surface text-xs font-body font-medium text-text focus:outline-none focus:ring-2 focus:ring-accent/25 cursor-pointer sm:ml-auto"
           >
             {SORT_OPTIONS.map(option => (
               <option key={option.value} value={option.value}>{option.label}</option>
@@ -90,7 +90,7 @@ export default function FilterBar({
             <button
               type="button"
               onClick={clearFilters}
-              className="h-9 px-3 rounded-md text-xs font-body font-semibold text-accent hover:bg-accent/5 transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/25"
+              className="h-11 px-3 rounded-md text-xs font-body font-semibold text-accent hover:bg-accent/5 transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/25"
             >
               Clear filters ({activeFilterCount})
             </button>

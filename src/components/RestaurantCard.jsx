@@ -48,7 +48,7 @@ export default function RestaurantCard({ restaurant, onClick, onSave, isSaved })
           <button
             type="button"
             onClick={() => onSave(restaurant.id)}
-            className={`w-9 h-9 shrink-0 rounded-full border flex items-center justify-center transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/30 ${
+            className={`w-11 h-11 shrink-0 rounded-full border flex items-center justify-center transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/30 ${
               isSaved
                 ? 'border-accent/30 bg-accent/10 text-accent'
                 : 'border-border bg-surface text-muted hover:text-accent hover:border-accent/30'
@@ -89,7 +89,7 @@ export default function RestaurantCard({ restaurant, onClick, onSave, isSaved })
         type="button"
         onClick={event => onClick(restaurant, event.currentTarget)}
         aria-label={detailsLabel}
-        className="mt-5 inline-flex h-9 items-center justify-between rounded-md border border-border px-3 text-left text-xs font-body font-semibold text-text hover:border-accent/35 hover:text-accent transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/30"
+        className="mt-5 inline-flex h-11 items-center justify-between rounded-md border border-border px-3 text-left text-xs font-body font-semibold text-text hover:border-accent/35 hover:text-accent transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/30"
       >
         Review evidence
         <svg className="w-4 h-4" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">

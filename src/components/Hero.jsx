@@ -31,7 +31,7 @@ export default function Hero({ totalCount, sourceRecordCount, heldCount, verifie
               Verified <time dateTime={verifiedThrough}>{verifiedDate}</time>
             </p>
             <p className="mt-1 text-xs font-body leading-relaxed text-muted">
-              Every public record is operating, high-confidence, flag-free, and backed by at least 1 direct source.
+              Every public record is operating, high-confidence, free of blocking issues, and backed by at least 1 direct source.
             </p>
             <button
               type="button"

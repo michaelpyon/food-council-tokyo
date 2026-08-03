@@ -18,7 +18,8 @@ describe('filter result layout', () => {
       'Asakusa',
     );
 
-    expect(screen.getAllByRole('article')).toHaveLength(3);
+    expect(screen.getAllByRole('article')).toHaveLength(4);
+    expect(screen.getByRole('heading', { name: 'Namiki Yabusoba' })).toBeTruthy();
     expect(screen.getByRole('heading', { name: 'Grill Grand' })).toBeTruthy();
     expect(screen.getByRole('heading', { name: 'Suzukien Asakusa Honten' })).toBeTruthy();
     expect(screen.getByRole('heading', { name: 'Yoshikami' })).toBeTruthy();

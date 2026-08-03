@@ -14,11 +14,11 @@ describe('directory control boundaries', () => {
     const sort = screen.getByRole('combobox', { name: 'Sort restaurants' });
 
     await user.type(search, '   ');
-    expect(screen.getByText('28 of 28 verified records')).toBeTruthy();
+    expect(screen.getByText('91 of 91 verified records')).toBeTruthy();
 
     await user.clear(search);
     await user.type(search, 'b');
-    expect(screen.getByText('14 of 28 verified records')).toBeTruthy();
+    expect(screen.getByText('46 of 91 verified records')).toBeTruthy();
 
     await user.clear(search);
     await user.type(search, 'Ben');

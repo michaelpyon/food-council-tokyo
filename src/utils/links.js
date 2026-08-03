@@ -6,6 +6,9 @@ const SOURCE_LABELS = {
 };
 
 export function sourceLabel(source) {
+  if (source?.type === 'michelin' && source?.url?.includes('/article/')) {
+    return 'Michelin article';
+  }
   return SOURCE_LABELS[source?.type] || 'Evidence source';
 }
 

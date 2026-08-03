@@ -2,6 +2,19 @@
 
 All notable changes to Food Council: Tokyo are documented here.
 
+## [0.1.1.0] - 2026-08-03
+
+### Changed
+
+- Expanded the public directory from 28 to 91 active, high-confidence, publicly accessible records by separating corrected or unpublished metadata findings from blocking audit risks.
+- Kept the release gate fail-closed: unknown flags and unresolved operating, confidence, evidence, duplication, access, branch, successor, and identity problems remain held.
+- Updated exact product counts, metadata, documentation, and social assets to 91 public, 72 held, and 163 audited.
+
+### Fixed
+
+- Made the Michelin filter show the selected neighborhood's available count and disable combinations that can’t return a result.
+- Removed non-allowlisted HTTP evidence URLs from the public artifact while preserving public-safe direct sources.
+
 ## [0.1.0.0] - 2026-08-03
 
 ### Added

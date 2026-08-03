@@ -2,10 +2,20 @@ import { createHash } from "node:crypto";
 import { readFile, writeFile } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
 import {
+  ACCESS_RESTRICTED_AUDIT_FLAGS,
+  ACCESS_RESTRICTED_IDS,
   EXCLUDED_LEGACY_FIELDS,
   MICHELIN_VOCABULARY,
+  NON_BLOCKING_AUDIT_FLAGS,
+  PUBLIC_SOURCE_EXCLUSIONS,
+  SUPERSEDED_PUBLIC_SOURCE_EXCLUSIONS,
   SOURCE_TYPE_VOCABULARY,
   STATUS_VOCABULARY,
+  isAccessRestricted,
+  isBlockingHoldReason,
+  needsNameJaCorrectionHold,
+  toPublicMichelin,
+  toPublicSources,
   validateNormalizedArtifact,
   validatePublicArtifact,
 } from "./restaurant-normalization-contract.mjs";
@@ -19,6 +29,17 @@ const INPUT_PATHS = [
 ];
 const OUTPUT_PATH = "data-audit/normalized/restaurants.json";
 const PUBLIC_OUTPUT_PATH = "data-audit/normalized/publishable-restaurants.json";
+
+const SOURCE_URL_OVERRIDES = new Map([
+  [
+    "https://bluebottlecoffee.jp/cafes/aoyama",
+    "https://store.bluebottlecoffee.jp/pages/aoyama",
+  ],
+  [
+    "https://menya-shono.com/mensho-tokyo/",
+    "https://mensho.com/ja/location/mensho-tokyo-korakuen/",
+  ],
+]);
 
 const NAME_JA_OVERRIDES = new Map([
   ["harutaka", "銀座 はるたか"],
@@ -203,9 +224,12 @@ function normalizeSources(record, schema) {
 
   const deduplicated = new Map();
   for (const source of sources) {
-    const url = cleanString(source.url);
-    if (!url) continue;
-    const normalized = { type: source.type, url };
+    const rawUrl = cleanString(source.url);
+    if (!rawUrl) continue;
+    const normalized = {
+      type: source.type,
+      url: SOURCE_URL_OVERRIDES.get(rawUrl) || rawUrl,
+    };
     deduplicated.set(`${normalized.type}:${normalized.url}`, normalized);
   }
 
@@ -309,28 +333,29 @@ function normalizeRecord(auditRecord, sourceRecord, schema, verifiedDate) {
   if (operatingHold) holdReasons.push(operatingHold);
   if (confidence !== "high") holdReasons.push("confidence_not_high");
   for (const flag of auditFlags) holdReasons.push(`audit_flag:${flag}`);
+  if (isAccessRestricted(auditRecord.id, auditFlags)) {
+    holdReasons.push("access_restricted");
+  }
+  if (needsNameJaCorrectionHold(auditFlags, NAME_JA_OVERRIDES.has(auditRecord.id))) {
+    holdReasons.push("audit_flag:uncorrected_name_ja");
+  }
 
   if (!canonicalName) holdReasons.push("missing_canonical_name");
   if (!canonicalNameJa) holdReasons.push("missing_canonical_name_ja");
   if (!canonicalCuisine) holdReasons.push("missing_canonical_cuisine");
   if (!canonicalNeighborhood) holdReasons.push("missing_canonical_neighborhood");
-  if (
-    !sources.some(
-      (source) =>
-        source.type === "official" ||
-        source.type === "michelin" ||
-        source.type === "tabelog",
-    )
-  ) {
+  if (!toPublicSources(sources, michelin).some(
+    (source) => source.type === "official" || source.type === "michelin" || source.type === "tabelog",
+  )) {
     holdReasons.push("missing_direct_source");
   }
 
   const uniqueHoldReasons = [...new Set(holdReasons)].sort();
+  const blockingHoldReasons = uniqueHoldReasons.filter(isBlockingHoldReason);
   const publishable =
     status === "active" &&
     confidence === "high" &&
-    auditFlags.length === 0 &&
-    uniqueHoldReasons.length === 0;
+    blockingHoldReasons.length === 0;
 
   return {
     index: sourceRecord.index,
@@ -411,7 +436,12 @@ async function buildArtifact() {
     schemaVersion: "1.0.0",
     verifiedThrough,
     policy: {
-      publishableRule: "status=active AND confidence=high AND auditFlags=0",
+      publishableRule: "status=active AND confidence=high AND blockingHoldReasons=0",
+      accessRestrictedIds: ACCESS_RESTRICTED_IDS,
+      accessRestrictedAuditFlags: ACCESS_RESTRICTED_AUDIT_FLAGS,
+      nonBlockingAuditFlags: NON_BLOCKING_AUDIT_FLAGS,
+      publicSourceExclusions: PUBLIC_SOURCE_EXCLUSIONS,
+      supersededPublicSourceExclusions: SUPERSEDED_PUBLIC_SOURCE_EXCLUSIONS,
       statusVocabulary: STATUS_VOCABULARY,
       michelinVocabulary: MICHELIN_VOCABULARY,
       excludedLegacyFields: EXCLUDED_LEGACY_FIELDS,
@@ -449,9 +479,9 @@ async function buildArtifact() {
         nameJa: record.canonical.nameJa,
         branch: record.canonical.branch,
         neighborhood: record.canonical.neighborhood,
-        michelin: record.michelin,
+        michelin: toPublicMichelin(record.michelin),
         lastVerified: record.lastVerified,
-        sources: record.sources,
+        sources: toPublicSources(record.sources, record.michelin),
       })),
   };
 

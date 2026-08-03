@@ -1,6 +1,6 @@
 # Food Council: Tokyo
 
-A verification-first Tokyo food and drink directory. The public app contains 28 branch-level records cleared from a 163-record audit dated 2026-07-30.
+A verification-first Tokyo food and drink directory. The public app contains 91 branch-level records cleared from a 163-record audit dated 2026-07-30.
 
 The app publishes only:
 
@@ -47,10 +47,10 @@ scripts/normalize-restaurant-audits.mjs
                  |    Full 163-record administrative audit
                  |
                  +--> data-audit/normalized/publishable-restaurants.json
-                      Strict 28-record public dataset
+                      Fail-closed 91-record public dataset
 ```
 
-The publication gate requires an operating status, high confidence, zero unresolved audit flags, and at least 1 direct evidence URL.
+The publication gate requires an operating status, high confidence, complete public fields, zero blocking hold reasons, and at least 1 public-safe direct evidence URL. Corrected neighborhood, name, move, and Michelin metadata doesn’t block a record after normalization. Unknown or unresolved flags block by default.
 
 The legacy hand-written dataset remains in `src/data/restaurants.js` for audit traceability. The app doesn’t import it.
 

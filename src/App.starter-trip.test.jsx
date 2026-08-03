@@ -21,12 +21,12 @@ describe('verified trip flows', () => {
   });
 
   it('opens a shared trip immediately and discloses omitted legacy IDs', () => {
-    window.history.replaceState(null, '', '/?trip=ben-fiddich,sukiyabashi-jiro');
+    window.history.replaceState(null, '', '/?trip=ben-fiddich,tempura-yamanoue');
     render(<App />);
 
     const tripPanel = screen.getByRole('dialog', { name: 'My Trip' });
     expect(within(tripPanel).getByText('Ben Fiddich')).toBeTruthy();
     expect(within(tripPanel).getByText('1 legacy place was left out')).toBeTruthy();
-    expect(within(tripPanel).queryByText('Sukiyabashi Jiro')).toBeNull();
+    expect(within(tripPanel).queryByText('Yamanoue Tempura')).toBeNull();
   });
 });

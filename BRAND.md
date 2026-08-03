@@ -2,7 +2,7 @@
 
 ## Positioning
 
-**28 Tokyo places, verified branch by branch.**
+**91 Tokyo places, verified branch by branch.**
 
 Support line: “Cleared from a 163-record audit. Direct sources on every public record.”
 

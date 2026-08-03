@@ -8,14 +8,14 @@ describe('verified filter state', () => {
     const user = userEvent.setup();
     render(<App />);
 
-    expect(screen.getByText('28 of 28 verified records')).toBeTruthy();
+    expect(screen.getByText('91 of 91 verified records')).toBeTruthy();
 
     const neighborhoodFilter = screen.getByRole('combobox', { name: 'Neighborhood' });
     await user.selectOptions(neighborhoodFilter, 'Ginza');
-    expect(screen.getByText('3 of 28 verified records')).toBeTruthy();
+    expect(screen.getByText('9 of 91 verified records')).toBeTruthy();
 
-    await user.click(screen.getByRole('button', { name: 'Michelin verified (5)' }));
-    expect(screen.getByText('1 of 28 verified records')).toBeTruthy();
+    await user.click(screen.getByRole('button', { name: 'Michelin verified (3)' }));
+    expect(screen.getByText('3 of 91 verified records')).toBeTruthy();
     expect(screen.getByText('Tempura Kondo')).toBeTruthy();
 
     expect(screen.getByRole('option', { name: 'Asakusa (0)' }).disabled).toBe(true);
@@ -32,7 +32,7 @@ describe('verified filter state', () => {
     await user.click(screen.getByRole('button', { name: 'Clear all filters' }));
 
     expect(screen.queryByText('No verified records match')).toBeNull();
-    expect(screen.getByText('28 of 28 verified records')).toBeTruthy();
+    expect(screen.getByText('91 of 91 verified records')).toBeTruthy();
     expect(search.value).toBe('');
   });
 
@@ -40,10 +40,22 @@ describe('verified filter state', () => {
     window.history.replaceState(null, '', '/?cuisine=Sushi&source=eater&hood=Unknown&price=4');
     render(<App />);
 
-    expect(screen.getByText('28 of 28 verified records')).toBeTruthy();
+    expect(screen.getByText('91 of 91 verified records')).toBeTruthy();
     expect(screen.queryByRole('option', { name: 'Highest Rated' })).toBeNull();
     expect(screen.queryByRole('option', { name: 'Tabelog Score' })).toBeNull();
 
     await waitFor(() => expect(window.location.search).toBe(''));
+  });
+
+  it('drops an impossible Michelin filter hydrated from a shared URL', async () => {
+    // Regression: ISSUE-006, impossible URL state showed an empty directory.
+    window.history.replaceState(null, '', '/?hood=Asakusa&michelin=1');
+    render(<App />);
+
+    expect(screen.getByRole('combobox', { name: 'Neighborhood' }).value).toBe('Asakusa');
+    expect(screen.getByRole('button', { name: 'Michelin verified (0)' }).getAttribute('aria-pressed')).toBe('false');
+    expect(screen.getByText('4 of 91 verified records')).toBeTruthy();
+    expect(screen.queryByText('No verified records match')).toBeNull();
+    await waitFor(() => expect(window.location.search).toBe('?hood=Asakusa'));
   });
 });

@@ -28,7 +28,7 @@ describe('empty shared trip imports', () => {
     // Found by exact Opus 5 review on 2026-08-03
     // Report: .gstack/qa-reports/qa-report-localhost-verified28-2026-08-03.md
     seedSavedTrip();
-    window.history.replaceState(null, '', '/?trip=sukiyabashi-jiro');
+    window.history.replaceState(null, '', '/?trip=tempura-yamanoue');
 
     render(<App />);
 

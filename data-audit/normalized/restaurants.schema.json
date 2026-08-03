@@ -25,13 +25,61 @@
       "additionalProperties": false,
       "required": [
         "publishableRule",
+        "accessRestrictedIds",
+        "accessRestrictedAuditFlags",
+        "nonBlockingAuditFlags",
+        "publicSourceExclusions",
         "statusVocabulary",
         "michelinVocabulary",
         "excludedLegacyFields"
       ],
       "properties": {
         "publishableRule": {
-          "const": "status=active AND confidence=high AND auditFlags=0"
+          "const": "status=active AND confidence=high AND blockingHoldReasons=0"
+        },
+        "accessRestrictedIds": {
+          "const": ["sukiyabashi-jiro"]
+        },
+        "accessRestrictedAuditFlags": {
+          "const": ["members_or_introduction_only", "access_restricted"]
+        },
+        "nonBlockingAuditFlags": {
+          "const": [
+            "stale_neighborhood",
+            "neighborhood_mismatch",
+            "neighborhood_imprecise",
+            "neighborhood_too_broad",
+            "stale_michelin",
+            "obsolete_michelin_plate",
+            "obsolete_plate_taxonomy",
+            "michelin_changed",
+            "michelin_category_updated",
+            "michelin_stale",
+            "michelin_stale_unverified",
+            "michelin_false",
+            "michelin_current_status_unverified",
+            "wrong_cuisine",
+            "cuisine_too_narrow",
+            "cuisine_imprecise",
+            "cuisine_description_mismatch",
+            "wrong_japanese_name",
+            "nameJa_mismatch",
+            "nameJa_incorrect",
+            "nameJa_imprecise",
+            "moved",
+            "moved_within_neighborhood",
+            "renamed",
+            "stale_id"
+          ]
+        },
+        "publicSourceExclusions": {
+          "const": [
+            {"url": "https://www.nihonryori-ryugin.com/", "reason": "expired_certificate"},
+            {"url": "https://yakitori-imai.jp/", "reason": "dns_failure"},
+            {"url": "https://www.kanda-matsuya.jp/", "reason": "hostname_mismatch"},
+            {"url": "https://www.nodaiwa.co.jp/", "reason": "https_connection_failure"},
+            {"url": "https://yoroniku.jp/", "reason": "dns_failure"}
+          ]
         },
         "statusVocabulary": {
           "const": [
@@ -248,6 +296,7 @@
                   "status_unverified",
                   "duplicate_record",
                   "not_a_restaurant",
+                  "access_restricted",
                   "confidence_not_high",
                   "missing_canonical_name",
                   "missing_canonical_name_ja",

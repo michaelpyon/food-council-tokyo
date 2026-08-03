@@ -1,6 +1,6 @@
 # Food Council: Tokyo design source of truth
 
-The current product contract is the Verified 28 release. It supersedes the prior scored 163-record concept.
+The current product contract is the Verified 91 release. It supersedes the prior scored 163-record concept and the overly narrow Verified 28 cut.
 
 Canonical design context lives in `.impeccable.md`. Canonical product data lives in `data-audit/normalized/publishable-restaurants.json`.
 
@@ -28,7 +28,7 @@ Public records don’t show ratings, review counts, composite scores, confidence
 
 ## Filters
 
-Search covers name, Japanese name, and neighborhood. Neighborhood options derive from the 28-record public dataset. The Michelin toggle covers only directly verified distinctions. A-Z is the default sort.
+Search covers name, Japanese name, and neighborhood. Neighborhood options derive from the 91-record public dataset. The Michelin toggle covers only directly verified distinctions. A-Z is the default sort.
 
 Impossible Michelin and neighborhood combinations are disabled. Empty search results provide a 1-tap reset. Unknown legacy URL parameters are ignored and removed.
 
@@ -40,7 +40,7 @@ Text exports include the canonical name, resolved neighborhood, verification dat
 
 ## Metadata and images
 
-All public metadata and social assets use the exact 28-record count and verification framing. The static social image is an editorial data card, not restaurant imagery.
+All public metadata and social assets use the exact 91-record count and verification framing. The static social image is an editorial data card, not restaurant imagery.
 
 Restaurant photography remains blocked until the image-provenance contract in `BRAND.md` is met.
 

@@ -23,6 +23,7 @@ export default function FilterBar({
   const michelinUnavailable = Boolean(
     selectedNeighborhood && selectedNeighborhood.michelinCount === 0,
   );
+  const availableMichelinCount = selectedNeighborhood?.michelinCount ?? michelinCount;
 
   const clearFilters = () => {
     onFilterChange({
@@ -71,7 +72,7 @@ export default function FilterBar({
             <svg className="w-3 h-3" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
               <path d="M8 1.5l1.763 3.572 3.937.572-2.85 2.777.673 3.921L8 10.395l-3.523 1.947.673-3.921-2.85-2.777 3.937-.572L8 1.5z" />
             </svg>
-            Michelin verified ({michelinCount})
+            Michelin verified ({availableMichelinCount})
           </button>
 
           <label className="sr-only" htmlFor="restaurant-sort">Sort restaurants</label>

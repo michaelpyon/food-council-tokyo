@@ -30,9 +30,97 @@ export const SOURCE_TYPE_VOCABULARY = [
   "other",
 ];
 
+export const NON_BLOCKING_AUDIT_FLAGS = [
+  // The canonical neighborhood comes from the resolved audit field.
+  "stale_neighborhood",
+  "neighborhood_mismatch",
+  "neighborhood_imprecise",
+  "neighborhood_too_broad",
+  // Michelin data is published only when the audit verifies a current distinction.
+  "stale_michelin",
+  "obsolete_michelin_plate",
+  "obsolete_plate_taxonomy",
+  "michelin_changed",
+  "michelin_category_updated",
+  "michelin_stale",
+  "michelin_stale_unverified",
+  "michelin_false",
+  "michelin_current_status_unverified",
+  // Cuisine is retained for administration but omitted from the public artifact.
+  "wrong_cuisine",
+  "cuisine_too_narrow",
+  "cuisine_imprecise",
+  "cuisine_description_mismatch",
+  // These Japanese names are corrected by explicit normalization overrides.
+  "wrong_japanese_name",
+  "nameJa_mismatch",
+  "nameJa_incorrect",
+  "nameJa_imprecise",
+  // The audit resolves the current operating branch; stale IDs remain stable URL keys.
+  "moved",
+  "moved_within_neighborhood",
+  "renamed",
+  "stale_id",
+];
+
+export const NAME_JA_CORRECTION_FLAGS = [
+  "wrong_japanese_name",
+  "nameJa_mismatch",
+  "nameJa_incorrect",
+  "nameJa_imprecise",
+];
+
+const NON_BLOCKING_AUDIT_FLAG_SET = new Set(NON_BLOCKING_AUDIT_FLAGS);
+
+export function isBlockingAuditFlag(flag) {
+  return !NON_BLOCKING_AUDIT_FLAG_SET.has(flag);
+}
+
+export function isBlockingHoldReason(reason) {
+  if (typeof reason !== "string" || !reason.startsWith("audit_flag:")) return true;
+  return isBlockingAuditFlag(reason.slice("audit_flag:".length));
+}
+
+export function needsNameJaCorrectionHold(auditFlags, hasExplicitOverride) {
+  return !hasExplicitOverride && auditFlags.some(
+    (flag) => NAME_JA_CORRECTION_FLAGS.includes(flag),
+  );
+}
+
 export const PUBLIC_HTTP_SOURCE_ALLOWLIST = [
   "http://www.genyamamoto.jp",
 ];
+
+export const PUBLIC_SOURCE_EXCLUSIONS = [
+  { url: "https://www.nihonryori-ryugin.com/", reason: "expired_certificate" },
+  { url: "https://yakitori-imai.jp/", reason: "dns_failure" },
+  { url: "https://www.kanda-matsuya.jp/", reason: "hostname_mismatch" },
+  { url: "https://www.nodaiwa.co.jp/", reason: "https_connection_failure" },
+  { url: "https://yoroniku.jp/", reason: "dns_failure" },
+];
+
+const PUBLIC_SOURCE_EXCLUSION_SET = new Set(
+  PUBLIC_SOURCE_EXCLUSIONS.map((source) => source.url),
+);
+
+export const ACCESS_RESTRICTED_IDS = [
+  // The audit confirms operation but says ordinary public reservations are unavailable.
+  "sukiyabashi-jiro",
+];
+
+export const ACCESS_RESTRICTED_AUDIT_FLAGS = [
+  "members_or_introduction_only",
+  "access_restricted",
+];
+
+const ACCESS_RESTRICTED_ID_SET = new Set(ACCESS_RESTRICTED_IDS);
+const ACCESS_RESTRICTED_AUDIT_FLAG_SET = new Set(ACCESS_RESTRICTED_AUDIT_FLAGS);
+
+export function isAccessRestricted(recordId, auditFlags = []) {
+  return ACCESS_RESTRICTED_ID_SET.has(recordId) || auditFlags.some(
+    (flag) => ACCESS_RESTRICTED_AUDIT_FLAG_SET.has(flag),
+  );
+}
 
 export const BASE_HOLD_REASONS = [
   "not_currently_operating",
@@ -41,6 +129,7 @@ export const BASE_HOLD_REASONS = [
   "status_unverified",
   "duplicate_record",
   "not_a_restaurant",
+  "access_restricted",
   "confidence_not_high",
   "missing_canonical_name",
   "missing_canonical_name_ja",
@@ -72,6 +161,10 @@ const TOP_LEVEL_KEYS = [
 
 const POLICY_KEYS = [
   "publishableRule",
+  "accessRestrictedIds",
+  "accessRestrictedAuditFlags",
+  "nonBlockingAuditFlags",
+  "publicSourceExclusions",
   "statusVocabulary",
   "michelinVocabulary",
   "excludedLegacyFields",
@@ -138,8 +231,9 @@ function isUrl(value) {
   }
 }
 
-function isAllowedPublicSourceUrl(value) {
+export function isAllowedPublicSourceUrl(value) {
   if (!isUrl(value)) return false;
+  if (PUBLIC_SOURCE_EXCLUSION_SET.has(value)) return false;
   const url = new URL(value);
   return url.protocol === "https:" || PUBLIC_HTTP_SOURCE_ALLOWLIST.includes(value);
 }
@@ -161,8 +255,28 @@ export function validateNormalizedArtifact(artifact, sourceRecords) {
   push(errors, sameKeys(artifact?.policy, POLICY_KEYS), "policy keys do not match the contract");
   push(
     errors,
-    artifact?.policy?.publishableRule === "status=active AND confidence=high AND auditFlags=0",
+    artifact?.policy?.publishableRule === "status=active AND confidence=high AND blockingHoldReasons=0",
     "publishableRule must match the strict release gate",
+  );
+  push(
+    errors,
+    JSON.stringify(artifact?.policy?.accessRestrictedIds) === JSON.stringify(ACCESS_RESTRICTED_IDS),
+    "accessRestrictedIds does not match the access policy",
+  );
+  push(
+    errors,
+    JSON.stringify(artifact?.policy?.accessRestrictedAuditFlags) === JSON.stringify(ACCESS_RESTRICTED_AUDIT_FLAGS),
+    "accessRestrictedAuditFlags does not match the access policy",
+  );
+  push(
+    errors,
+    JSON.stringify(artifact?.policy?.nonBlockingAuditFlags) === JSON.stringify(NON_BLOCKING_AUDIT_FLAGS),
+    "nonBlockingAuditFlags does not match the fail-closed allowlist",
+  );
+  push(
+    errors,
+    JSON.stringify(artifact?.policy?.publicSourceExclusions) === JSON.stringify(PUBLIC_SOURCE_EXCLUSIONS),
+    "publicSourceExclusions does not match the browser-health exclusion list",
   );
   push(
     errors,
@@ -272,10 +386,11 @@ export function validateNormalizedArtifact(artifact, sourceRecords) {
       );
     }
 
+    const blockingReasons = reasons.filter(isBlockingHoldReason);
     const strictPass =
       record?.status === "active" &&
       record?.confidence === "high" &&
-      reasons.length === 0;
+      blockingReasons.length === 0;
     push(errors, record?.publishable === strictPass, `${prefix}.publishable violates the strict release gate`);
 
     if (record?.publishable) {
@@ -284,14 +399,15 @@ export function validateNormalizedArtifact(artifact, sourceRecords) {
         errors,
         record.sources.some(
           (source) =>
-            source.type === "official" ||
-            source.type === "michelin" ||
-            source.type === "tabelog",
+            (source.type === "official" ||
+              source.type === "michelin" ||
+              source.type === "tabelog") &&
+            isAllowedPublicSourceUrl(source.url),
         ),
-        `${prefix} publishable record needs an official, Michelin, or direct Tabelog source`,
+        `${prefix} publishable record needs a public-safe official, Michelin, or direct Tabelog source`,
       );
     } else {
-      push(errors, reasons.length > 0, `${prefix} held record needs at least one hold reason`);
+      push(errors, blockingReasons.length > 0, `${prefix} held record needs at least one blocking hold reason`);
     }
 
     for (const excludedField of EXCLUDED_LEGACY_FIELDS) {
@@ -387,7 +503,9 @@ export function validatePublicArtifact(publicArtifact, normalizedArtifact) {
     );
     push(
       errors,
-      JSON.stringify(record?.sources) === JSON.stringify(expected?.sources),
+      JSON.stringify(record?.sources) === JSON.stringify(
+        (expected?.sources || []).filter((source) => isAllowedPublicSourceUrl(source.url)),
+      ),
       `${prefix}.sources does not match normalized record`,
     );
     for (const [sourceIndex, source] of (record?.sources || []).entries()) {

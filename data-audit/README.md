@@ -1,6 +1,6 @@
 # Food Council Tokyo data audit
 
-Status: strict public subset generated
+Status: fail-closed public subset generated
 
 Verified through: 2026-07-30
 
@@ -9,9 +9,9 @@ Verified through: 2026-07-30
 The app doesn’t publish the raw 163-record dataset. The normalization pipeline joins `src/data/restaurants.js` with both audit files, reconciles the audit schemas, and generates 2 artifacts:
 
 - A 163-record administrative dataset
-- A 28-record public dataset, with 135 records held
+- A 91-record public dataset, with 72 records held
 
-Every public record is branch-resolved, operating, high-confidence, free of unresolved flags, and backed by at least 1 direct evidence URL. The app imports the generated public artifact.
+Every public record is branch-resolved, operating, high-confidence, free of blocking hold reasons, and backed by at least 1 public-safe direct evidence URL. The app imports the generated public artifact.
 
 ## Coverage
 
@@ -26,18 +26,18 @@ The 2 source files use different field names and status vocabularies. `scripts/n
 
 ## Publication gate
 
-The public artifact includes 28 records and holds 135. A record stays held if its status, identity, confidence, flags, or evidence fails the strict gate.
+The public artifact includes 91 records and holds 72. A record stays held if its status, access, identity, confidence, blocking flags, or evidence fails the gate. Corrected neighborhood, name, move, cuisine, and Michelin findings can pass only when normalization corrects the public field or omits the unsupported field. Unknown flags block by default.
 
 The app publishes only the fields supported by this audit:
 
-- Canonical and Japanese names
+- Canonical and corrected Japanese names
 - Resolved neighborhoods
 - Operating status
 - Direct evidence links
 - Verification date
 - Current Michelin distinctions when directly verified
 
-Ratings, review counts, prices, descriptions, cuisine labels, reservation claims, and restaurant photos remain unpublished until each field receives direct evidence. The social image states the current 28-record count.
+Ratings, review counts, prices, descriptions, cuisine labels, reservation claims, and restaurant photos remain unpublished until each field receives direct evidence. The social image states the current 91-record count.
 
 ### HTTP evidence exception
 

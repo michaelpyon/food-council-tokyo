@@ -51,7 +51,10 @@
         "url": {
           "type": "string",
           "format": "uri",
-          "pattern": "^https?://"
+          "anyOf": [
+            {"pattern": "^https://"},
+            {"const": "http://www.genyamamoto.jp"}
+          ]
         }
       }
     },

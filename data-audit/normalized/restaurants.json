@@ -2,7 +2,63 @@
   "schemaVersion": "1.0.0",
   "verifiedThrough": "2026-07-30",
   "policy": {
-    "publishableRule": "status=active AND confidence=high AND auditFlags=0",
+    "publishableRule": "status=active AND confidence=high AND blockingHoldReasons=0",
+    "accessRestrictedIds": [
+      "sukiyabashi-jiro"
+    ],
+    "accessRestrictedAuditFlags": [
+      "members_or_introduction_only",
+      "access_restricted"
+    ],
+    "nonBlockingAuditFlags": [
+      "stale_neighborhood",
+      "neighborhood_mismatch",
+      "neighborhood_imprecise",
+      "neighborhood_too_broad",
+      "stale_michelin",
+      "obsolete_michelin_plate",
+      "obsolete_plate_taxonomy",
+      "michelin_changed",
+      "michelin_category_updated",
+      "michelin_stale",
+      "michelin_stale_unverified",
+      "michelin_false",
+      "michelin_current_status_unverified",
+      "wrong_cuisine",
+      "cuisine_too_narrow",
+      "cuisine_imprecise",
+      "cuisine_description_mismatch",
+      "wrong_japanese_name",
+      "nameJa_mismatch",
+      "nameJa_incorrect",
+      "nameJa_imprecise",
+      "moved",
+      "moved_within_neighborhood",
+      "renamed",
+      "stale_id"
+    ],
+    "publicSourceExclusions": [
+      {
+        "url": "https://www.nihonryori-ryugin.com/",
+        "reason": "expired_certificate"
+      },
+      {
+        "url": "https://yakitori-imai.jp/",
+        "reason": "dns_failure"
+      },
+      {
+        "url": "https://www.kanda-matsuya.jp/",
+        "reason": "hostname_mismatch"
+      },
+      {
+        "url": "https://www.nodaiwa.co.jp/",
+        "reason": "https_connection_failure"
+      },
+      {
+        "url": "https://yoroniku.jp/",
+        "reason": "dns_failure"
+      }
+    ],
     "statusVocabulary": [
       "active",
       "temporarily_closed",
@@ -47,8 +103,8 @@
   ],
   "counts": {
     "total": 163,
-    "publishable": 28,
-    "held": 135,
+    "publishable": 91,
+    "held": 72,
     "byStatus": {
       "active": 121,
       "temporarily_closed": 1,
@@ -73,6 +129,7 @@
       "status": "active",
       "publishable": false,
       "holdReasons": [
+        "access_restricted",
         "audit_flag:stale_michelin"
       ],
       "michelin": {
@@ -115,6 +172,7 @@
       "status": "active",
       "publishable": false,
       "holdReasons": [
+        "access_restricted",
         "audit_flag:members_or_introduction_only",
         "audit_flag:stale_michelin"
       ],
@@ -148,7 +206,7 @@
         "neighborhood": "Ginza"
       },
       "status": "active",
-      "publishable": false,
+      "publishable": true,
       "holdReasons": [
         "audit_flag:stale_michelin"
       ],
@@ -248,7 +306,7 @@
         "neighborhood": "Ginza"
       },
       "status": "active",
-      "publishable": false,
+      "publishable": true,
       "holdReasons": [
         "audit_flag:michelin_changed"
       ],
@@ -282,7 +340,7 @@
         "neighborhood": "Toyosu"
       },
       "status": "active",
-      "publishable": false,
+      "publishable": true,
       "holdReasons": [
         "audit_flag:stale_neighborhood"
       ],
@@ -312,7 +370,7 @@
         "neighborhood": "Toyosu"
       },
       "status": "active",
-      "publishable": false,
+      "publishable": true,
       "holdReasons": [
         "audit_flag:stale_neighborhood"
       ],
@@ -342,7 +400,7 @@
         "neighborhood": "Shibuya"
       },
       "status": "active",
-      "publishable": false,
+      "publishable": true,
       "holdReasons": [
         "audit_flag:cuisine_description_mismatch"
       ],
@@ -404,7 +462,7 @@
         "neighborhood": "Nishi-Azabu"
       },
       "status": "active",
-      "publishable": false,
+      "publishable": true,
       "holdReasons": [
         "audit_flag:michelin_changed",
         "audit_flag:stale_neighborhood"
@@ -443,7 +501,7 @@
         "neighborhood": "Shinjuku"
       },
       "status": "active",
-      "publishable": false,
+      "publishable": true,
       "holdReasons": [
         "audit_flag:stale_michelin"
       ],
@@ -516,7 +574,7 @@
         "neighborhood": "Ebisu"
       },
       "status": "active",
-      "publishable": false,
+      "publishable": true,
       "holdReasons": [
         "audit_flag:obsolete_michelin_plate"
       ],
@@ -550,7 +608,7 @@
         "neighborhood": "Otsuka"
       },
       "status": "active",
-      "publishable": false,
+      "publishable": true,
       "holdReasons": [
         "audit_flag:stale_michelin",
         "audit_flag:stale_neighborhood"
@@ -581,7 +639,7 @@
         "neighborhood": "Yoyogi-Uehara"
       },
       "status": "active",
-      "publishable": false,
+      "publishable": true,
       "holdReasons": [
         "audit_flag:obsolete_michelin_plate",
         "audit_flag:stale_neighborhood"
@@ -616,7 +674,7 @@
         "neighborhood": "Tokyo Station"
       },
       "status": "active",
-      "publishable": false,
+      "publishable": true,
       "holdReasons": [
         "audit_flag:obsolete_michelin_plate"
       ],
@@ -745,7 +803,7 @@
         "neighborhood": "Tokyo Station"
       },
       "status": "active",
-      "publishable": false,
+      "publishable": true,
       "holdReasons": [
         "audit_flag:obsolete_michelin_plate"
       ],
@@ -779,7 +837,7 @@
         "neighborhood": "Kiba"
       },
       "status": "active",
-      "publishable": false,
+      "publishable": true,
       "holdReasons": [
         "audit_flag:obsolete_michelin_plate",
         "audit_flag:stale_neighborhood"
@@ -810,7 +868,7 @@
         "neighborhood": "Hibiya"
       },
       "status": "active",
-      "publishable": false,
+      "publishable": true,
       "holdReasons": [
         "audit_flag:stale_neighborhood"
       ],
@@ -852,7 +910,7 @@
         "neighborhood": "Kagurazaka"
       },
       "status": "active",
-      "publishable": false,
+      "publishable": true,
       "holdReasons": [
         "audit_flag:michelin_changed",
         "audit_flag:moved_within_neighborhood"
@@ -919,7 +977,7 @@
         "neighborhood": "Jingumae"
       },
       "status": "active",
-      "publishable": false,
+      "publishable": true,
       "holdReasons": [
         "audit_flag:stale_id",
         "audit_flag:stale_neighborhood"
@@ -958,7 +1016,7 @@
         "neighborhood": "Toranomon"
       },
       "status": "active",
-      "publishable": false,
+      "publishable": true,
       "holdReasons": [
         "audit_flag:stale_neighborhood"
       ],
@@ -1105,7 +1163,7 @@
         "neighborhood": "Monzen-nakacho"
       },
       "status": "active",
-      "publishable": false,
+      "publishable": true,
       "holdReasons": [
         "audit_flag:stale_michelin",
         "audit_flag:stale_neighborhood"
@@ -1213,7 +1271,7 @@
         "neighborhood": "Ginza"
       },
       "status": "active",
-      "publishable": false,
+      "publishable": true,
       "holdReasons": [
         "audit_flag:obsolete_michelin_plate"
       ],
@@ -1247,7 +1305,7 @@
         "neighborhood": "Ginza"
       },
       "status": "active",
-      "publishable": false,
+      "publishable": true,
       "holdReasons": [
         "audit_flag:michelin_changed"
       ],
@@ -1358,7 +1416,7 @@
         "neighborhood": "Gaienmae"
       },
       "status": "active",
-      "publishable": false,
+      "publishable": true,
       "holdReasons": [
         "audit_flag:obsolete_michelin_plate",
         "audit_flag:stale_neighborhood"
@@ -1393,7 +1451,7 @@
         "neighborhood": "Yoyogi-Uehara"
       },
       "status": "active",
-      "publishable": false,
+      "publishable": true,
       "holdReasons": [
         "audit_flag:stale_michelin",
         "audit_flag:stale_neighborhood"
@@ -1424,7 +1482,7 @@
         "neighborhood": "Omotesando"
       },
       "status": "active",
-      "publishable": false,
+      "publishable": true,
       "holdReasons": [
         "audit_flag:obsolete_michelin_plate"
       ],
@@ -1458,7 +1516,7 @@
         "neighborhood": "Nishi-Azabu"
       },
       "status": "active",
-      "publishable": false,
+      "publishable": true,
       "holdReasons": [
         "audit_flag:stale_michelin",
         "audit_flag:stale_neighborhood"
@@ -1493,7 +1551,7 @@
         "neighborhood": "Minami-Asagaya"
       },
       "status": "active",
-      "publishable": false,
+      "publishable": true,
       "holdReasons": [
         "audit_flag:stale_id",
         "audit_flag:stale_michelin",
@@ -1558,7 +1616,7 @@
         "neighborhood": "Meguro"
       },
       "status": "active",
-      "publishable": false,
+      "publishable": true,
       "holdReasons": [
         "audit_flag:obsolete_michelin_plate"
       ],
@@ -1695,7 +1753,7 @@
         "neighborhood": "Roppongi"
       },
       "status": "active",
-      "publishable": false,
+      "publishable": true,
       "holdReasons": [
         "audit_flag:moved_within_neighborhood"
       ],
@@ -1733,7 +1791,7 @@
         "neighborhood": "Korakuen"
       },
       "status": "active",
-      "publishable": false,
+      "publishable": true,
       "holdReasons": [
         "audit_flag:stale_neighborhood",
         "audit_flag:wrong_cuisine"
@@ -1768,7 +1826,7 @@
         "neighborhood": "Kanda"
       },
       "status": "active",
-      "publishable": false,
+      "publishable": true,
       "holdReasons": [
         "audit_flag:obsolete_michelin_plate"
       ],
@@ -1802,7 +1860,7 @@
         "neighborhood": "Asakusa"
       },
       "status": "active",
-      "publishable": false,
+      "publishable": true,
       "holdReasons": [
         "audit_flag:obsolete_michelin_plate"
       ],
@@ -1832,7 +1890,7 @@
         "neighborhood": "Jingumae"
       },
       "status": "active",
-      "publishable": false,
+      "publishable": true,
       "holdReasons": [
         "audit_flag:michelin_category_updated"
       ],
@@ -1866,7 +1924,7 @@
         "neighborhood": "Ogikubo"
       },
       "status": "active",
-      "publishable": false,
+      "publishable": true,
       "holdReasons": [
         "audit_flag:obsolete_michelin_plate",
         "audit_flag:stale_neighborhood"
@@ -1901,7 +1959,7 @@
         "neighborhood": "Azabu-Juban"
       },
       "status": "active",
-      "publishable": false,
+      "publishable": true,
       "holdReasons": [
         "audit_flag:obsolete_michelin_plate"
       ],
@@ -1935,7 +1993,7 @@
         "neighborhood": "Minami-Senju"
       },
       "status": "active",
-      "publishable": false,
+      "publishable": true,
       "holdReasons": [
         "audit_flag:obsolete_michelin_plate",
         "audit_flag:stale_neighborhood"
@@ -1966,7 +2024,7 @@
         "neighborhood": "Higashi-Azabu"
       },
       "status": "active",
-      "publishable": false,
+      "publishable": true,
       "holdReasons": [
         "audit_flag:neighborhood_imprecise"
       ],
@@ -2008,7 +2066,7 @@
         "neighborhood": "Ikebukuro"
       },
       "status": "active",
-      "publishable": false,
+      "publishable": true,
       "holdReasons": [
         "audit_flag:obsolete_michelin_plate",
         "audit_flag:stale_neighborhood"
@@ -2039,7 +2097,7 @@
         "neighborhood": "Edogawabashi"
       },
       "status": "active",
-      "publishable": false,
+      "publishable": true,
       "holdReasons": [
         "audit_flag:stale_neighborhood"
       ],
@@ -2105,7 +2163,7 @@
         "neighborhood": "Nishi-Azabu"
       },
       "status": "active",
-      "publishable": false,
+      "publishable": true,
       "holdReasons": [
         "audit_flag:stale_neighborhood"
       ],
@@ -2398,7 +2456,7 @@
         "neighborhood": "Onarimon"
       },
       "status": "active",
-      "publishable": false,
+      "publishable": true,
       "holdReasons": [
         "audit_flag:stale_michelin",
         "audit_flag:stale_neighborhood",
@@ -2470,7 +2528,7 @@
         "neighborhood": "Ginza"
       },
       "status": "active",
-      "publishable": false,
+      "publishable": true,
       "holdReasons": [
         "audit_flag:cuisine_too_narrow",
         "audit_flag:obsolete_michelin_plate"
@@ -2589,7 +2647,7 @@
         "neighborhood": "Minami-Aoyama"
       },
       "status": "active",
-      "publishable": false,
+      "publishable": true,
       "holdReasons": [
         "audit_flag:cuisine_imprecise",
         "audit_flag:stale_michelin"
@@ -2901,7 +2959,7 @@
         "neighborhood": "Marunouchi"
       },
       "status": "active",
-      "publishable": false,
+      "publishable": true,
       "holdReasons": [
         "audit_flag:neighborhood_imprecise"
       ],
@@ -3031,7 +3089,7 @@
         "neighborhood": "Nihonbashi-Muromachi"
       },
       "status": "active",
-      "publishable": false,
+      "publishable": true,
       "holdReasons": [
         "audit_flag:moved"
       ],
@@ -3185,7 +3243,7 @@
         "neighborhood": "Nishi-Azabu"
       },
       "status": "active",
-      "publishable": false,
+      "publishable": true,
       "holdReasons": [
         "audit_flag:michelin_stale"
       ],
@@ -3219,7 +3277,7 @@
         "neighborhood": "Azabudai / Toranomon"
       },
       "status": "active",
-      "publishable": false,
+      "publishable": true,
       "holdReasons": [
         "audit_flag:moved",
         "audit_flag:neighborhood_mismatch"
@@ -3314,7 +3372,7 @@
         "neighborhood": "Higashi-Azabu / Akabanebashi"
       },
       "status": "active",
-      "publishable": false,
+      "publishable": true,
       "holdReasons": [
         "audit_flag:michelin_false",
         "audit_flag:moved",
@@ -3413,7 +3471,7 @@
         "neighborhood": "Tsukiji"
       },
       "status": "active",
-      "publishable": false,
+      "publishable": true,
       "holdReasons": [
         "audit_flag:obsolete_plate_taxonomy"
       ],
@@ -3517,7 +3575,7 @@
         "neighborhood": "Higashi-Azabu / Azabu-Juban"
       },
       "status": "active",
-      "publishable": false,
+      "publishable": true,
       "holdReasons": [
         "audit_flag:michelin_stale"
       ],
@@ -3859,7 +3917,7 @@
         "neighborhood": "Tomigaya / Yoyogi Park"
       },
       "status": "active",
-      "publishable": false,
+      "publishable": true,
       "holdReasons": [
         "audit_flag:neighborhood_too_broad"
       ],
@@ -3960,7 +4018,7 @@
         "neighborhood": "Yanaka"
       },
       "status": "active",
-      "publishable": false,
+      "publishable": true,
       "holdReasons": [
         "audit_flag:neighborhood_mismatch"
       ],
@@ -4106,7 +4164,7 @@
         "neighborhood": "Tomigaya / Yoyogi-Hachiman"
       },
       "status": "active",
-      "publishable": false,
+      "publishable": true,
       "holdReasons": [
         "audit_flag:moved",
         "audit_flag:neighborhood_mismatch"
@@ -4145,7 +4203,7 @@
         "neighborhood": "Kyobashi"
       },
       "status": "active",
-      "publishable": false,
+      "publishable": true,
       "holdReasons": [
         "audit_flag:neighborhood_mismatch"
       ],
@@ -4175,7 +4233,7 @@
         "neighborhood": "Ginza"
       },
       "status": "active",
-      "publishable": false,
+      "publishable": true,
       "holdReasons": [
         "audit_flag:moved"
       ],
@@ -4624,7 +4682,7 @@
         "neighborhood": "Ebisu-Nishi / Daikanyama"
       },
       "status": "active",
-      "publishable": false,
+      "publishable": true,
       "holdReasons": [
         "audit_flag:moved",
         "audit_flag:neighborhood_mismatch",
@@ -4698,7 +4756,7 @@
         "neighborhood": "Marunouchi / Tokyo Station"
       },
       "status": "active",
-      "publishable": false,
+      "publishable": true,
       "holdReasons": [
         "audit_flag:neighborhood_mismatch",
         "audit_flag:obsolete_plate_taxonomy"
@@ -4868,7 +4926,7 @@
         "neighborhood": "Dogenzaka / Shibuya"
       },
       "status": "active",
-      "publishable": false,
+      "publishable": true,
       "holdReasons": [
         "audit_flag:neighborhood_mismatch"
       ],
@@ -4934,7 +4992,7 @@
         "neighborhood": "Minami-Aoyama / Gaiemmae"
       },
       "status": "active",
-      "publishable": false,
+      "publishable": true,
       "holdReasons": [
         "audit_flag:neighborhood_imprecise",
         "audit_flag:obsolete_plate_taxonomy"
@@ -5065,7 +5123,7 @@
         "neighborhood": "Jimbocho / Kanda-Ogawamachi"
       },
       "status": "active",
-      "publishable": false,
+      "publishable": true,
       "holdReasons": [
         "audit_flag:neighborhood_imprecise",
         "audit_flag:obsolete_plate_taxonomy"
@@ -5266,7 +5324,7 @@
         "neighborhood": "Ginza / Shintomicho"
       },
       "status": "active",
-      "publishable": false,
+      "publishable": true,
       "holdReasons": [
         "audit_flag:michelin_current_status_unverified",
         "audit_flag:nameJa_incorrect"
@@ -5425,7 +5483,7 @@
         "neighborhood": "Shinjuku-Sanchome"
       },
       "status": "active",
-      "publishable": false,
+      "publishable": true,
       "holdReasons": [
         "audit_flag:michelin_stale_unverified"
       ],
@@ -5455,7 +5513,7 @@
         "neighborhood": "Nihonbashi-Muromachi / Mitsukoshimae"
       },
       "status": "active",
-      "publishable": false,
+      "publishable": true,
       "holdReasons": [
         "audit_flag:obsolete_plate_taxonomy"
       ],
@@ -5485,7 +5543,7 @@
         "neighborhood": "Kagurazaka / Akagishitamachi"
       },
       "status": "active",
-      "publishable": false,
+      "publishable": true,
       "holdReasons": [
         "audit_flag:obsolete_plate_taxonomy"
       ],
@@ -5551,7 +5609,7 @@
         "neighborhood": "Ryogoku / Kamezawa"
       },
       "status": "active",
-      "publishable": false,
+      "publishable": true,
       "holdReasons": [
         "audit_flag:michelin_false",
         "audit_flag:nameJa_imprecise",

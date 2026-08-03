@@ -1,9 +1,9 @@
 import { readFile, stat } from 'node:fs/promises';
 
 const EXPECTED = Object.freeze({
-  publicCount: 28,
+  publicCount: 91,
   sourceCount: 163,
-  heldCount: 135,
+  heldCount: 72,
   width: 1200,
   height: 630,
 });
@@ -76,11 +76,11 @@ for (const path of projectTextFiles) {
 }
 
 const html = await readFile('index.html', 'utf8');
-invariant(html.includes('28 Tokyo food and drink places'), 'index.html is missing the verified public count');
+invariant(html.includes('91 Tokyo food and drink places'), 'index.html is missing the verified public count');
 invariant(html.includes('163-record audit'), 'index.html is missing the audit count');
 
 const socialSvg = await readFile('public/og-image.svg', 'utf8');
-invariant(socialSvg.includes('Verified 28'), 'Social image is missing the verified public count');
+invariant(socialSvg.includes('Verified 91'), 'Social image is missing the verified public count');
 invariant(socialSvg.includes('163-place audit'), 'Social image is missing the audit count');
 
 const socialPng = await readFile('public/og-image.png');

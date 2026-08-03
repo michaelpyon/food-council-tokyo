@@ -15,7 +15,7 @@ describe('blocked or malformed saved-trip storage', () => {
     render(<App />);
 
     expect(screen.getByRole('heading', { name: 'Verified directory' })).toBeTruthy();
-    expect(screen.getByText('28 of 28 public records')).toBeTruthy();
+    expect(screen.getByText('91 of 91 public records')).toBeTruthy();
   });
 
   it('starts normally when storage rejects initialization writes', () => {
@@ -29,7 +29,7 @@ describe('blocked or malformed saved-trip storage', () => {
     render(<App />);
 
     expect(screen.getByRole('heading', { name: 'Verified directory' })).toBeTruthy();
-    expect(screen.getByText('28 of 28 public records')).toBeTruthy();
+    expect(screen.getByText('91 of 91 public records')).toBeTruthy();
   });
 
   it('keeps consecutive saves in memory when storage is blocked', async () => {

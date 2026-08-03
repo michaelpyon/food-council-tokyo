@@ -18,12 +18,12 @@ const FORBIDDEN_FIELDS = [
 ];
 
 describe('verified restaurant contract', () => {
-  it('publishes the strict 28-record cut and holds the other 135', () => {
+  it('publishes the fail-closed 91-record cut and holds the other 72', () => {
     expect(publicData.sourceRecordCount).toBe(163);
-    expect(publicData.count).toBe(28);
-    expect(publicData.heldCount).toBe(135);
-    expect(restaurants).toHaveLength(28);
-    expect(new Set(restaurants.map(restaurant => restaurant.id)).size).toBe(28);
+    expect(publicData.count).toBe(91);
+    expect(publicData.heldCount).toBe(72);
+    expect(restaurants).toHaveLength(91);
+    expect(new Set(restaurants.map(restaurant => restaurant.id)).size).toBe(91);
   });
 
   it('contains direct evidence and no unsupported enrichment', () => {
@@ -44,12 +44,12 @@ describe('verified restaurant contract', () => {
     expect(httpSources).toEqual(PUBLIC_HTTP_SOURCE_ALLOWLIST);
   });
 
-  it('publishes only the 5 directly verified Michelin distinctions', () => {
+  it('publishes only the 19 directly verified Michelin distinctions', () => {
     const michelin = publicData.records.filter(
       record => record.michelin.verified && record.michelin.distinction,
     );
 
-    expect(michelin).toHaveLength(5);
+    expect(michelin).toHaveLength(19);
     expect(michelin.every(record => record.michelin.sourceUrl)).toBe(true);
   });
 });

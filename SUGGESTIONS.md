@@ -1,10 +1,10 @@
 # Food Council: Tokyo backlog
 
-Current release target: Verified 28.
+Current release target: Verified 91.
 
 ## Expand the directory
 
-Resolve flagged operating records 1 at a time. Each promotion needs an exact branch, operating status, resolved neighborhood, high confidence, zero unresolved flags, and at least 1 direct evidence URL.
+Resolve the remaining held records 1 at a time. Each promotion needs an exact branch, operating status, resolved neighborhood, high confidence, zero blocking hold reasons, and at least 1 public-safe direct evidence URL.
 
 ## Restore cuisine browsing
 

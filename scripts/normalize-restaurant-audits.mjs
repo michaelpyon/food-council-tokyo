@@ -2,10 +2,18 @@ import { createHash } from "node:crypto";
 import { readFile, writeFile } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
 import {
+  ACCESS_RESTRICTED_AUDIT_FLAGS,
+  ACCESS_RESTRICTED_IDS,
   EXCLUDED_LEGACY_FIELDS,
   MICHELIN_VOCABULARY,
+  NON_BLOCKING_AUDIT_FLAGS,
+  PUBLIC_SOURCE_EXCLUSIONS,
   SOURCE_TYPE_VOCABULARY,
   STATUS_VOCABULARY,
+  isAllowedPublicSourceUrl,
+  isAccessRestricted,
+  isBlockingHoldReason,
+  needsNameJaCorrectionHold,
   validateNormalizedArtifact,
   validatePublicArtifact,
 } from "./restaurant-normalization-contract.mjs";
@@ -309,6 +317,12 @@ function normalizeRecord(auditRecord, sourceRecord, schema, verifiedDate) {
   if (operatingHold) holdReasons.push(operatingHold);
   if (confidence !== "high") holdReasons.push("confidence_not_high");
   for (const flag of auditFlags) holdReasons.push(`audit_flag:${flag}`);
+  if (isAccessRestricted(auditRecord.id, auditFlags)) {
+    holdReasons.push("access_restricted");
+  }
+  if (needsNameJaCorrectionHold(auditFlags, NAME_JA_OVERRIDES.has(auditRecord.id))) {
+    holdReasons.push("audit_flag:uncorrected_name_ja");
+  }
 
   if (!canonicalName) holdReasons.push("missing_canonical_name");
   if (!canonicalNameJa) holdReasons.push("missing_canonical_name_ja");
@@ -317,20 +331,21 @@ function normalizeRecord(auditRecord, sourceRecord, schema, verifiedDate) {
   if (
     !sources.some(
       (source) =>
-        source.type === "official" ||
-        source.type === "michelin" ||
-        source.type === "tabelog",
+        (source.type === "official" ||
+          source.type === "michelin" ||
+          source.type === "tabelog") &&
+        isAllowedPublicSourceUrl(source.url),
     )
   ) {
     holdReasons.push("missing_direct_source");
   }
 
   const uniqueHoldReasons = [...new Set(holdReasons)].sort();
+  const blockingHoldReasons = uniqueHoldReasons.filter(isBlockingHoldReason);
   const publishable =
     status === "active" &&
     confidence === "high" &&
-    auditFlags.length === 0 &&
-    uniqueHoldReasons.length === 0;
+    blockingHoldReasons.length === 0;
 
   return {
     index: sourceRecord.index,
@@ -411,7 +426,11 @@ async function buildArtifact() {
     schemaVersion: "1.0.0",
     verifiedThrough,
     policy: {
-      publishableRule: "status=active AND confidence=high AND auditFlags=0",
+      publishableRule: "status=active AND confidence=high AND blockingHoldReasons=0",
+      accessRestrictedIds: ACCESS_RESTRICTED_IDS,
+      accessRestrictedAuditFlags: ACCESS_RESTRICTED_AUDIT_FLAGS,
+      nonBlockingAuditFlags: NON_BLOCKING_AUDIT_FLAGS,
+      publicSourceExclusions: PUBLIC_SOURCE_EXCLUSIONS,
       statusVocabulary: STATUS_VOCABULARY,
       michelinVocabulary: MICHELIN_VOCABULARY,
       excludedLegacyFields: EXCLUDED_LEGACY_FIELDS,
@@ -451,7 +470,7 @@ async function buildArtifact() {
         neighborhood: record.canonical.neighborhood,
         michelin: record.michelin,
         lastVerified: record.lastVerified,
-        sources: record.sources,
+        sources: record.sources.filter((source) => isAllowedPublicSourceUrl(source.url)),
       })),
   };
 

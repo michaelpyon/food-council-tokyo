@@ -1,14 +1,17 @@
 # Food Council Tokyo data audit
 
-Status: publication blocked
+Status: strict public subset generated
 
-Audit date: 2026-07-30
+Verified through: 2026-07-30
 
 ## Bottom line
 
-The current 163-record dataset is not safe to publish as current. The audit resolves every source record against its exact zero-based index and ID, with 265 source links. It also finds 42 records that are not cleanly publishable and 16 moved venues whose location data needs correction.
+The app doesn’t publish the raw 163-record dataset. The normalization pipeline reads both audit files, reconciles their schemas, and generates 2 artifacts:
 
-The JSON files are research evidence. The app does not consume them yet, so they do not fix the production dataset by themselves.
+- A 163-record administrative dataset
+- A 28-record public dataset, with 135 records held
+
+Every public record is branch-resolved, operating, high-confidence, free of unresolved flags, and backed by at least 1 direct evidence URL. The app imports the generated public artifact.
 
 ## Coverage
 
@@ -17,43 +20,39 @@ The JSON files are research evidence. The app does not consume them yet, so they
 - Combined records: 163
 - Unique IDs: 163
 - Index-to-source ID mismatches: 0
-- Source links: 265
-- Current Michelin distinctions directly verified: 19
+- Source links in the original audit: 265
 
-The 2 audit files use different field names and status vocabularies. Normalize them before generating product data.
+The 2 source files use different field names and status vocabularies. `scripts/normalize-restaurant-audits.mjs` converts them into 1 canonical format before product validation or build.
 
-## Publication blockers
+## Publication gate
 
-The audit found:
+The public artifact includes 28 records and holds 135. A record stays held if its status, identity, confidence, flags, or evidence fails the strict gate.
 
-- 11 closed restaurants
-- 1 closed or indefinitely suspended restaurant
-- 1 temporarily closed restaurant
-- 17 unverifiable records
-- 4 branch-ambiguous records
-- 3 conflated records
-- 2 listing holds
-- 1 duplicate
-- 2 entries that are not dine-in restaurants
-- 16 moved venues
-- 46 neighborhood mismatch or stale-neighborhood flags
-- 36 obsolete Michelin Plate taxonomy flags
+The app publishes only the fields supported by this audit:
 
-These categories total 42 records that should be excluded or held until resolved. Moved venues can remain only after their branch and neighborhood fields are corrected.
+- Canonical and Japanese names
+- Resolved neighborhoods
+- Operating status
+- Direct evidence links
+- Verification date
+- Current Michelin distinctions when directly verified
 
-## Required before launch
+Ratings, review counts, prices, descriptions, cuisine labels, reservation claims, and restaurant photos remain unpublished until each field receives direct evidence. The social image states the current 28-record count.
 
-1. Normalize both audit schemas into 1 canonical record format.
-2. Generate the product dataset from the audit, not the old hand-written claims.
-3. Exclude closed, suspended, temporarily closed, unverifiable, ambiguous, conflated, duplicate, held, and non-restaurant records.
-4. Correct branch names, Japanese names, neighborhoods, cuisine labels, and verified Michelin distinctions.
-5. Refresh or remove exact Tabelog scores, Google ratings, review counts, prices, tags, descriptions, and reservation claims. This audit did not verify those fields for all 163 records.
-6. Store a source URL and `lastVerified` date per published record.
-7. Keep restaurant photos out until each image has exact branch identity, rights, attribution, and provenance.
-8. Replace the social image that says 165 restaurants.
-9. Run the full filter, mobile, keyboard, and link suite against the generated dataset.
+## Release controls
+
+The test and build commands fail if:
+
+- Generated artifacts drift from the 2 source audits
+- Record counts or provenance hashes change unexpectedly
+- A public record fails the status, confidence, flag, identity, or source gate
+- Unsupported ratings, prices, descriptions, restaurant photos, or stale counts enter the product
+
+Browser QA covers filters, search, mobile layout, keyboard focus, shared trips, and evidence panels before deployment.
 
 ## Files
 
 - `audit-000-081.json`
 - `audit-082-162.json`
+- `normalized/restaurants.json`
+- `normalized/publishable-restaurants.json`

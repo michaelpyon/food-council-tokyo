@@ -137,7 +137,7 @@ export default function DetailPanel({ restaurant, onClose, onExitComplete, onSav
               <section className="mt-8 rounded-lg border border-border bg-bg px-4 py-4">
                 <h3 className="text-sm font-body font-semibold text-text">Why this record is public</h3>
                 <p className="mt-1.5 text-xs font-body leading-relaxed text-muted">
-                  It passed the strict audit gate: operating, high confidence, no unresolved flags, and at least 1 direct evidence URL.
+                  It passed the publication gate: operating, high confidence, free of blocking issues, and backed by at least 1 public-safe direct evidence URL.
                 </p>
               </section>
             </div>

@@ -314,7 +314,7 @@
       "sources": [
         {
           "type": "official",
-          "url": "http://www.yoshikami.co.jp"
+          "url": "https://www.yoshikami.co.jp"
         },
         {
           "type": "tabelog",
@@ -569,7 +569,7 @@
       "sources": [
         {
           "type": "official",
-          "url": "http://starbar.jp/"
+          "url": "https://starbar.jp/"
         },
         {
           "type": "tabelog",

@@ -42,7 +42,7 @@
     },
     {
       "path": "data-audit/audit-082-162.json",
-      "sha256": "6a7e047c51e5c3d5bd415362eb1305627fb36b58cbc991c5fd0a088ac4c2a136"
+      "sha256": "27637563729e986aea869dc70f23ce9b821a5ffec4ab5e12ec6e44ba7e0f7ac4"
     }
   ],
   "counts": {
@@ -3106,7 +3106,7 @@
       "sources": [
         {
           "type": "official",
-          "url": "http://www.yoshikami.co.jp"
+          "url": "https://www.yoshikami.co.jp"
         },
         {
           "type": "tabelog",
@@ -4258,7 +4258,7 @@
       "sources": [
         {
           "type": "official",
-          "url": "http://starbar.jp/"
+          "url": "https://starbar.jp/"
         },
         {
           "type": "tabelog",

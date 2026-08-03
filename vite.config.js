@@ -6,6 +6,7 @@ export default defineConfig({
   plugins: [react(), tailwindcss()],
   test: {
     environment: 'jsdom',
+    maxWorkers: 1,
     setupFiles: './src/test/setup.js',
   },
 })

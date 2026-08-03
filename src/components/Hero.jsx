@@ -36,7 +36,7 @@ export default function Hero({ totalCount, sourceRecordCount, heldCount, verifie
             <button
               type="button"
               onClick={() => setShowMethod(value => !value)}
-              className="mt-3 text-xs font-body font-semibold text-accent underline underline-offset-4 hover:text-accent-hover transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/25"
+              className="mt-3 inline-flex min-h-11 items-center text-xs font-body font-semibold text-accent underline underline-offset-4 hover:text-accent-hover transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/25"
               aria-expanded={showMethod}
               aria-controls="verification-method"
             >

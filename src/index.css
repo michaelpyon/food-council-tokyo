@@ -2,13 +2,13 @@
 
 @theme {
   --color-bg: #faf9f7;
-  --color-surface: #ffffff;
+  --color-surface: #fffefd;
   --color-border: #e8e4df;
   --color-accent: #c8391a;
   --color-accent-hover: #a82e15;
   --color-text: #1a1814;
-  --color-muted: #8a8480;
-  --color-gold: #c9a227;
+  --color-muted: #6f6965;
+  --color-gold: #806500;
   --color-gold-light: #f5ecd0;
 
   --font-display: 'Playfair Display', Georgia, serif;
@@ -48,4 +48,15 @@ body {
 }
 .hide-scrollbar::-webkit-scrollbar {
   display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
 }

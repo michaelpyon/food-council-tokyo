@@ -1,20 +1,22 @@
-import { useState } from 'react';
-
-export default function Header({ totalCount, filteredCount, savedCount, initialQuery = '', onOpenSaved, onSearch }) {
-  const [query, setQuery] = useState(initialQuery);
-
+export default function Header({
+  totalCount,
+  filteredCount,
+  savedCount,
+  query = '',
+  onOpenSaved,
+  onSearch,
+  savedButtonRef,
+}) {
   const handleSearch = (e) => {
-    const val = e.target.value;
-    setQuery(val);
-    onSearch(val);
+    onSearch(e.target.value);
   };
 
   return (
-    <header className="sticky top-0 z-40 bg-bg/95 backdrop-blur-sm border-b border-border">
+    <header className="sticky top-0 z-40 bg-bg border-b border-border">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
+        <div className="flex flex-wrap items-center gap-3 py-3 sm:h-16 sm:flex-nowrap sm:py-0">
           {/* Logo / Title */}
-          <div className="flex items-center gap-3">
+          <div className="order-1 flex flex-1 items-center gap-3">
             <h1 className="font-display text-xl sm:text-2xl font-semibold tracking-tight text-text">
               Food Council
             </h1>
@@ -23,51 +25,50 @@ export default function Header({ totalCount, filteredCount, savedCount, initialQ
             </span>
           </div>
 
-          {/* Search + Actions */}
-          <div className="flex items-center gap-3">
-            {/* Search */}
-            <div className="relative">
-              <input
-                type="search"
-                value={query}
-                onChange={handleSearch}
-                placeholder="Search restaurants..."
-                aria-label="Search restaurants"
-                className="w-40 sm:w-56 lg:w-72 h-9 pl-9 pr-3 rounded-lg border border-border bg-surface text-sm font-body text-text placeholder:text-muted focus:outline-none focus:ring-2 focus:ring-accent/20 focus:border-accent transition-colors"
-              />
-              <svg
-                className="absolute left-2.5 top-1/2 -translate-y-1/2 w-4 h-4 text-muted"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                strokeWidth={2}
-              >
-                <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-              </svg>
-            </div>
-
-            {/* Saved button */}
-            <button
-              onClick={onOpenSaved}
-              aria-label={`Open My Trip (${savedCount} saved)`}
-              className="relative flex items-center gap-1.5 h-9 px-3 rounded-lg border border-border bg-surface text-sm font-body font-medium text-text hover:bg-border/30 transition-colors cursor-pointer"
+          {/* Search */}
+          <div className="relative order-3 w-full sm:order-2 sm:w-56 lg:w-72">
+            <input
+              type="search"
+              value={query}
+              onChange={handleSearch}
+              placeholder="Search verified places..."
+              aria-label="Search verified places"
+              className="h-11 w-full rounded-lg border border-border bg-surface pl-9 pr-3 text-sm font-body text-text placeholder:text-muted focus:outline-none focus:ring-2 focus:ring-accent/20 focus:border-accent transition-colors"
+            />
+            <svg
+              className="absolute left-2.5 top-1/2 -translate-y-1/2 w-4 h-4 text-muted"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              strokeWidth={2}
+              aria-hidden="true"
             >
-              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
-              </svg>
-              <span className="hidden sm:inline">My Trip</span>
-              {savedCount > 0 && (
-                <span className="absolute -top-1.5 -right-1.5 min-w-[18px] h-[18px] flex items-center justify-center rounded-full bg-accent text-white text-[10px] font-bold px-1">
-                  {savedCount}
-                </span>
-              )}
-            </button>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+            </svg>
           </div>
+
+          {/* Saved button */}
+          <button
+            ref={savedButtonRef}
+            onClick={event => onOpenSaved(event.currentTarget)}
+            aria-label={`Open My Trip (${savedCount} saved)`}
+            className="relative order-2 flex items-center gap-1.5 h-11 min-w-11 px-3 rounded-lg border border-border bg-surface text-sm font-body font-medium text-text hover:bg-border/30 transition-colors cursor-pointer sm:order-3"
+          >
+            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} aria-hidden="true">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
+            </svg>
+            <span className="hidden sm:inline">My Trip</span>
+            {savedCount > 0 && (
+              <span className="absolute -top-1.5 -right-1.5 min-w-[18px] h-[18px] flex items-center justify-center rounded-full bg-accent text-white text-[10px] font-bold px-1">
+                {savedCount}
+              </span>
+            )}
+          </button>
         </div>
 
         {/* Stats bar */}
         <div className="flex items-center gap-4 pb-2 text-xs font-body text-muted">
-          <span>{filteredCount} of {totalCount} restaurants</span>
+          <span aria-live="polite">{filteredCount} of {totalCount} verified records</span>
         </div>
       </div>
     </header>

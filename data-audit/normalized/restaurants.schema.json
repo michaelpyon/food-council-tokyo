@@ -1,0 +1,285 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://food-council.local/schemas/restaurants.normalized.schema.json",
+  "title": "Food Council normalized restaurant audit",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "verifiedThrough",
+    "policy",
+    "sourceInputs",
+    "counts",
+    "records"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": "1.0.0"
+    },
+    "verifiedThrough": {
+      "type": "string",
+      "format": "date"
+    },
+    "policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "publishableRule",
+        "statusVocabulary",
+        "michelinVocabulary",
+        "excludedLegacyFields"
+      ],
+      "properties": {
+        "publishableRule": {
+          "const": "status=active AND confidence=high AND auditFlags=0"
+        },
+        "statusVocabulary": {
+          "const": [
+            "active",
+            "temporarily_closed",
+            "closed",
+            "ambiguous",
+            "unverified",
+            "duplicate",
+            "non_restaurant"
+          ]
+        },
+        "michelinVocabulary": {
+          "const": [
+            "three_stars",
+            "two_stars",
+            "one_star",
+            "bib_gourmand",
+            "selected"
+          ]
+        },
+        "excludedLegacyFields": {
+          "const": [
+            "tabelog",
+            "google",
+            "priceRange",
+            "description",
+            "tags",
+            "awards",
+            "photoSeed",
+            "image",
+            "reservationUrl"
+          ]
+        }
+      }
+    },
+    "sourceInputs": {
+      "type": "array",
+      "minItems": 3,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["path", "sha256"],
+        "properties": {
+          "path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          }
+        }
+      }
+    },
+    "counts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["total", "publishable", "held", "byStatus"],
+      "properties": {
+        "total": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "publishable": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "held": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "byStatus": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "active",
+            "temporarily_closed",
+            "closed",
+            "ambiguous",
+            "unverified",
+            "duplicate",
+            "non_restaurant"
+          ],
+          "properties": {
+            "active": {"type": "integer", "minimum": 0},
+            "temporarily_closed": {"type": "integer", "minimum": 0},
+            "closed": {"type": "integer", "minimum": 0},
+            "ambiguous": {"type": "integer", "minimum": 0},
+            "unverified": {"type": "integer", "minimum": 0},
+            "duplicate": {"type": "integer", "minimum": 0},
+            "non_restaurant": {"type": "integer", "minimum": 0}
+          }
+        }
+      }
+    },
+    "records": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/normalizedRecord"
+      }
+    }
+  },
+  "$defs": {
+    "nullableString": {
+      "type": ["string", "null"],
+      "minLength": 1
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["type", "url"],
+      "properties": {
+        "type": {
+          "enum": ["official", "michelin", "tabelog", "other"]
+        },
+        "url": {
+          "type": "string",
+          "format": "uri",
+          "pattern": "^https?://"
+        }
+      }
+    },
+    "michelin": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["distinction", "edition", "verified", "sourceUrl"],
+      "properties": {
+        "distinction": {
+          "type": ["string", "null"],
+          "enum": [
+            "three_stars",
+            "two_stars",
+            "one_star",
+            "bib_gourmand",
+            "selected",
+            null
+          ]
+        },
+        "edition": {
+          "type": ["integer", "null"],
+          "enum": [2026, null]
+        },
+        "verified": {
+          "type": "boolean"
+        },
+        "sourceUrl": {
+          "type": ["string", "null"],
+          "format": "uri"
+        }
+      }
+    },
+    "normalizedRecord": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "index",
+        "id",
+        "canonical",
+        "status",
+        "publishable",
+        "holdReasons",
+        "michelin",
+        "lastVerified",
+        "confidence",
+        "sources"
+      ],
+      "properties": {
+        "index": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 162
+        },
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "canonical": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["name", "nameJa", "branch", "cuisine", "neighborhood"],
+          "properties": {
+            "name": {"$ref": "#/$defs/nullableString"},
+            "nameJa": {"$ref": "#/$defs/nullableString"},
+            "branch": {"$ref": "#/$defs/nullableString"},
+            "cuisine": {"$ref": "#/$defs/nullableString"},
+            "neighborhood": {"$ref": "#/$defs/nullableString"}
+          }
+        },
+        "status": {
+          "enum": [
+            "active",
+            "temporarily_closed",
+            "closed",
+            "ambiguous",
+            "unverified",
+            "duplicate",
+            "non_restaurant"
+          ]
+        },
+        "publishable": {
+          "type": "boolean"
+        },
+        "holdReasons": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "anyOf": [
+              {
+                "enum": [
+                  "not_currently_operating",
+                  "temporarily_closed",
+                  "identity_or_branch_ambiguous",
+                  "status_unverified",
+                  "duplicate_record",
+                  "not_a_restaurant",
+                  "confidence_not_high",
+                  "missing_canonical_name",
+                  "missing_canonical_name_ja",
+                  "missing_canonical_cuisine",
+                  "missing_canonical_neighborhood",
+                  "missing_direct_source"
+                ]
+              },
+              {
+                "type": "string",
+                "pattern": "^audit_flag:[A-Za-z0-9_]+$"
+              }
+            ]
+          }
+        },
+        "michelin": {
+          "$ref": "#/$defs/michelin"
+        },
+        "lastVerified": {
+          "type": "string",
+          "format": "date"
+        },
+        "confidence": {
+          "enum": ["high", "moderate", "low", "unknown"]
+        },
+        "sources": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/source"
+          }
+        }
+      }
+    }
+  }
+}

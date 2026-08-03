@@ -1,44 +1,31 @@
-# Food Council: Tokyo — Audience pass 2026-05-30
+# Food Council: Tokyo backlog
 
-## Ideal evangelist (one paragraph)
+Current release target: Verified 28.
 
-Hana, 31, software designer in Brooklyn, lapsed Japanese minor, flying into Haneda in 6 weeks. She is 2 months deep into r/JapanTravel and r/Tokyo, has a Google Doc with 40 copy-pasted "best Tokyo ramen" listicles she doesn't trust, and a Notion page of Tabelog screenshots in Japanese she half-understands. She already uses Tabelog Web (English) for scores, Google Maps for saved pins, and the Eater 38 Tokyo guide as a sanity check. She bounces a "Tokyo food guide" in 5 seconds if the hero is generic ("Discover Tokyo's best restaurants"), if there are no recognizable names above the fold (Jiro, Saito, Nakiryu, Den), if the score methodology is hidden, or if the saved list is a dead-end localStorage trap. She screenshots and shares when she can hand a friend a clean URL with her 12 saved spots grouped by neighborhood and pre-linked to Tabelog + Maps — because that's the artifact her group chat actually wants. The single share that brings her tribe back is a Reddit comment on r/JapanTravel: "Here is my 8-day Tokyo food list, grouped by area, with Tabelog + Maps for each: <link>."
+## Expand the directory
 
-## Ground-truth verdict
+Resolve flagged operating records 1 at a time. Each promotion needs an exact branch, operating status, resolved neighborhood, high confidence, zero unresolved flags, and at least 1 direct evidence URL.
 
-Live URL: https://food-council-tokyo.vercel.app/ (per index.html canonical + og tags). DEPLOY NEEDED: repo HEAD carries 5 commits of fixes (integrity, share polish, iter2/iter3 UI) plus this pass that have never been deployed; the live build is likely stale (WebFetch returns only the title for the client-rendered Vite app, so the gap cannot be diffed from markdown, but the prior-pass note confirms no deploy happened). A single Vercel deploy publishes all of it. Repo state is the converged iter3: 163 real restaurants (verified spot-check: Jiro Ginza/3-star, Saito Roppongi/3-star, Nakiryu Sugamo/1-star ramen, Tsuta former-star, Tabelog scores 3.15-4.78 all <4.8). Trip is URL-shareable (?trip=ids), copy-as-text exports grouped-by-neighborhood with per-pick Maps + Tabelog links, filters are deep-linkable, no fabrication, no exposed keys. Build is clean. Data integrity is the strongest in the portfolio sweep.
+## Restore cuisine browsing
 
-## Prior pass — already done (do not repeat)
+Audit cuisine for the second audit half, then add a structured cuisine field to the normalization contract. Don’t restore the filter from the legacy catalog.
 
-iter1: URL-encoded ?trip share, navigator.share + clipboard fallback, copy-as-text, per-restaurant Maps + Tabelog links, SavedListPanel grouped by neighborhood, filters deep-linked.
-iter2: POV hero ("High Tabelog scores, under the tourist radar"), CuratedLists card grid above 163 grid, "How we score" demoted to expandable.
-iter3: emoji Michelin badges replaced with inline SVG stars + BIB/PLATE pills, ScoreBadge restyled (paper + tiered color), pipe-divider cleaned, card padding p-4.
+## Restore ratings and prices
 
-## Shipped 2026-05-30 (this pass)
+Capture each field from a direct source with a timestamp and source URL. Define staleness thresholds before rebuilding scoring or price filters.
 
-"Build me a first-timer trip" CTA. The Hero now shows a one-tap button (visible only when the trip is empty) that pre-saves the First Time in Tokyo curated list and opens the trip panel. This is the single move that turns a first-time browse session into a share-ready artifact, exactly the thing the evangelist hands her group chat. Additive: merges into any existing saved picks, never drops them; reuses the existing curated-list filter/sort/limit logic in src/data/curatedLists.js. Files: src/App.jsx (handleStarterTrip), src/components/Hero.jsx (button + props). Build passes (440KB). Deploy needed to see it live.
+## Add maps
 
-## Shipped wave 2 (2026-05-30)
+Store an exact address or coordinates for every public record. Until then, a map link can only be labeled as a search, not an exact destination.
 
-1. Per-list one-tap trip build. The "Build me a first-timer trip" move was previously only on the Hero and only for the first-timers list. Now every curated list gets the same one tap: when a list is active, its banner shows a "Save these to my trip" button that pre-saves that whole list and opens the trip panel. So a browser who opens Hidden Gems, The Ramen Circuit, or Date Night can turn it into a shareable artifact in 1 tap, not just the first-timers list. Additive: reuses the existing handleStarterTrip merge logic (never drops existing picks). Files: src/App.jsx (pass onStarterTrip through), src/components/CuratedLists.jsx (button in active-list banner).
-2. Save-icon unified to a heart everywhere. The cards used a heart, but the Header "My Trip" button and the DetailPanel save button used a bookmark/ribbon glyph, and the saved-state copy says "tap the heart." Switched both bookmark glyphs to the same heart path so the save affordance reads consistently across card, detail panel, and header. Files: src/components/Header.jsx, src/components/DetailPanel.jsx. Build passes (441KB). Deploy needed to see it live.
+## Add curated lists
 
-## Quick wins (shipped a prior pass)
+Document editorial membership and review dates. Don’t derive lists from synthetic thresholds.
 
-1. Meta count truthful. index.html meta description + og:description both said "165 Tokyo restaurants" while the data ships 163. Anyone who lands from a shared link sees the right number; integrity matters more than launch-copy roundness.
-2. Empty saved-state icon copy matches reality. SavedListPanel told users to "tap the bookmark icon on any card" but RestaurantCard's save icon is a heart. Switched copy to "tap the heart on any card" so the instruction points at the right glyph.
-3. Copy-as-text now round-trips. buildTripText prepended with the actual shareable trip URL so a pasted Reddit/Notes export is also a way back into the exact filtered + saved view. The single most valuable artifact a trip planner hands their group chat is now self-contained.
+## Add restaurant photos
 
-## Bigger bets (flagged for Michael, not shipped)
+Require exact branch identity, source URL, usage rights, attribution, capture date, and reviewer confirmation. No generic food photography.
 
-- Dynamic per-trip OG image. Today, a shared ?trip= link uses the static og-image.png so the unfurl on iMessage/Twitter/Discord says nothing about the actual trip. The 10-star version renders the trip title ("Hana's Tokyo trip — 12 spots, 4 Michelin, 5 neighborhoods") into an OG card. This is the single highest-leverage growth move, but it requires a Vercel serverless function (the rest of the app is static Vite). Files to add: api/og.js (Satori or @vercel/og), index.html dynamic og tag injection or per-trip route. Effort M, deploy needed.
-- Real per-restaurant food photography. PlaceholderImage is a 2-color CSS gradient; cards ship an unused photoSeed. The honesty landmine is real (generic stock can't imply a specific restaurant's dish). The right shape is a curated photo per restaurant (commissioned or licensed). Effort L, content op not a code op.
-- Restaurant data refresh sweep. Red-team flagged minor location/star quibbles: Den at Jimbocho in data vs current Gaienmae location, Ryugin at Roppongi in data vs current Hibiya, Jiro 3-star in data vs Michelin dropping it 2020. None are fabrication; all are stale-since-launch. A single audit pass against current Michelin Guide + Tabelog pages would refresh confidence. Effort S per record, M overall, deploy needed.
-- Save-icon unification. SHIPPED wave 2 (see above): heart everywhere across card, detail panel, and header.
-- "Pack me a starter trip" CTA. SHIPPED prior pass (Hero) and the per-curated-list follow-on SHIPPED wave 2 (see above).
+## Improve trip sharing
 
-## Items deliberately not done
-
-- Restaurant location / Michelin corrections. Without a verified current source loaded in this session, editing real-entity data would risk introducing new errors. Better as a deliberate audit pass with the live Michelin Guide + Tabelog open. Flagged above.
-- Photography. Honesty landmine + content op, not a quick win.
-- Dynamic OG. Requires deploy + serverless and the rest of the app is static; out of scope for an additive code-only pass.
+Build dynamic social cards only after the static product and copied trip text remain count-accurate through automated checks.

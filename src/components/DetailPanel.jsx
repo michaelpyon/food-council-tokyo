@@ -1,248 +1,147 @@
-import { motion, AnimatePresence } from 'motion/react';
-import ScoreBadge from './ScoreBadge';
+import { motion as Motion, AnimatePresence } from 'motion/react';
 import MichelinBadge from './MichelinBadge';
 import SourceChips from './SourceChips';
-import { getScoreTier, getConfidence, getConfidenceLabel } from '../utils/scoring';
-import { PRICE_LABELS } from '../data/restaurants';
-import { mapsUrl, tabelogUrl } from '../utils/links';
+import { useModalPanel } from '../hooks/useModalPanel';
 
-function ScoreRow({ label, value }) {
-  if (!value) return null;
-  return (
-    <div className="flex items-center justify-between py-2 border-b border-border last:border-0">
-      <span className="text-xs font-body font-medium text-muted uppercase tracking-wider">{label}</span>
-      <span className="text-sm font-body font-bold text-text">{value}</span>
-    </div>
-  );
+function formatVerifiedDate(date) {
+  return new Intl.DateTimeFormat('en-US', {
+    month: 'long',
+    day: 'numeric',
+    year: 'numeric',
+    timeZone: 'UTC',
+  }).format(new Date(`${date}T00:00:00Z`));
 }
 
-function ConfidenceBar({ restaurant }) {
-  const confidence = getConfidence(restaurant);
-  const { label, color } = getConfidenceLabel(restaurant);
-  const pct = Math.round(confidence * 100);
+export default function DetailPanel({ restaurant, onClose, onExitComplete, onSave, isSaved }) {
+  const { panelRef, initialFocusRef } = useModalPanel(Boolean(restaurant), onClose);
 
   return (
-    <div>
-      <div className="flex items-center justify-between mb-1">
-        <span className="text-xs font-body font-medium text-muted uppercase tracking-wider">Confidence</span>
-        <span className={`text-xs font-body font-semibold ${color}`}>{label} ({pct}%)</span>
-      </div>
-      <div className="h-1.5 bg-border/50 rounded-full overflow-hidden">
-        <div
-          className="h-full bg-accent rounded-full transition-[width]"
-          style={{ width: `${pct}%` }}
-        />
-      </div>
-      <p className="text-[10px] font-body text-muted mt-1">
-        Based on review volume ({(restaurant.tabelog?.reviews || 0).toLocaleString()} Tabelog, {(restaurant.google?.reviews || 0).toLocaleString()} Google) and editorial backing.
-      </p>
-    </div>
-  );
-}
-
-export default function DetailPanel({ restaurant, onClose, onSave, isSaved }) {
-  return (
-    <AnimatePresence>
+    <AnimatePresence onExitComplete={onExitComplete}>
       {restaurant && (
         <>
-          {/* Backdrop */}
-          <motion.div
+          <Motion.div
             key="detail-backdrop"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.15 }}
             onClick={onClose}
-            className="fixed inset-0 bg-black/30 backdrop-blur-sm z-50"
+            className="fixed inset-0 bg-text/30 backdrop-blur-sm z-50"
+            aria-hidden="true"
           />
 
-          {/* Panel */}
-          <motion.aside
+          <Motion.aside
+            ref={panelRef}
             key="detail-panel"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby={`detail-title-${restaurant.id}`}
+            tabIndex={-1}
             initial={{ x: '100%' }}
             animate={{ x: 0 }}
             exit={{ x: '100%' }}
             transition={{ type: 'spring', duration: 0.3, bounce: 0 }}
-            className="fixed right-0 top-0 bottom-0 w-full sm:w-[420px] bg-surface border-l border-border z-[51] overflow-y-auto"
+            className="fixed right-0 top-0 bottom-0 w-full sm:w-[440px] bg-surface border-l border-border z-[51] overflow-y-auto"
           >
-            {/* Header */}
             <div className="sticky top-0 bg-surface/95 backdrop-blur-sm border-b border-border px-5 py-3 flex items-center justify-between z-10">
               <button
+                ref={initialFocusRef}
+                type="button"
                 onClick={onClose}
-                className="w-8 h-8 rounded-lg hover:bg-border/30 flex items-center justify-center transition-colors cursor-pointer"
+                className="w-11 h-11 rounded-lg hover:bg-border/30 flex items-center justify-center transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/30"
                 aria-label="Close detail panel"
               >
-                <svg className="w-5 h-5 text-text" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <svg className="w-5 h-5 text-text" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} aria-hidden="true">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
                 </svg>
               </button>
               <button
+                type="button"
                 onClick={() => onSave(restaurant.id)}
-                className={`flex items-center gap-1.5 h-8 px-3 rounded-lg border text-sm font-body font-medium transition-colors cursor-pointer ${
+                className={`flex items-center gap-1.5 h-11 px-3 rounded-lg border text-sm font-body font-semibold transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/30 ${
                   isSaved
                     ? 'border-accent bg-accent/10 text-accent'
                     : 'border-border text-text hover:bg-border/30'
                 }`}
+                aria-label={isSaved ? `Remove ${restaurant.name} from My Trip` : `Save ${restaurant.name} to My Trip`}
               >
-                <svg
-                  className="w-4 h-4"
-                  fill={isSaved ? 'currentColor' : 'none'}
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  strokeWidth={2}
-                >
+                <svg className="w-4 h-4" fill={isSaved ? 'currentColor' : 'none'} viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} aria-hidden="true">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
                 </svg>
                 {isSaved ? 'Saved' : 'Save to Trip'}
               </button>
             </div>
 
-            <div className="px-5 py-5 space-y-5">
-              {/* Name + Score */}
-              <div className="flex items-start gap-4">
-                <ScoreBadge score={restaurant._compositeScore || 0} size="lg" />
-                <div>
-                  <h2 className="font-display text-2xl font-semibold text-text leading-tight">
-                    {restaurant.name}
-                  </h2>
-                  <p className="text-sm font-body text-muted mt-0.5">{restaurant.nameJa}</p>
-                  <div className="flex items-center gap-2 mt-1.5">
-                    <span className="text-sm font-body font-medium text-text">{restaurant.cuisine}</span>
-                    {restaurant.subCuisine && (
-                      <>
-                        <span className="text-border">·</span>
-                        <span className="text-sm font-body text-muted">{restaurant.subCuisine}</span>
-                      </>
-                    )}
-                  </div>
-                </div>
-              </div>
+            <div className="px-5 py-6">
+              <p className="text-xs font-body font-semibold text-accent">
+                {restaurant.neighborhood}
+              </p>
+              <h2
+                id={`detail-title-${restaurant.id}`}
+                className="mt-2 font-display text-3xl font-semibold text-text leading-tight"
+              >
+                {restaurant.name}
+              </h2>
+              {restaurant.nameJa && (
+                <p lang="ja" className="mt-1 text-base font-body text-muted">
+                  {restaurant.nameJa}
+                </p>
+              )}
 
-              {/* Tier label */}
-              <div className="flex items-center gap-3">
-                <span className={`text-sm font-body font-semibold ${getScoreTier(restaurant._compositeScore || 0).color}`}>
-                  {getScoreTier(restaurant._compositeScore || 0).label}
-                </span>
-                <span className="text-border">·</span>
-                <span className="text-sm font-body text-muted">{restaurant.neighborhood}</span>
-                <span className="text-border">·</span>
-                <span className="text-sm font-body font-semibold text-text">{PRICE_LABELS[restaurant.priceRange]}</span>
-              </div>
-
-              {/* Michelin */}
-              {restaurant.michelin && (restaurant.michelin.stars > 0 || restaurant.michelin.bib || restaurant.michelin.plate) && (
-                <div className="bg-gold-light/50 border border-gold/20 rounded-lg px-4 py-3">
+              {restaurant.michelin && (
+                <div className="mt-5 rounded-lg border border-gold/20 bg-gold-light/55 px-4 py-3">
                   <MichelinBadge michelin={restaurant.michelin} />
                 </div>
               )}
 
-              {/* Description */}
-              <p className="text-sm font-body text-text leading-relaxed">
-                {restaurant.description}
-              </p>
-
-              {/* Score breakdown */}
-              <div className="bg-bg rounded-lg p-4 space-y-0">
-                <h4 className="text-xs font-body font-semibold text-muted uppercase tracking-wider mb-2">Score Breakdown</h4>
-                <ScoreRow label="Tabelog" value={restaurant.tabelog?.score?.toFixed(2)} />
-                <ScoreRow label="Google" value={restaurant.google?.rating?.toFixed(1)} />
-                {restaurant.michelin?.stars > 0 && (
-                  <ScoreRow label="Michelin" value={`${restaurant.michelin.stars} Star${restaurant.michelin.stars > 1 ? 's' : ''}`} />
-                )}
-                {restaurant.tabelog?.reviews && (
-                  <ScoreRow label="Tabelog Reviews" value={restaurant.tabelog.reviews.toLocaleString()} />
-                )}
-                {restaurant.google?.reviews && (
-                  <ScoreRow label="Google Reviews" value={restaurant.google.reviews.toLocaleString()} />
-                )}
-              </div>
-
-              {/* Confidence */}
-              <div className="bg-bg rounded-lg p-4">
-                <ConfidenceBar restaurant={restaurant} />
-              </div>
-
-              {/* Sources */}
-              <div>
-                <h4 className="text-xs font-body font-semibold text-muted uppercase tracking-wider mb-2">Featured In</h4>
-                <SourceChips sources={restaurant.sources} />
-              </div>
-
-              {/* Awards */}
-              {restaurant.awards && restaurant.awards.length > 0 && (
-                <div>
-                  <h4 className="text-xs font-body font-semibold text-muted uppercase tracking-wider mb-2">Awards</h4>
-                  <div className="flex flex-wrap gap-1.5">
-                    {restaurant.awards.map(award => (
-                      <span
-                        key={award}
-                        className="inline-flex items-center px-2.5 py-1 rounded-full bg-gold-light text-gold text-xs font-body font-medium"
-                      >
-                        {award}
-                      </span>
-                    ))}
+              <section className="mt-8 border-t border-border pt-6" aria-labelledby={`verification-title-${restaurant.id}`}>
+                <h3
+                  id={`verification-title-${restaurant.id}`}
+                  className="font-display text-xl font-semibold text-text"
+                >
+                  Verification record
+                </h3>
+                <dl className="mt-4 divide-y divide-border border-y border-border">
+                  <div className="flex items-start justify-between gap-5 py-3">
+                    <dt className="text-xs font-body font-semibold text-muted">Operating status</dt>
+                    <dd className="text-sm font-body font-semibold text-text">Verified operating</dd>
                   </div>
-                </div>
-              )}
-
-              {/* Tags */}
-              {restaurant.tags && restaurant.tags.length > 0 && (
-                <div>
-                  <h4 className="text-xs font-body font-semibold text-muted uppercase tracking-wider mb-2">Details</h4>
-                  <div className="flex flex-wrap gap-1.5">
-                    {restaurant.tags.map(tag => (
-                      <span
-                        key={tag}
-                        className="inline-flex items-center px-2.5 py-1 rounded-full bg-bg border border-border text-xs font-body text-muted"
-                      >
-                        {tag.replace(/-/g, ' ')}
-                      </span>
-                    ))}
+                  <div className="flex items-start justify-between gap-5 py-3">
+                    <dt className="text-xs font-body font-semibold text-muted">Checked</dt>
+                    <dd className="text-sm font-body font-semibold text-text">
+                      <time dateTime={restaurant.lastVerified}>{formatVerifiedDate(restaurant.lastVerified)}</time>
+                    </dd>
                   </div>
-                </div>
-              )}
+                  <div className="flex items-start justify-between gap-5 py-3">
+                    <dt className="text-xs font-body font-semibold text-muted">Audit record</dt>
+                    <dd className="text-sm font-body font-semibold text-text">#{restaurant.auditIndex + 1}</dd>
+                  </div>
+                </dl>
+              </section>
 
-              {/* Actionable links. Reservation when we have one, otherwise
-                  honest by-name searches that resolve to the real place. */}
-              <div className="space-y-2">
-                {restaurant.reservationUrl && (
-                  <a
-                    href={restaurant.reservationUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="block w-full text-center py-3 rounded-lg bg-accent text-white text-sm font-body font-semibold hover:bg-accent-hover transition-colors"
-                  >
-                    Reserve on Tabelog
-                  </a>
-                )}
-                <div className="grid grid-cols-2 gap-2">
-                  <a
-                    href={mapsUrl(restaurant)}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center justify-center gap-1.5 py-2.5 rounded-lg border border-border text-sm font-body font-medium text-text hover:bg-bg transition-colors"
-                  >
-                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M17.657 16.657L13.414 20.9a2 2 0 01-2.828 0l-4.243-4.243a8 8 0 1111.314 0z" />
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                    </svg>
-                    Find on Map
-                  </a>
-                  <a
-                    href={tabelogUrl(restaurant)}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center justify-center gap-1.5 py-2.5 rounded-lg border border-border text-sm font-body font-medium text-text hover:bg-bg transition-colors"
-                  >
-                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                    </svg>
-                    Tabelog
-                  </a>
+              <section className="mt-8" aria-labelledby={`evidence-title-${restaurant.id}`}>
+                <h3
+                  id={`evidence-title-${restaurant.id}`}
+                  className="font-display text-xl font-semibold text-text"
+                >
+                  Direct evidence
+                </h3>
+                <p className="mt-2 text-sm font-body leading-relaxed text-muted">
+                  These links support the branch identity, operating status, location, or current Michelin distinction. They don’t support ratings or prices.
+                </p>
+                <div className="mt-4">
+                  <SourceChips restaurant={restaurant} />
                 </div>
-              </div>
+              </section>
+
+              <section className="mt-8 rounded-lg border border-border bg-bg px-4 py-4">
+                <h3 className="text-sm font-body font-semibold text-text">Why this record is public</h3>
+                <p className="mt-1.5 text-xs font-body leading-relaxed text-muted">
+                  It passed the strict audit gate: operating, high confidence, no unresolved flags, and at least 1 direct evidence URL.
+                </p>
+              </section>
             </div>
-          </motion.aside>
+          </Motion.aside>
         </>
       )}
     </AnimatePresence>

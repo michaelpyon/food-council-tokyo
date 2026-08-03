@@ -10,6 +10,7 @@ import {
   isBlockingAuditFlag,
   isBlockingHoldReason,
   needsNameJaCorrectionHold,
+  toPublicSources,
 } from "./restaurant-normalization-contract.mjs";
 
 describe("restaurant publication flag policy", () => {
@@ -52,6 +53,35 @@ describe("restaurant publication flag policy", () => {
       expect(source.reason.length, source.url).toBeGreaterThan(0);
       expect(isAllowedPublicSourceUrl(source.url), source.url).toBe(false);
     }
+  });
+
+  it("publishes only the exact current Michelin evidence URL", () => {
+    const currentUrl = "https://guide.michelin.com/en/tokyo-region/tokyo/restaurant/current-place";
+    const staleCategoryUrl = "https://guide.michelin.com/en/jp/tokyo-region/tokyo/restaurants/3-stars-michelin";
+    const sources = [
+      { type: "official", url: "https://example.com/place" },
+      { type: "michelin", url: staleCategoryUrl },
+      { type: "michelin", url: currentUrl },
+    ];
+
+    expect(toPublicSources(sources, {
+      distinction: "one_star",
+      edition: 2026,
+      verified: true,
+      sourceUrl: currentUrl,
+    })).toEqual([
+      { type: "official", url: "https://example.com/place" },
+      { type: "michelin", url: currentUrl },
+    ]);
+
+    expect(toPublicSources(sources, {
+      distinction: null,
+      edition: null,
+      verified: false,
+      sourceUrl: null,
+    })).toEqual([
+      { type: "official", url: "https://example.com/place" },
+    ]);
   });
 
   it("requires an explicit override before Japanese-name flags become non-blocking", () => {

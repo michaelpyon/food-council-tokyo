@@ -11,11 +11,11 @@ import {
   SUPERSEDED_PUBLIC_SOURCE_EXCLUSIONS,
   SOURCE_TYPE_VOCABULARY,
   STATUS_VOCABULARY,
-  isAllowedPublicSourceUrl,
   isAccessRestricted,
   isBlockingHoldReason,
   needsNameJaCorrectionHold,
   toPublicMichelin,
+  toPublicSources,
   validateNormalizedArtifact,
   validatePublicArtifact,
 } from "./restaurant-normalization-contract.mjs";
@@ -330,15 +330,9 @@ function normalizeRecord(auditRecord, sourceRecord, schema, verifiedDate) {
   if (!canonicalNameJa) holdReasons.push("missing_canonical_name_ja");
   if (!canonicalCuisine) holdReasons.push("missing_canonical_cuisine");
   if (!canonicalNeighborhood) holdReasons.push("missing_canonical_neighborhood");
-  if (
-    !sources.some(
-      (source) =>
-        (source.type === "official" ||
-          source.type === "michelin" ||
-          source.type === "tabelog") &&
-        isAllowedPublicSourceUrl(source.url),
-    )
-  ) {
+  if (!toPublicSources(sources, michelin).some(
+    (source) => source.type === "official" || source.type === "michelin" || source.type === "tabelog",
+  )) {
     holdReasons.push("missing_direct_source");
   }
 
@@ -473,7 +467,7 @@ async function buildArtifact() {
         neighborhood: record.canonical.neighborhood,
         michelin: toPublicMichelin(record.michelin),
         lastVerified: record.lastVerified,
-        sources: record.sources.filter((source) => isAllowedPublicSourceUrl(source.url)),
+        sources: toPublicSources(record.sources, record.michelin),
       })),
   };
 

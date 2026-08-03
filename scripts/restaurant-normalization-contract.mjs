@@ -267,6 +267,17 @@ export function toPublicMichelin(michelin) {
   };
 }
 
+export function toPublicSources(sources = [], michelin) {
+  const publicMichelin = toPublicMichelin(michelin);
+
+  return sources.filter((source) => {
+    if (!isAllowedPublicSourceUrl(source?.url)) return false;
+    if (source?.type !== "michelin") return true;
+
+    return publicMichelin.verified && source.url === publicMichelin.sourceUrl;
+  });
+}
+
 function isHoldReason(value) {
   return BASE_HOLD_REASONS.includes(value) || /^audit_flag:[A-Za-z0-9_]+$/.test(value);
 }
@@ -542,9 +553,10 @@ export function validatePublicArtifact(publicArtifact, normalizedArtifact) {
     );
     push(
       errors,
-      JSON.stringify(record?.sources) === JSON.stringify(
-        (expected?.sources || []).filter((source) => isAllowedPublicSourceUrl(source.url)),
-      ),
+      JSON.stringify(record?.sources) === JSON.stringify(toPublicSources(
+        expected?.sources,
+        expected?.michelin,
+      )),
       `${prefix}.sources does not match normalized record`,
     );
     for (const [sourceIndex, source] of (record?.sources || []).entries()) {
@@ -553,7 +565,23 @@ export function validatePublicArtifact(publicArtifact, normalizedArtifact) {
         isAllowedPublicSourceUrl(source?.url),
         `${prefix}.sources[${sourceIndex}].url must use HTTPS or the exact public HTTP allowlist`,
       );
+      push(
+        errors,
+        source?.type !== "michelin" || (
+          record?.michelin?.verified && source.url === record.michelin.sourceUrl
+        ),
+        `${prefix}.sources[${sourceIndex}] must not expose stale or unrelated Michelin evidence`,
+      );
     }
+    push(
+      errors,
+      (record?.sources || []).some((source) => (
+        source.type === "official" ||
+        source.type === "tabelog" ||
+        (source.type === "michelin" && record?.michelin?.verified && source.url === record.michelin.sourceUrl)
+      )),
+      `${prefix} needs a public direct source`,
+    );
 
     for (const excludedField of [
       ...EXCLUDED_LEGACY_FIELDS,

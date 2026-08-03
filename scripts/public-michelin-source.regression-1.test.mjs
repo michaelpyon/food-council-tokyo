@@ -3,6 +3,7 @@ import { describe, expect, it } from "vitest";
 import {
   PUBLIC_SOURCE_EXCLUSIONS,
   toPublicMichelin,
+  toPublicSources,
   validatePublicArtifact,
 } from "./restaurant-normalization-contract.mjs";
 
@@ -37,6 +38,7 @@ describe("public Michelin metadata sources", () => {
     expect(unsafeErrors.some((error) => error.includes("michelin.sourceUrl must be public-safe"))).toBe(true);
 
     publicRecord.michelin = toPublicMichelin(unsafeMichelin);
+    publicRecord.sources = toPublicSources(normalizedRecord.sources, unsafeMichelin);
     expect(publicRecord.michelin).toEqual({
       distinction: null,
       edition: null,

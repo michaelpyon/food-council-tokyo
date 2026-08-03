@@ -25,10 +25,6 @@
           "url": "https://www.sushi-yoshitake.com/"
         },
         {
-          "type": "michelin",
-          "url": "https://guide.michelin.com/en/jp/tokyo-region/tokyo/restaurants/3-stars-michelin"
-        },
-        {
           "type": "tabelog",
           "url": "https://tabelog.com/tokyo/A1301/A130101/13024076/"
         }
@@ -407,10 +403,6 @@
         {
           "type": "michelin",
           "url": "https://guide.michelin.com/en/tokyo-region/tokyo/restaurant/ryugin-1194232"
-        },
-        {
-          "type": "michelin",
-          "url": "https://guide.michelin.com/sg/en/article/features/nihonryori-ryugin-is-moving-to-hibiya-sg"
         },
         {
           "type": "tabelog",

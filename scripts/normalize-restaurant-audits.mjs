@@ -30,6 +30,17 @@ const INPUT_PATHS = [
 const OUTPUT_PATH = "data-audit/normalized/restaurants.json";
 const PUBLIC_OUTPUT_PATH = "data-audit/normalized/publishable-restaurants.json";
 
+const SOURCE_URL_OVERRIDES = new Map([
+  [
+    "https://bluebottlecoffee.jp/cafes/aoyama",
+    "https://store.bluebottlecoffee.jp/pages/aoyama",
+  ],
+  [
+    "https://menya-shono.com/mensho-tokyo/",
+    "https://mensho.com/ja/location/mensho-tokyo-korakuen/",
+  ],
+]);
+
 const NAME_JA_OVERRIDES = new Map([
   ["harutaka", "銀座 はるたか"],
   ["midori-sushi", "梅丘寿司の美登利総本店 渋谷店"],
@@ -213,9 +224,12 @@ function normalizeSources(record, schema) {
 
   const deduplicated = new Map();
   for (const source of sources) {
-    const url = cleanString(source.url);
-    if (!url) continue;
-    const normalized = { type: source.type, url };
+    const rawUrl = cleanString(source.url);
+    if (!rawUrl) continue;
+    const normalized = {
+      type: source.type,
+      url: SOURCE_URL_OVERRIDES.get(rawUrl) || rawUrl,
+    };
     deduplicated.set(`${normalized.type}:${normalized.url}`, normalized);
   }
 

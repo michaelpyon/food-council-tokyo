@@ -115,6 +115,12 @@ export default function App() {
     setShowSaved(true);
   }, []);
 
+  const handleSelectSavedRestaurant = useCallback((restaurant) => {
+    detailTriggerRef.current = savedTriggerRef.current;
+    setShowSaved(false);
+    setSelectedRestaurant(restaurant);
+  }, []);
+
   const handleCloseDetail = useCallback(() => {
     setSelectedRestaurant(null);
     window.setTimeout(() => detailTriggerRef.current?.focus(), 0);
@@ -223,7 +229,7 @@ export default function App() {
         savedIds={savedIds}
         omittedTripIds={omittedTripIds}
         onRemove={handleSave}
-        onSelect={handleSelectRestaurant}
+        onSelect={handleSelectSavedRestaurant}
       />
     </div>
   );

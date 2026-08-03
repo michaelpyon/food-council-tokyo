@@ -169,10 +169,7 @@ export default function SavedListPanel({
                             <button
                               type="button"
                               className="min-w-0 flex-1 text-left rounded-md cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/25"
-                              onClick={() => {
-                                onClose();
-                                onSelect(restaurant);
-                              }}
+                              onClick={() => onSelect(restaurant)}
                               aria-label={`Review evidence for ${restaurant.name}`}
                             >
                               <h4 className="font-display text-base font-semibold text-text">{restaurant.name}</h4>

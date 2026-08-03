@@ -59,4 +59,3 @@ Date: 2026-07-30
 ## Remaining concern
 
 The interaction fixes pass, but the app still reads from the old restaurant records. Do not deploy or describe the guide as current until the audit is normalized into product data and every unsupported score, price, tag, description, and image claim is refreshed or removed.
-

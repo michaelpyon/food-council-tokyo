@@ -442,14 +442,14 @@ export function validateNormalizedArtifact(artifact, sourceRecords) {
       push(errors, Object.values(record.canonical).every((value) => typeof value === "string" && value.length > 0), `${prefix} publishable canonical fields must all be populated`);
       push(
         errors,
-        record.sources.some(
-          (source) =>
-            (source.type === "official" ||
-              source.type === "michelin" ||
-              source.type === "tabelog") &&
-            isAllowedPublicSourceUrl(source.url),
+        toPublicSources(record.sources, record.michelin).some(
+          (source) => (
+            source.type === "official" ||
+            source.type === "michelin" ||
+            source.type === "tabelog"
+          ),
         ),
-        `${prefix} publishable record needs a public-safe official, Michelin, or direct Tabelog source`,
+        `${prefix} publishable record needs a public direct source`,
       );
     } else {
       push(errors, blockingReasons.length > 0, `${prefix} held record needs at least one blocking hold reason`);

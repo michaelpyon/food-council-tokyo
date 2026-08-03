@@ -46,4 +46,16 @@ describe('verified filter state', () => {
 
     await waitFor(() => expect(window.location.search).toBe(''));
   });
+
+  it('drops an impossible Michelin filter hydrated from a shared URL', async () => {
+    // Regression: ISSUE-006, impossible URL state showed an empty directory.
+    window.history.replaceState(null, '', '/?hood=Asakusa&michelin=1');
+    render(<App />);
+
+    expect(screen.getByRole('combobox', { name: 'Neighborhood' }).value).toBe('Asakusa');
+    expect(screen.getByRole('button', { name: 'Michelin verified (0)' }).getAttribute('aria-pressed')).toBe('false');
+    expect(screen.getByText('4 of 91 verified records')).toBeTruthy();
+    expect(screen.queryByText('No verified records match')).toBeNull();
+    await waitFor(() => expect(window.location.search).toBe('?hood=Asakusa'));
+  });
 });

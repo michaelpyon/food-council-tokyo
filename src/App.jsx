@@ -19,6 +19,12 @@ const VALID_IDS = new Set(restaurants.map(restaurant => restaurant.id));
 const VALID_NEIGHBORHOODS = new Set(
   restaurants.map(restaurant => restaurant.neighborhood).filter(Boolean),
 );
+const MICHELIN_NEIGHBORHOODS = new Set(
+  restaurants
+    .filter(restaurant => restaurant.michelin?.verified && restaurant.michelin.distinction)
+    .map(restaurant => restaurant.neighborhood)
+    .filter(Boolean),
+);
 
 const DEFAULT_FILTERS = {
   neighborhood: 'all',
@@ -49,7 +55,10 @@ export default function App() {
   const [filters, setFilters] = useState(() => readFiltersFromUrl(
     DEFAULT_FILTERS,
     window.location.search,
-    { neighborhoods: VALID_NEIGHBORHOODS },
+    {
+      neighborhoods: VALID_NEIGHBORHOODS,
+      michelinNeighborhoods: MICHELIN_NEIGHBORHOODS,
+    },
   ));
   const [sortKey, setSortKey] = useState('name-asc');
   const [selectedRestaurant, setSelectedRestaurant] = useState(null);

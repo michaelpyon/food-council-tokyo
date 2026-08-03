@@ -62,7 +62,10 @@ export function readFiltersFromUrl(defaults, search = window.location.search, al
     if (neighborhood && allowlist.neighborhoods?.has(neighborhood)) {
       next.neighborhood = neighborhood;
     }
-    if (params.get(FILTER_PARAMS.michelinOnly) === '1') {
+    const michelinAvailable = next.neighborhood === 'all'
+      || !allowlist.michelinNeighborhoods
+      || allowlist.michelinNeighborhoods.has(next.neighborhood);
+    if (params.get(FILTER_PARAMS.michelinOnly) === '1' && michelinAvailable) {
       next.michelinOnly = true;
     }
     if (params.has(FILTER_PARAMS.query)) {

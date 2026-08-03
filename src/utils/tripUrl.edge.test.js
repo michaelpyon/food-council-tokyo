@@ -39,6 +39,23 @@ describe('trip URL edge cases', () => {
     });
   });
 
+  it('drops a Michelin URL filter when the selected neighborhood has no verified distinctions', () => {
+    const filters = readFiltersFromUrl(
+      DEFAULT_FILTERS,
+      '?hood=Asakusa&michelin=1',
+      {
+        neighborhoods: new Set(['Asakusa']),
+        michelinNeighborhoods: new Set(['Ginza']),
+      },
+    );
+
+    expect(filters).toEqual({
+      neighborhood: 'Asakusa',
+      michelinOnly: false,
+      query: '',
+    });
+  });
+
   it('falls back on malformed input and treats URL replacement as progressive enhancement', () => {
     expect(readTripFromUrl(Symbol('invalid search'))).toBeNull();
     expect(readFiltersFromUrl(DEFAULT_FILTERS, Symbol('invalid search'))).toEqual(DEFAULT_FILTERS);

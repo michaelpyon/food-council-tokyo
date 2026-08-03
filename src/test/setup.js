@@ -46,6 +46,13 @@ vi.mock('motion/react', async () => {
   return {
     motion,
     AnimatePresence: ({ children }) => children,
-    MotionConfig: ({ children }) => children,
+    MotionConfig: ({ children, reducedMotion }) => React.createElement(
+      'div',
+      {
+        'data-testid': 'motion-config',
+        'data-reduced-motion': reducedMotion,
+      },
+      children,
+    ),
   };
 });
